@@ -9,46 +9,47 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.finddamatch.Classes.cards;
 import com.example.finddamatch.R;
 
-public class card1 extends AppCompatActivity {
-    private ImageView pic1;
-    private ImageView pic2;
+public class card4 extends AppCompatActivity {
     private ImageView pic3;
-
+    private ImageView pic7;
+    private ImageView pic5;
+    public static cards card4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card1);
-        pic1 = findViewById(R.id.pic1);
-        pic2 = findViewById(R.id.pic2);
+        setContentView(R.layout.activity_card4);
         pic3 = findViewById(R.id.pic3);
+        pic7 = findViewById(R.id.pic7);
+        pic5 = findViewById(R.id.pic5);
         checkImage();
 
     }
     public void checkImage(){
-        pic1.setOnClickListener(new View.OnClickListener() {
+        pic3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(top.contain("pic1")){
+                if(top.contain("pic3")){
                     Deck.discard();
                     Deck.draw();
                     finish();
                 }
             }
-        }); pic3.setOnClickListener(new View.OnClickListener() {
+        }); pic7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(top.contain("pic3")) {
+                if(top.contain("pic7")){
                     Deck.discard();
                     Deck.draw();
                     finish();
                 }
             }
-        }); pic2.setOnClickListener(new View.OnClickListener() {
+        }); pic5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(top.contain("pic2")){
+                if(top.contain("pic5")){
                     Deck.discard();
                     Deck.draw();
                     finish();

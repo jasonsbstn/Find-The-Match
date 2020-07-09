@@ -13,7 +13,7 @@ public class discard {
         if(top.contain(selected)){
             Deck.discard();
             Deck.draw();
-            return true;
+            return true;//if true it discard the top card of the deck (hand) and put it to the "top" of the discard and finishes the activity
         }
         return false;
     }

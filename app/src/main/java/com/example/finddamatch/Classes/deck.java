@@ -9,20 +9,35 @@ import static com.example.finddamatch.MainActivity.hand;
 import static com.example.finddamatch.MainActivity.top;
 
 public class deck implements Iterable<cards> {
-    private List<cards> cardsList= new ArrayList<>();
+    private static List<cards> cardsList= new ArrayList<>();
     private deck() {
     }
     private static deck instance;
-    public static deck getInstance(){
+    public static deck getInstance(){//populates 7 cards
         if(instance == null)
         {
             instance = new deck();
+            String pics[] = {"pic1","pic2","pic3"};
+            add(new cards(pics,1));
+            String pics2[] = {"pic1","pic7","pic4"};
+            add(new cards(pics2,2));
+            String pics3[] = {"pic1","pic5","pic6"};
+            add(new cards(pics3,3));
+            String pics4[] = {"pic7","pic5","pic3"};
+            add(new cards(pics4,4));
+            String pics5[] = {"pic3","pic6","pic4"};
+            add(new cards(pics5,5));
+            String pics6[] = {"pic2","pic5","pic4"};
+            add(new cards(pics6,6));
+            String pics7[] = {"pic6","pic2","pic7"};
+            add(new cards(pics7,7));
+
 
         }
         return instance;
     }
 
-    public void add(cards card) {
+    public static void add(cards card) {
         cardsList.add(card);
     }
 
@@ -39,7 +54,8 @@ public class deck implements Iterable<cards> {
         shuffle();
         top= new discard(cardsList.get(0));
         discard();
-        return cardsList.get(0).startGame();
+        draw();
+        return cardsList.get(0).startGame();//discard 1 card and returns the top card of the deck card number
     }
 
     public void discard() {

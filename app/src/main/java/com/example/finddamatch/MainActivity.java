@@ -3,7 +3,9 @@ package com.example.finddamatch;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.finddamatch.UI.Main_Menu;
+import com.example.finddamatch.Classes.cards;
+import com.example.finddamatch.Classes.deck;
+import com.example.finddamatch.Classes.discard;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,10 +20,14 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static deck Deck;
+    public static cards hand;
+    public static discard top;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Deck.getInstance();
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         /**

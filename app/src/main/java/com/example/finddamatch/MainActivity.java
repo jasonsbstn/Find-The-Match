@@ -1,5 +1,6 @@
 package com.example.finddamatch;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.finddamatch.Classes.cards;
@@ -15,6 +16,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
          */
 
         // testing push
+        Button start = (Button)findViewById(R.id.startAct);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent start = Main_Menu.makeLaunchIntent(MainActivity.this);
+                startActivity(start);
+            }
+        });
 
 
     }

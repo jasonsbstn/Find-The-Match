@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.finddamatch.Classes.cards;
+import com.example.finddamatch.MainActivity;
 import com.example.finddamatch.R;
 
 import static com.example.finddamatch.MainActivity.Deck;
+import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
 
 public class card2 extends AppCompatActivity {
@@ -28,8 +30,21 @@ public class card2 extends AppCompatActivity {
         pic7 = findViewById(R.id.pic7);
         pic4 = findViewById(R.id.pic4);
         card2 =new cards(pics,2);
+        setImage();
         checkImage();
 
+
+    }
+    private void setImage() {
+        if (option == 1) {
+            pic1.setImageResource(R.drawable.image1);
+            pic7.setImageResource(R.drawable.image7);
+            pic4.setImageResource(R.drawable.image4);
+        } else {
+            pic1.setImageResource(R.drawable.image8);
+            pic7.setImageResource(R.drawable.image14);
+            pic4.setImageResource(R.drawable.image11);
+        }
     }
     public void checkImage(){
         pic1.setOnClickListener(new View.OnClickListener() {

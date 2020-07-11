@@ -21,10 +21,12 @@ public class MainActivity extends AppCompatActivity {
     public static deck Deck;
     public static cards hand;
     public static discard top;
+    public static int option;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        option =1;
         Deck.getInstance();
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);

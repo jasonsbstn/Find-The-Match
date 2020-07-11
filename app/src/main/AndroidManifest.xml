@@ -16,6 +16,18 @@
         <activity android:name=".UI.Options_Screen" />
         <activity android:name=".UI.Help_Screen" />
         <activity
+            android:name=".UI.Main_Menu"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".UI.Options_Screen"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.Help_Screen"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             android:screenOrientation="landscape"

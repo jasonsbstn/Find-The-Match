@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.example.finddamatch.Classes.cards;
 import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.Classes.discard;
+import com.example.finddamatch.UI.gameView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -22,12 +23,18 @@ public class MainActivity extends AppCompatActivity {
     public static cards hand;
     public static discard top;
     public static int option;
+    gameView gameView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
         option =1;
-        Deck.getInstance();
+        Deck = new deck();
+        Deck.startGame();
+        setContentView(R.layout.activity_main);
+       /* gameView = new gameView(this);
+        setContentView(gameView);*/
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         /**

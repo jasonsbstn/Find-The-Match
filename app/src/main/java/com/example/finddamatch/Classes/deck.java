@@ -10,36 +10,25 @@ import static com.example.finddamatch.MainActivity.top;
 
 public class deck implements Iterable<cards> {
     private static List<cards> cardsList= new ArrayList<>();
-    private deck() {
-    }
-    private static deck instance;
-    public static deck getInstance(){//populates 7 cards
-        if(instance == null)
-        {
-            instance = new deck();
-            String pics[] = {"pic1","pic2","pic3"};
-            add(new cards(pics,1));
-            String pics2[] = {"pic1","pic7","pic4"};
-            add(new cards(pics2,2));
-            String pics3[] = {"pic1","pic5","pic6"};
-            add(new cards(pics3,3));
-            String pics4[] = {"pic7","pic5","pic3"};
-            add(new cards(pics4,4));
-            String pics5[] = {"pic3","pic6","pic4"};
-            add(new cards(pics5,5));
-            String pics6[] = {"pic2","pic5","pic4"};
-            add(new cards(pics6,6));
-            String pics7[] = {"pic6","pic2","pic7"};
-            add(new cards(pics7,7));
-
-
-        }
-        return instance;
+    public deck() {
+        String pics[] = {"pic1","pic2","pic3"};
+        cardsList.add(new cards(pics,1));
+        String pics2[] = {"pic1","pic7","pic4"};
+        cardsList.add(new cards(pics2,2));
+        String pics3[] = {"pic1","pic5","pic6"};
+        cardsList.add(new cards(pics3,3));
+        String pics4[] = {"pic7","pic5","pic3"};
+        cardsList.add(new cards(pics4,4));
+        String pics5[] = {"pic3","pic6","pic4"};
+        cardsList.add(new cards(pics5,5));
+        String pics6[] = {"pic2","pic5","pic4"};
+        cardsList.add(new cards(pics6,6));
+        String pics7[] = {"pic6","pic2","pic7"};
+        cardsList.add(new cards(pics7,7));
+       // Collections.shuffle(cardsList);
     }
 
-    public static void add(cards card) {
-        cardsList.add(card);
-    }
+
 
     @Override
     public Iterator<cards> iterator() {
@@ -51,7 +40,7 @@ public class deck implements Iterable<cards> {
     }
     public int startGame()
     {
-        shuffle();
+      //  shuffle();
         top= new discard(cardsList.get(0));
         discard();
         draw();
@@ -69,6 +58,7 @@ public class deck implements Iterable<cards> {
         else return false;
     }
     public void draw(){
-        hand=cardsList.get(0);
+        if(isEmpty()==false)
+            hand=cardsList.get(0);
     }
 }

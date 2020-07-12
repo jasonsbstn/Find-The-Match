@@ -13,7 +13,12 @@ import com.example.finddamatch.Cards.card7;
 
 
 public class Logic {
-    public static deck Deck1;
+    private deck Deck1;
+
+    public Logic (deck Deck1){
+
+        this.Deck1.add();
+    }
 
 
 

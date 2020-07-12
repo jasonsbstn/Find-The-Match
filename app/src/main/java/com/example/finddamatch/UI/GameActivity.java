@@ -2,6 +2,7 @@ package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.finddamatch.R;
 
 public class GameActivity extends AppCompatActivity {
 

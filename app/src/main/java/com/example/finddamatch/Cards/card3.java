@@ -10,6 +10,7 @@ import com.example.finddamatch.Classes.cards;
 import com.example.finddamatch.R;
 
 import static com.example.finddamatch.MainActivity.Deck;
+import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
 
 public class card3 extends AppCompatActivity {
@@ -26,8 +27,20 @@ public class card3 extends AppCompatActivity {
         pic6 = findViewById(R.id.pic6);
         pic5 = findViewById(R.id.pic5);
         card3 =new cards(pics,3);
+        setImage();
         checkImage();
 
+    }
+    private void setImage() {
+        if (option == 1) {
+            pic1.setImageResource(R.drawable.image1);
+            pic6.setImageResource(R.drawable.image6);
+            pic5.setImageResource(R.drawable.image5);
+        } else {
+            pic1.setImageResource(R.drawable.image8);
+            pic6.setImageResource(R.drawable.image13);
+            pic5.setImageResource(R.drawable.image12);
+        }
     }
     public void checkImage(){
         pic1.setOnClickListener(new View.OnClickListener() {

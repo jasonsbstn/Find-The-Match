@@ -62,6 +62,12 @@ public class deck implements Iterable<cards> {
         top=new discard(cardsList.get(0));
         cardsList.remove(0);
     }
+    public boolean isEmpty()
+    {
+        if(cardsList.isEmpty())
+            return true;
+        else return false;
+    }
     public void draw(){
         hand=cardsList.get(0);
     }

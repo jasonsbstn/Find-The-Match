@@ -7,17 +7,16 @@ import com.example.finddamatch.Classes.cards;
 import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.Classes.discard;
 import com.example.finddamatch.UI.Main_Menu;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import android.os.CountDownTimer;
 import android.view.View;
 
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,51 +30,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         option =1;
         Deck.getInstance();
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        /**
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-         */
 
-        // testing push
-        Button start = (Button)findViewById(R.id.startAct);
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent start = Main_Menu.makeLaunchIntent(MainActivity.this);
-                startActivity(start);
-            }
-        });
-
-
+        magnifyAnimation();
+        setSkipButton();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void magnifyAnimation() {
+        final Animation animMagnify = AnimationUtils.loadAnimation(this, R.anim.magnify);
+        TextView textView = findViewById(R.id.splash_title);
+        textView.setAnimation(animMagnify);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    private void setSkipButton() {
+        final CountDownTimer timer = new CountDownTimer(5000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+            }
 
-        return super.onOptionsItemSelected(item);
+            @Override
+            public void onFinish() {
+                Intent i = Main_Menu.makeLaunchIntent(MainActivity.this);
+                startActivity(i);
+                finish();
+            }
+        }.start();
+
+        Button btn = (Button) findViewById(R.id.skip);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.cancel();
+                Intent i = Main_Menu.makeLaunchIntent(MainActivity.this);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 }

@@ -52,6 +52,15 @@ public class GameActivity extends AppCompatActivity {
         Random rand = new Random();
         int randomCardNo;
         randomCardNo = rand.nextInt(7);
+        cards rightCard;
+        rightCard = leftCardDeck.getCards().get(randomCardNo + 1);
+        String [] pics = rightCard.images;
+        String pic1 = pics[0];
+        String pic2 = pics[1];
+        String pic3 = pics[2];
+        Button butt1 = (Button) findViewById(R.id.button1);
+        Button butt2 = (Button)findViewById(R.id.button2);
+        Button butt3 = (Button) findViewById(R.id.button3);
 
     }
 

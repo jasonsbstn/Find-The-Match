@@ -17,28 +17,16 @@ public class deck implements Iterable<cards> {
         if(instance == null)
         {
             instance = new deck();
-            String pics[] = {"pic1","pic2","pic3"};
-            add(new cards(pics,1));
-            String pics2[] = {"pic1","pic7","pic4"};
-            add(new cards(pics2,2));
-            String pics3[] = {"pic1","pic5","pic6"};
-            add(new cards(pics3,3));
-            String pics4[] = {"pic7","pic5","pic3"};
-            add(new cards(pics4,4));
-            String pics5[] = {"pic3","pic6","pic4"};
-            add(new cards(pics5,5));
-            String pics6[] = {"pic2","pic5","pic4"};
-            add(new cards(pics6,6));
-            String pics7[] = {"pic6","pic2","pic7"};
-            add(new cards(pics7,7));
-
-
         }
         return instance;
     }
 
     public static void add(cards card) {
         cardsList.add(card);
+    }
+
+    public List<cards> getCards() {
+        return cardsList;
     }
 
     @Override

@@ -27,6 +27,7 @@
         app:srcCompat="@drawable/cardbkgrd" />
 
     <TableLayout
+        android:id="@+id/cardGrid"
         android:layout_width="189dp"
         android:layout_height="281dp"
         android:layout_marginStart="116dp"

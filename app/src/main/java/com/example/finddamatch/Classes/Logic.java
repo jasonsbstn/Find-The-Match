@@ -17,7 +17,7 @@ public class Logic {
 
     public Logic (deck Deck1){
 
-        this.Deck1.add();
+        //this.Deck1.add();
     }
 
 

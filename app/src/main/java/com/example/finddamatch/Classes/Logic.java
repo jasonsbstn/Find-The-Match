@@ -1,4 +1,4 @@
-package com.example.finddamatch.GamePlay;
+package com.example.finddamatch.Classes;
 
 import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.Classes.cards;
@@ -13,7 +13,11 @@ import com.example.finddamatch.Cards.card7;
 
 
 public class Logic {
-    deck deck1;
+    public static deck Deck1;
+
+
+
+
 
 
 

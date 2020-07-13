@@ -1,9 +1,13 @@
 package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -17,7 +21,7 @@ public class GameActivity extends AppCompatActivity {
 
     private int NUM_OF_ROWS = 3;
     private int NUM_OF_COL = 1;
-    private deck leftCardDeck;
+    private deck leftCardDeck = deck.getInstance();
     Button[][] buttons = new Button[NUM_OF_ROWS][NUM_OF_COL];
 
     @Override
@@ -26,25 +30,26 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         createCardGrid();
-        setRightCard();
         setLeftCards();
+        setRightCard();
+
 
     }
 
     private void setLeftCards() {
-        String pics[] = {"pic1","pic2","pic3"};
+        String pics[] = {"1","2","3"};
         leftCardDeck.add(new cards(pics,1));
-        String pics2[] = {"pic1","pic7","pic4"};
+        String pics2[] = {"1","7","4"};
         leftCardDeck.add(new cards(pics2,2));
-        String pics3[] = {"pic1","pic5","pic6"};
+        String pics3[] = {"1","5","6"};
         leftCardDeck.add(new cards(pics3,3));
-        String pics4[] = {"pic7","pic5","pic3"};
+        String pics4[] = {"7","5","3"};
         leftCardDeck.add(new cards(pics4,4));
-        String pics5[] = {"pic3","pic6","pic4"};
+        String pics5[] = {"3","6","4"};
         leftCardDeck.add(new cards(pics5,5));
-        String pics6[] = {"pic2","pic5","pic4"};
+        String pics6[] = {"2","5","4"};
         leftCardDeck.add(new cards(pics6,6));
-        String pics7[] = {"pic6","pic2","pic7"};
+        String pics7[] = {"6","2","7"};
         leftCardDeck.add(new cards(pics7,7));
     }
 
@@ -58,14 +63,37 @@ public class GameActivity extends AppCompatActivity {
         String pic1 = pics[0];
         String pic2 = pics[1];
         String pic3 = pics[2];
-        Button butt1 = (Button) findViewById(R.id.button1);
-        Button butt2 = (Button)findViewById(R.id.button2);
-        Button butt3 = (Button) findViewById(R.id.button3);
-
+        ImageView ig1 = (ImageView)findViewById(R.id.rc1);
+        ImageView ig2 = (ImageView)findViewById(R.id.rc2);
+        ImageView ig3 = (ImageView)findViewById(R.id.rc3);
+        int first =Integer.parseInt(pic1);
+        int second = Integer.parseInt(pic2);
+        int third = Integer.parseInt(pic3);
+        if(first == 1){ig1.setBackgroundResource(R.drawable.image1);}
+        if(first == 2){ig1.setBackgroundResource(R.drawable.image2);}
+        if(first == 3){ig1.setBackgroundResource(R.drawable.image3);}
+        if(first == 4){ig1.setBackgroundResource(R.drawable.image4);}
+        if(first == 5){ig1.setBackgroundResource(R.drawable.image5);}
+        if(first == 6){ig1.setBackgroundResource(R.drawable.image6);}
+        if(first == 7){ig1.setBackgroundResource(R.drawable.image7);}
+        if(second == 1){ig2.setBackgroundResource(R.drawable.image1);}
+        if(second == 2){ig2.setBackgroundResource(R.drawable.image2);}
+        if(second == 3){ig2.setBackgroundResource(R.drawable.image3);}
+        if(second == 4){ig2.setBackgroundResource(R.drawable.image4);}
+        if(second == 5){ig2.setBackgroundResource(R.drawable.image5);}
+        if(second == 6){ig2.setBackgroundResource(R.drawable.image6);}
+        if(second == 7){ig2.setBackgroundResource(R.drawable.image7);}
+        if(third == 1){ig2.setBackgroundResource(R.drawable.image1);}
+        if(third == 2){ig2.setBackgroundResource(R.drawable.image2);}
+        if(third == 3){ig2.setBackgroundResource(R.drawable.image3);}
+        if(third == 4){ig2.setBackgroundResource(R.drawable.image4);}
+        if(third == 5){ig2.setBackgroundResource(R.drawable.image5);}
+        if(third == 6){ig2.setBackgroundResource(R.drawable.image6);}
+        if(third == 7){ig2.setBackgroundResource(R.drawable.image7);}
     }
 
     private void createCardGrid() {
-        TableLayout cardsGrid = (TableLayout)findViewById(R.id.cardGrid);
+        TableLayout cardsGrid = findViewById(R.id.cardGrid);
         for (int row = 0 ; row < NUM_OF_ROWS ; row++){
             TableRow tablerow = new TableRow(this);
             tablerow.setLayoutParams(new TableLayout.LayoutParams(
@@ -111,5 +139,9 @@ public class GameActivity extends AppCompatActivity {
                 button.setMaxHeight(height);
             }
         }
+    }
+    public static Intent makeLaunchIntent(Context c){
+        Intent intent = new Intent(c, GameActivity.class);
+        return intent;
     }
 }

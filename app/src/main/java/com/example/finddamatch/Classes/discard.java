@@ -19,4 +19,7 @@ public class discard {
     }
 
 
+    public String[] getCards() {
+        return top.getCards();
+    }
 }

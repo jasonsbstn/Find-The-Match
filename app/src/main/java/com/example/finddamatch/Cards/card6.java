@@ -3,6 +3,7 @@ package com.example.finddamatch.Cards;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static com.example.finddamatch.MainActivity.Deck;
+import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
 
 import android.os.Bundle;
@@ -23,8 +24,20 @@ public class card6 extends AppCompatActivity {
         pic4 = findViewById(R.id.pic4);
         pic2 = findViewById(R.id.pic2);
         pic5 = findViewById(R.id.pic5);
+        setImage();
         checkImage();
 
+    }
+    private void setImage() {
+        if (option == 1) {
+            pic4.setImageResource(R.drawable.image4);
+            pic2.setImageResource(R.drawable.image2);
+            pic5.setImageResource(R.drawable.image5);
+        } else {
+            pic4.setImageResource(R.drawable.image11);
+            pic2.setImageResource(R.drawable.image9);
+            pic5.setImageResource(R.drawable.image12);
+        }
     }
     public void checkImage(){
         pic4.setOnClickListener(new View.OnClickListener() {

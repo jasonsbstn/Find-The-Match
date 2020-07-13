@@ -9,7 +9,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="helpText">
-        Fill the instruction about the game here
+    <string name="helpText">\n
+        + The deck have 7 cards, each card have 3 images.\n
+        + Initially, one card is automatically reveal and place inside the discard pile.\n
+        + The game start by revealing the top card from the draw pile, and at the same time, the timer start.\n
+        + Your mission is in the shortest time possible, find the image that appear on both cards from the draw pile and discard pile.\n
+        + When you found the image, the card that is revealed to you is putted onto the discard pile and the next top card is revealed for you to continue.\n
+        + When there is no remaining card, the timer stop. Top 5 shortest times will be displayed in the high score board.\n
     </string>
 </resources>

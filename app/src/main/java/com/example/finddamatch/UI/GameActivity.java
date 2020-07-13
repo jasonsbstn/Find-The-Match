@@ -83,13 +83,13 @@ public class GameActivity extends AppCompatActivity {
         if(second == 5){ig2.setBackgroundResource(R.drawable.image5);}
         if(second == 6){ig2.setBackgroundResource(R.drawable.image6);}
         if(second == 7){ig2.setBackgroundResource(R.drawable.image7);}
-        if(third == 1){ig2.setBackgroundResource(R.drawable.image1);}
-        if(third == 2){ig2.setBackgroundResource(R.drawable.image2);}
-        if(third == 3){ig2.setBackgroundResource(R.drawable.image3);}
-        if(third == 4){ig2.setBackgroundResource(R.drawable.image4);}
-        if(third == 5){ig2.setBackgroundResource(R.drawable.image5);}
-        if(third == 6){ig2.setBackgroundResource(R.drawable.image6);}
-        if(third == 7){ig2.setBackgroundResource(R.drawable.image7);}
+        if(third == 1){ig3.setBackgroundResource(R.drawable.image1);}
+        if(third == 2){ig3.setBackgroundResource(R.drawable.image2);}
+        if(third == 3){ig3.setBackgroundResource(R.drawable.image3);}
+        if(third == 4){ig3.setBackgroundResource(R.drawable.image4);}
+        if(third == 5){ig3.setBackgroundResource(R.drawable.image5);}
+        if(third == 6){ig3.setBackgroundResource(R.drawable.image6);}
+        if(third == 7){ig3.setBackgroundResource(R.drawable.image7);}
     }
 
     private void createCardGrid() {

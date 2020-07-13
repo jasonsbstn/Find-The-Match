@@ -124,21 +124,22 @@ public class gameView extends SurfaceView {
             }
             for (int j = 0; j < card2.length; j++) {
                 if (card2[j] == "pic1")
-                    pic[j] = BitmapFactory.decodeResource(getResources(), R.drawable.image8);
+                    pic[j+3] = BitmapFactory.decodeResource(getResources(), R.drawable.image8);
                 else if (card2[j] == "pic2")
-                    pic[j] = BitmapFactory.decodeResource(getResources(), R.drawable.image9);
+                    pic[j+3] = BitmapFactory.decodeResource(getResources(), R.drawable.image9);
                 else if (card2[j] == "pic3")
-                    pic[j] = BitmapFactory.decodeResource(getResources(), R.drawable.image10);
+                    pic[j+3] = BitmapFactory.decodeResource(getResources(), R.drawable.image10);
                 else if (card2[j] == "pic4")
-                    pic[j] = BitmapFactory.decodeResource(getResources(), R.drawable.image11);
+                    pic[j+3] = BitmapFactory.decodeResource(getResources(), R.drawable.image11);
                 else if (card2[j] == "pic5")
-                    pic[j] = BitmapFactory.decodeResource(getResources(), R.drawable.image12);
+                    pic[j+3] = BitmapFactory.decodeResource(getResources(), R.drawable.image12);
                 else if (card2[j] == "pic6")
-                    pic[j] = BitmapFactory.decodeResource(getResources(), R.drawable.image13);
+                    pic[j+3] = BitmapFactory.decodeResource(getResources(), R.drawable.image13);
                 else if (card2[j] == "pic7")
-                    pic[j] = BitmapFactory.decodeResource(getResources(), R.drawable.image14);
+                    pic[j+3] = BitmapFactory.decodeResource(getResources(), R.drawable.image14);
             }
         }
+
         for(int i=0 ; i<card1.length;i++)
         {
             picScaled[i]=Bitmap.createScaledBitmap(pic[i], 300, 300, true);

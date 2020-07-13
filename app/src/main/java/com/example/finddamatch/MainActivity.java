@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     public static cards hand;
     public static discard top;
     public static int option;
-    gameView gameView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -40,7 +40,7 @@ public class deck implements Iterable<cards> {
     }
     public int startGame()
     {
-      //  shuffle();
+        shuffle();
         top= new discard(cardsList.get(0));
         discard();
         draw();

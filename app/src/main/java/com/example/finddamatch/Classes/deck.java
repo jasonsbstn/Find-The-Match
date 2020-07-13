@@ -27,8 +27,22 @@ public class deck implements Iterable<cards> {
         cardsList.add(new cards(pics7,7));
        // Collections.shuffle(cardsList);
     }
+    private static deck instance;
+    public static deck getInstance(){//populates 7 cards
+        if(instance == null)
+        {
+            instance = new deck();
+        }
+        return instance;
+    }
 
+    public static void add(cards card) {
+        cardsList.add(card);
+    }
 
+    public List<cards> getCards() {
+        return cardsList;
+    }
 
     @Override
     public Iterator<cards> iterator() {

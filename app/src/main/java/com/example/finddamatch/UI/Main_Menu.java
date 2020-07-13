@@ -35,15 +35,16 @@ public class Main_Menu extends AppCompatActivity {
             }
         });
 
-        /**
+
         Button PlayButton = (Button) findViewById(R.id.playButton);
         PlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent PlayScreen =
+                Intent PlayScreen = GameActivity.makeLaunchIntent(Main_Menu.this);
+                startActivity(PlayScreen);
             }
         });
-         */
+
 
     }
 

@@ -17,15 +17,7 @@ public class Help_Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help__screen);
 
-        Button returnToMainMenu = (Button) findViewById(R.id.backButtonHelpScreen);
-        returnToMainMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
-
 
     public static Intent makeLaunchIntent(Context c){
         Intent intent = new Intent(c, Help_Screen.class);

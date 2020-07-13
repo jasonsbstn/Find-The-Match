@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -39,9 +40,12 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         Random randomNum = new Random();
         RANDOM_NUMBER = randomNum.nextInt(7);
-        createCardGrid();
         setLeftCards();
+        createCardGrid();
+        mines(buttons);
+
         setRightCard();
+
 
 
     }
@@ -132,70 +136,59 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     private void mines(final Button[][] butt){
-        for(int i = 0 ; i < NUM_OF_ROWS;i++){
-            for(int j = 0; j < NUM_OF_COL;j++){
-                final Button b = butt[i][j];
-                lockButtonSizes();
-                int newWidth = 45;
-                int newHeight = 45;
-                Bitmap ogB1 = BitmapFactory.decodeResource(getResources(), R.drawable.image1);
-                Bitmap ogB2 = BitmapFactory.decodeResource(getResources(), R.drawable.image2);
-                Bitmap ogB3 = BitmapFactory.decodeResource(getResources(), R.drawable.image3);
-                Bitmap ogB4 = BitmapFactory.decodeResource(getResources(), R.drawable.image4);
-                Bitmap ogB5 = BitmapFactory.decodeResource(getResources(), R.drawable.image5);
-                Bitmap ogB6 = BitmapFactory.decodeResource(getResources(), R.drawable.image6);
-                Bitmap ogB7 = BitmapFactory.decodeResource(getResources(), R.drawable.image7);
-                final Bitmap scaledBitmap1 = Bitmap.createScaledBitmap(ogB1, newWidth, newHeight, true);
-                final Bitmap scaledBitmap2 = Bitmap.createScaledBitmap(ogB2, newWidth, newHeight, true);
-                final Bitmap scaledBitmap3 = Bitmap.createScaledBitmap(ogB3, newWidth, newHeight, true);
-                final Bitmap scaledBitmap4 = Bitmap.createScaledBitmap(ogB4, newWidth, newHeight, true);
-                final Bitmap scaledBitmap5 = Bitmap.createScaledBitmap(ogB5, newWidth, newHeight, true);
-                final Bitmap scaledBitmap6 = Bitmap.createScaledBitmap(ogB6, newWidth, newHeight, true);
-                final Bitmap scaledBitmap7 = Bitmap.createScaledBitmap(ogB7, newWidth, newHeight, true);
-                final Resources resource = getResources();
-                cards selectedCard = leftCardDeck.getCards().get((RANDOM_NUMBER + 2) % 7);
-                String [] pics = selectedCard.images;
-                String pic1 = pics[0];
-                String pic2 = pics[1];
-                String pic3 = pics[2];
-                int first =Integer.parseInt(pic1);
-                int second = Integer.parseInt(pic2);
-                int third = Integer.parseInt(pic3);
-                if(first == 1){butt[i][j].setBackgroundResource(R.drawable.image1);}
-                if(first == 2){ig1.setBackgroundResource(R.drawable.image2);}
-                if(first == 3){ig1.setBackgroundResource(R.drawable.image3);}
-                if(first == 4){ig1.setBackgroundResource(R.drawable.image4);}
-                if(first == 5){ig1.setBackgroundResource(R.drawable.image5);}
-                if(first == 6){ig1.setBackgroundResource(R.drawable.image6);}
-                if(first == 7){ig1.setBackgroundResource(R.drawable.image7);}
-                if(second == 1){ig2.setBackgroundResource(R.drawable.image1);}
-                if(second == 2){ig2.setBackgroundResource(R.drawable.image2);}
-                if(second == 3){ig2.setBackgroundResource(R.drawable.image3);}
-                if(second == 4){ig2.setBackgroundResource(R.drawable.image4);}
-                if(second == 5){ig2.setBackgroundResource(R.drawable.image5);}
-                if(second == 6){ig2.setBackgroundResource(R.drawable.image6);}
-                if(second == 7){ig2.setBackgroundResource(R.drawable.image7);}
-                if(third == 1){ig3.setBackgroundResource(R.drawable.image1);}
-                if(third == 2){ig3.setBackgroundResource(R.drawable.image2);}
-                if(third == 3){ig3.setBackgroundResource(R.drawable.image3);}
-                if(third == 4){ig3.setBackgroundResource(R.drawable.image4);}
-                if(third == 5){ig3.setBackgroundResource(R.drawable.image5);}
-                if(third == 6){ig3.setBackgroundResource(R.drawable.image6);}
-                if(third == 7){ig3.setBackgroundResource(R.drawable.image7);}
 
-
-                b.setBackground(new BitmapDrawable(resource, scaledBitmap1));
-                b.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-
-
-
-            }
-        }
+        final Button b1 = butt[0][0];
+        final Button b2 = butt[1][0];
+        final Button b3 = butt[2][0];
+        lockButtonSizes();
+        int newWidth = 45;
+        int newHeight = 45;
+        Bitmap ogB1 = BitmapFactory.decodeResource(getResources(), R.drawable.image1);
+        Bitmap ogB2 = BitmapFactory.decodeResource(getResources(), R.drawable.image2);
+        Bitmap ogB3 = BitmapFactory.decodeResource(getResources(), R.drawable.image3);
+        Bitmap ogB4 = BitmapFactory.decodeResource(getResources(), R.drawable.image4);
+        Bitmap ogB5 = BitmapFactory.decodeResource(getResources(), R.drawable.image5);
+        Bitmap ogB6 = BitmapFactory.decodeResource(getResources(), R.drawable.image6);
+        Bitmap ogB7 = BitmapFactory.decodeResource(getResources(), R.drawable.image7);
+        final Bitmap scaledBitmap1 = Bitmap.createScaledBitmap(ogB1, newWidth, newHeight, true);
+        final Bitmap scaledBitmap2 = Bitmap.createScaledBitmap(ogB2, newWidth, newHeight, true);
+        final Bitmap scaledBitmap3 = Bitmap.createScaledBitmap(ogB3, newWidth, newHeight, true);
+        final Bitmap scaledBitmap4 = Bitmap.createScaledBitmap(ogB4, newWidth, newHeight, true);
+        final Bitmap scaledBitmap5 = Bitmap.createScaledBitmap(ogB5, newWidth, newHeight, true);
+        final Bitmap scaledBitmap6 = Bitmap.createScaledBitmap(ogB6, newWidth, newHeight, true);
+        final Bitmap scaledBitmap7 = Bitmap.createScaledBitmap(ogB7, newWidth, newHeight, true);
+        final Resources resource = getResources();
+        cards selectedCard = leftCardDeck.getCards().get((RANDOM_NUMBER + 2)%7);
+        String [] pics = selectedCard.images;
+        String pic1 = pics[0];
+        String pic2 = pics[1];
+        String pic3 = pics[2];
+        int first =Integer.parseInt(pic1);
+        int second = Integer.parseInt(pic2);
+        int third = Integer.parseInt(pic3);
+        //ImageButton ig = (ImageButton) findViewById(R.id.imageButton1);
+        //ig.setBackgroundResource(R.drawable.image1);
+        if(first == 1){b1.setBackgroundResource(R.drawable.image1);}
+        if(first == 2){b1.setBackgroundResource(R.drawable.image2);}
+        if(first == 3){b1.setBackgroundResource(R.drawable.image3);}
+        if(first == 4){b1.setBackgroundResource(R.drawable.image4);}
+        if(first == 5){b1.setBackgroundResource(R.drawable.image5);}
+        if(first == 6){b1.setBackgroundResource(R.drawable.image6);}
+        if(first == 7){b1.setBackgroundResource(R.drawable.image7);}
+        if(second == 1){b2.setBackgroundResource(R.drawable.image1);}
+        if(second == 2){b2.setBackgroundResource(R.drawable.image2);}
+        if(second == 3){b2.setBackgroundResource(R.drawable.image3);}
+        if(second == 4){b2.setBackgroundResource(R.drawable.image4);}
+        if(second == 5){b2.setBackgroundResource(R.drawable.image5);}
+        if(second == 6){b2.setBackgroundResource(R.drawable.image6);}
+        if(second == 7){b2.setBackgroundResource(R.drawable.image7);}
+        if(third == 1){b3.setBackgroundResource(R.drawable.image1);}
+        if(third == 2){b3.setBackgroundResource(R.drawable.image2);}
+        if(third == 3){b3.setBackgroundResource(R.drawable.image3);}
+        if(third == 4){b3.setBackgroundResource(R.drawable.image4);}
+        if(third == 5){b3.setBackgroundResource(R.drawable.image5);}
+        if(third == 6){b3.setBackgroundResource(R.drawable.image6);}
+        if(third == 7){b3.setBackgroundResource(R.drawable.image7);}
     }
 
     private void lockButtonSizes(){

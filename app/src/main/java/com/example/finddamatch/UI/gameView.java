@@ -1,7 +1,9 @@
 package com.example.finddamatch.UI;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -26,6 +28,7 @@ import static com.example.finddamatch.MainActivity.Deck;
 import static com.example.finddamatch.MainActivity.hand;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
+import static com.example.finddamatch.UI.GameActivity.gameOver;
 
 public class gameView extends SurfaceView {
     private Bitmap[]  pic = new Bitmap[6];
@@ -68,6 +71,9 @@ public class gameView extends SurfaceView {
     }
 
     public void setImages() {
+        if(top.getCards().equals(hand.getCards())){
+        Intent intent = new Intent().setClass(getContext(), Options_Screen.class);
+        ((Activity) getContext()).startActivity(intent);}
         card1= hand.getCards();
         card2 = top.getCards();
         Log.d(TAG, "setImages: "+ card1[0] + card2[0]);
@@ -148,8 +154,8 @@ public class gameView extends SurfaceView {
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        /*if(top.getCards()==hand.getCards())
-            finish();*/ //ends activity
+        if(top.getCards().equals(hand.getCards()))
+           gameOver=true;
         float x = event.getX();
         float y =event.getY();
         if(x>canvasXSize * 1 / 10 && x< canvasXSize*1/10 +300 &&y>canvasYSize*1/10 && y<canvasYSize*1/10 + 300)

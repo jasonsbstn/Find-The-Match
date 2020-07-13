@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.example.finddamatch.R;
 
+import static com.example.finddamatch.MainActivity.option;
+
 public class Main_Menu extends AppCompatActivity {
    // gameView gameView;
 

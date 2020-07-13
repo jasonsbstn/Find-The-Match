@@ -34,11 +34,16 @@ public class GameActivity extends AppCompatActivity {
     private deck leftCardDeck = deck.getInstance();
     Button[][] buttons = new Button[NUM_OF_ROWS][NUM_OF_COL];*/
     gameView gameView;
+    public static boolean gameOver;
+    Boolean done;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        gameOver = false;
+        done = false;
         gameView = new gameView(this);
         setContentView(gameView);
+
         //setContentView(R.layout.activity_game);
       /*  Random randomNum = new Random();
         RANDOM_NUMBER = randomNum.nextInt(7);

@@ -22,8 +22,8 @@ public class Options_Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
-        option = getSettings(this);
         createRadioButton();
+        option = getSettings(this);
     }
 
     public static Intent makeLaunchIntent(Context c){

@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.example.finddamatch.R;
 
 public class Main_Menu extends AppCompatActivity {
-    gameView gameView;
+   // gameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

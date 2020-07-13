@@ -10,6 +10,7 @@ import static com.example.finddamatch.MainActivity.top;
 
 public class deck implements Iterable<cards> {
     private static List<cards> cardsList= new ArrayList<>();
+
     public deck() {
         String pics[] = {"pic1","pic2","pic3"};
         cardsList.add(new cards(pics,1));
@@ -27,7 +28,7 @@ public class deck implements Iterable<cards> {
         cardsList.add(new cards(pics7,7));
        // Collections.shuffle(cardsList);
     }
-    private static deck instance;
+   // private static deck instance;
     /*public static deck getInstance(){//populates 7 cards
         if(instance == null)
         {

@@ -28,7 +28,7 @@ public class deck implements Iterable<cards> {
        // Collections.shuffle(cardsList);
     }
     private static deck instance;
-    public static deck getInstance(){//populates 7 cards
+    /*public static deck getInstance(){//populates 7 cards
         if(instance == null)
         {
             instance = new deck();
@@ -36,9 +36,9 @@ public class deck implements Iterable<cards> {
         return instance;
     }
 
-    public static void add(cards card) {
+    /*public static void add(cards card) {
         cardsList.add(card);
-    }
+    }*/
 
     public List<cards> getCards() {
         return cardsList;
@@ -62,8 +62,10 @@ public class deck implements Iterable<cards> {
     }
 
     public void discard() {
-        top=new discard(cardsList.get(0));
-        cardsList.remove(0);
+        if(isEmpty()==false){
+            top=new discard(cardsList.get(0));
+            cardsList.remove(0);
+        }
     }
     public boolean isEmpty()
     {

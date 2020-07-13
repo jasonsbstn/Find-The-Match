@@ -28,29 +28,31 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
-    private int NUM_OF_ROWS = 3;
+  /*  private int NUM_OF_ROWS = 3;
     private int NUM_OF_COL = 1;
     private int RANDOM_NUMBER;
     private deck leftCardDeck = deck.getInstance();
-    Button[][] buttons = new Button[NUM_OF_ROWS][NUM_OF_COL];
-
+    Button[][] buttons = new Button[NUM_OF_ROWS][NUM_OF_COL];*/
+    gameView gameView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
-        Random randomNum = new Random();
+        gameView = new gameView(this);
+        setContentView(gameView);
+        //setContentView(R.layout.activity_game);
+      /*  Random randomNum = new Random();
         RANDOM_NUMBER = randomNum.nextInt(7);
         setLeftCards();
         createCardGrid();
         mines(buttons);
 
-        setRightCard();
+        setRightCard();*/
 
 
 
     }
 
-    private void setLeftCards() {
+   /* private void setLeftCards() {
         String pics[] = {"1","2","3"};
         leftCardDeck.add(new cards(pics,1));
         String pics2[] = {"1","7","4"};
@@ -205,7 +207,7 @@ public class GameActivity extends AppCompatActivity {
                 button.setMaxHeight(height);
             }
         }
-    }
+    }*/
     public static Intent makeLaunchIntent(Context c){
         Intent intent = new Intent(c, GameActivity.class);
         return intent;

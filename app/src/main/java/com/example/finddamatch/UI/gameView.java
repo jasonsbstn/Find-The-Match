@@ -147,6 +147,8 @@ public class gameView extends SurfaceView {
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        /*if(top.getCards()==hand.getCards())
+            finish();*/ //ends activity
         float x = event.getX();
         float y =event.getY();
         if(x>canvasXSize * 1 / 10 && x< canvasXSize*1/10 +300 &&y>canvasYSize*1/10 && y<canvasYSize*1/10 + 300)
@@ -174,7 +176,7 @@ public class gameView extends SurfaceView {
         }
         else  if(x>canvasXSize * 3.5 / 10 && x< canvasXSize*3.5/10 +300 &&y>canvasYSize*3/10 && y<canvasYSize*3/10 + 300)
         {
-            if(top.contain(card1[1])) {
+            if(top.contain(card1[2])) {
 
                 setImages();
                 holder.lockCanvas();

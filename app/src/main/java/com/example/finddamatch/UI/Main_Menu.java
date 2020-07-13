@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.finddamatch.R;
 
 public class Main_Menu extends AppCompatActivity {
+    gameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class Main_Menu extends AppCompatActivity {
                 Intent PlayScreen = GameActivity.makeLaunchIntent(Main_Menu.this);
                 startActivity(PlayScreen);
             }
+
         });
 
 

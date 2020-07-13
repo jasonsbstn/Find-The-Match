@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.R;
 
+import static com.example.finddamatch.MainActivity.Deck;
 import static com.example.finddamatch.MainActivity.option;
 
 public class Main_Menu extends AppCompatActivity {
@@ -43,13 +45,23 @@ public class Main_Menu extends AppCompatActivity {
         PlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Deck = new deck();
+                Deck.startGame();
                 Intent PlayScreen = GameActivity.makeLaunchIntent(Main_Menu.this);
                 startActivity(PlayScreen);
             }
 
         });
 
+        Button HighButton=(Button) findViewById(R.id.high);
+        HighButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent HighScreen = HighScore.makeLaunchIntent(Main_Menu.this);
+                startActivity(HighScreen);
+            }
 
+        });
     }
 
     public static Intent makeLaunchIntent(Context c){

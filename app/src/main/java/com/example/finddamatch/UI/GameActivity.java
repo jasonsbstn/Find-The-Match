@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,15 +35,15 @@ public class GameActivity extends AppCompatActivity {
     private deck leftCardDeck = deck.getInstance();
     Button[][] buttons = new Button[NUM_OF_ROWS][NUM_OF_COL];*/
     gameView gameView;
-    public static boolean gameOver;
+    public static int score;
     Boolean done;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gameOver = false;
         done = false;
         gameView = new gameView(this);
         setContentView(gameView);
+
 
         //setContentView(R.layout.activity_game);
       /*  Random randomNum = new Random();

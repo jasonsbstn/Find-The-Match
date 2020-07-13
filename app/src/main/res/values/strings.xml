@@ -17,4 +17,10 @@
         + When you found the image, the card that is revealed to you is putted onto the discard pile and the next top card is revealed for you to continue.\n
         + When there is no remaining card, the timer stop. Top 5 shortest times will be displayed in the high score board.\n
     </string>
+    <string name="title_activity_won">Won</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>

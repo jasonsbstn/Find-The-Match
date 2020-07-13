@@ -7,16 +7,6 @@
     android:background="@drawable/gradient_background"
     tools:context=".UI.Help_Screen">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/backButtonHelpScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="#E5326B"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test" />
-
     <TextView
         android:id="@+id/helpTitle"
         android:layout_width="wrap_content"
@@ -31,7 +21,7 @@
 
     <TextView
         android:id="@+id/helpText"
-        android:layout_width="714dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:fontFamily="monospace"

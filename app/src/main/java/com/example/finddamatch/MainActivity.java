@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         option =1;
-        Deck = new deck();
-        Deck.startGame();
         setContentView(R.layout.activity_main);
        /* gameView = new gameView(this);
         setContentView(gameView);*/
@@ -54,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
         // testing push
 
 
-        magnifyAnimation();
+        shakeAnimation();
         setSkipButton();
     }
 
-    private void magnifyAnimation() {
-        final Animation animMagnify = AnimationUtils.loadAnimation(this, R.anim.magnify);
+    private void shakeAnimation() {
+        final Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
         TextView textView = findViewById(R.id.splash_title);
-        textView.setAnimation(animMagnify);
+        textView.setAnimation(animShake);
     }
 
     private void setSkipButton() {

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.finddamatch.R;
@@ -54,7 +55,7 @@ public class HighScore extends AppCompatActivity {
 
         String name1, name2, name3, name4, name5, name6;
 
-        SharedPreferences name = getSharedPreferences("date", 0);
+        SharedPreferences name = getSharedPreferences("name", 0);
         name1 = name.getString("name1", "Anonymous");
         name2 = name.getString("name2", "Anonymous");
         name3 = name.getString("name3", "Anonymous");

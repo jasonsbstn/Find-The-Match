@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -17,13 +18,14 @@ import static com.example.finddamatch.MainActivity.option;
 import com.example.finddamatch.R;
 
 public class Options_Screen extends AppCompatActivity {
-
+    int currentOption;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
         createRadioButton();
         option = getSettings(this);
+        currentOption=option;
     }
 
     public static Intent makeLaunchIntent(Context c){
@@ -44,16 +46,18 @@ public class Options_Screen extends AppCompatActivity {
                 public void onClick(View v) {
                     option = optionNum;
                     saveTheme(optionNum);
+                    currentOption=option;
                 }
             });
+            //select default button
             group.addView(button);
-            if(optionNum == getSettings(this))
+            if(option == getSettings(this) )
             {
                 button.setChecked(true);
             }
 
         }
-        //select default button
+
 
 
     }

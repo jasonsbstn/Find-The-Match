@@ -1,5 +1,9 @@
 package com.example.finddamatch.Classes;
+/*
 
+Description : stores the image of the cards
+
+ */
 public class cards {
     public String images[];
     public int number;
@@ -17,7 +21,7 @@ public class cards {
         for(String s:images)
             if(s==img)
                 return true;
-        return false;
+        return false;//check if there is a same picture within the card
     }
     public int startGame()
     {

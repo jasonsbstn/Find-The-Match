@@ -1,5 +1,9 @@
 package com.example.finddamatch.Classes;
+/*
 
+Description : stores the cards using array list
+
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -26,20 +30,8 @@ public class deck implements Iterable<cards> {
         cardsList.add(new cards(pics6,6));
         String pics7[] = {"pic6","pic2","pic7"};
         cardsList.add(new cards(pics7,7));
-       // Collections.shuffle(cardsList);
-    }
-   // private static deck instance;
-    /*public static deck getInstance(){//populates 7 cards
-        if(instance == null)
-        {
-            instance = new deck();
-        }
-        return instance;
-    }
 
-    /*public static void add(cards card) {
-        cardsList.add(card);
-    }*/
+    }
 
     public List<cards> getCards() {
         return cardsList;

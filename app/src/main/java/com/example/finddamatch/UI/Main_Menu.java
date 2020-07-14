@@ -16,7 +16,6 @@ import static com.example.finddamatch.MainActivity.Deck;
 import static com.example.finddamatch.MainActivity.option;
 
 public class Main_Menu extends AppCompatActivity {
-   // gameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class Main_Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Deck = new deck();
-                Deck.startGame();
+                Deck.startGame();//creates a new deck and shuffle draw and discard
                 Intent PlayScreen = GameActivity.makeLaunchIntent(Main_Menu.this);
                 startActivity(PlayScreen);
             }

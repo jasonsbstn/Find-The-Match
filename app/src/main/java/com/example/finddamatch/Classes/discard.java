@@ -1,5 +1,9 @@
 package com.example.finddamatch.Classes;
+/*
 
+Description : contains the newest card that is discarded
+
+ */
 import static com.example.finddamatch.MainActivity.Deck;
 
 public class discard {

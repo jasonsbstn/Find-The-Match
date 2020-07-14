@@ -32,7 +32,9 @@ import static com.example.finddamatch.MainActivity.hand;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
 import static com.example.finddamatch.UI.GameActivity.score;
-
+/*
+    Description: using canvas to start the game layout and game logic
+ */
 public class gameView extends SurfaceView {
     private Bitmap[] pic = new Bitmap[6];
     private Bitmap[] picScaled = new Bitmap[6];
@@ -174,6 +176,7 @@ public class gameView extends SurfaceView {
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
+        //when touched compare the coordinates to see whether it is within the picture's coordinate and check if the picture is contained in the top and hand
         if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 && y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
             if (top.contain(card1[0])) {
 

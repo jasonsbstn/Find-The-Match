@@ -15,18 +15,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import static com.example.finddamatch.MainActivity.option;
 
+/*
 
+Description : user chooses the theme
+
+ */
 import com.example.finddamatch.R;
 
 public class Options_Screen extends AppCompatActivity {
-    int currentOption;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
         createRadioButton();
-       //option = getSettings(this);
-        //currentOption=option;
     }
 
     public static Intent makeLaunchIntent(Context c){
@@ -74,15 +75,6 @@ public class Options_Screen extends AppCompatActivity {
         editor.putInt("ThemeNum",optionNum);
         editor.apply();
     }
-    static int getSettings(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("ThemePrefs",MODE_PRIVATE);
-        int  x;
-        x= prefs.getInt("ThemeNum",1);
-        return x;
-    }
 
 
-    public static Intent makeIntent(Context context){
-        return new Intent(context, Options_Screen.class);
-    }
 }

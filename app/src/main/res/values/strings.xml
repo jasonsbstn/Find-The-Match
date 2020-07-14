@@ -10,6 +10,11 @@
     <string name="leaderBoard">Leader Board</string>
     <string name="scoreView"></string>
     <string name="help">HELP</string>
+    <string name="skip">SKIP</string>
+    <string name="title">Find daMatch</string>
+    <string name="teamMembers">\n
+        + Dang Xuan Anh Tran - 301354210
+    </string>
     <string name="helpText">\n
         + The deck have 7 cards, each card have 3 images.\n
         + Initially, one card is automatically reveal and place inside the discard pile.\n

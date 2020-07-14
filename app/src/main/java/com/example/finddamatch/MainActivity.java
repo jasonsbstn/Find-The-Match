@@ -1,6 +1,9 @@
+/**
+ * Activity for welcome screen
+ */
+
 package com.example.finddamatch;
 
-import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,10 +12,6 @@ import com.example.finddamatch.Classes.cards;
 import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.Classes.discard;
 import com.example.finddamatch.UI.Main_Menu;
-import com.example.finddamatch.UI.Options_Screen;
-import com.example.finddamatch.UI.gameView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.CountDownTimer;
@@ -38,34 +37,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("ThemePrefs",MODE_PRIVATE);
         option = prefs.getInt("ThemeNum",1);
         setContentView(R.layout.activity_main);
-       /* gameView = new gameView(this);
-        setContentView(gameView);*/
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        /**
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-         */
-
-        // testing push
-
 
         shakeAnimation();
         setSkipButton();
     }
 
+    //set animation shake for title
     private void shakeAnimation() {
         final Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
         TextView textView = findViewById(R.id.splash_title);
         textView.setAnimation(animShake);
     }
 
+    //skip after 5 seconds
     private void setSkipButton() {
         final CountDownTimer timer = new CountDownTimer(5000, 1000) {
             @Override

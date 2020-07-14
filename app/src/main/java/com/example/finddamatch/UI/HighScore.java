@@ -36,8 +36,9 @@ public class HighScore extends AppCompatActivity {
         fourth = preferences.getInt("Fourth", 20000);
         fifth = preferences.getInt("Fifth", 20000);
         sixth = preferences.getInt("Sixth", 20000);
-
         SharedPreferences.Editor editor = preferences.edit();
+
+
 
         String date1, date2, date3, date4, date5, date6;
 
@@ -50,6 +51,20 @@ public class HighScore extends AppCompatActivity {
         date6 = date.getString("date6", "10-Jul-2020");
         SharedPreferences.Editor dateEdit = date.edit();
 
+
+        String name1, name2, name3, name4, name5, name6;
+
+        SharedPreferences name = getSharedPreferences("date", 0);
+        name1 = name.getString("name1", "Anonymous");
+        name2 = name.getString("name2", "Anonymous");
+        name3 = name.getString("name3", "Anonymous");
+        name4 = name.getString("name4", "Anonymous");
+        name5 = name.getString("name5", "Anonymous");
+        name6 = name.getString("name6", "Anonymous");
+        SharedPreferences.Editor nameEdit = date.edit();
+
+
+
         if (sixth < fifth) {
             fifth = sixth;
             editor.putInt("Fifth", fifth);
@@ -58,6 +73,10 @@ public class HighScore extends AppCompatActivity {
             date5 = date6;
             dateEdit.putString("date5", date5);
             dateEdit.apply();
+
+            name5 = name6;
+            nameEdit.putString("name5", name5);
+            nameEdit.apply();
         }
         if (sixth < fourth) {
             int temp = fourth;
@@ -73,6 +92,13 @@ public class HighScore extends AppCompatActivity {
             dateEdit.putString("date5", date5);
             dateEdit.putString("date4", date4);
             dateEdit.apply();
+
+            String nameTemp = name4;
+            name4 = name6;
+            name5 = nameTemp;
+            nameEdit.putString("name5", name5);
+            nameEdit.putString("name4", name4);
+            nameEdit.apply();
         }
         if (sixth < third) {
             int temp = third;
@@ -88,6 +114,13 @@ public class HighScore extends AppCompatActivity {
             dateEdit.putString("date4", date4);
             dateEdit.putString("date3", date3);
             dateEdit.apply();
+
+            String nameTemp = name3;
+            name3 = name6;
+            name4 = nameTemp;
+            nameEdit.putString("name4", name4);
+            nameEdit.putString("name3", name3);
+            nameEdit.apply();
         }
         if (sixth < second) {
             int temp = second;
@@ -103,6 +136,13 @@ public class HighScore extends AppCompatActivity {
             dateEdit.putString("date2", date2);
             dateEdit.putString("date3", date3);
             dateEdit.apply();
+
+            String nameTemp = name2;
+            name2 = name6;
+            name3 = nameTemp;
+            nameEdit.putString("name2", name2);
+            nameEdit.putString("name3", name3);
+            nameEdit.apply();
         }
         if (sixth < first) {
             int temp = first;
@@ -118,15 +158,22 @@ public class HighScore extends AppCompatActivity {
             dateEdit.putString("date1", date1);
             dateEdit.putString("date2", date2);
             dateEdit.apply();
+
+            String nameTemp = name1;
+            name1 = name6;
+            name2 = nameTemp;
+            nameEdit.putString("name1", name1);
+            nameEdit.putString("name2", name2);
+            nameEdit.apply();
         }
 
 
         editor.putInt("Sixth", 60000);
         editor.apply();
-        score.setText("First: " + (float) first / 1000 + " - " + date1 + " " + "\n" +
-                "Second: " + (float) second / 1000 + " - " + date2 + " " + "\n" +
-                "Third: " + (float) third / 1000 + " - " + date3 + " " + "\n" +
-                "Fourth: " + (float) fourth / 1000 + " - " + date4 + " " + "\n" +
-                "Fifth: " + (float) fifth / 1000 + " - " + date5 + " " + "\n");
+        score.setText("1: " + (float) first / 1000 + " - " + date1 + " - " + name1 +" \n" +
+                      "2: " + (float) second / 1000 + " - " + date2 + " - " + name2 +" \n" +
+                      "3: " + (float) third / 1000 + " - " + date3 + " - " + name3 +" \n" +
+                      "4: " + (float) fourth / 1000 + " - " + date4 + " - " + name4 +" \n" +
+                      "5: " + (float) fifth / 1000 + " - " + date5 + " - " + name5 +" \n");
     }
 }

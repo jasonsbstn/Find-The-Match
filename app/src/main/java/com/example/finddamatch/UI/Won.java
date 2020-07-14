@@ -36,9 +36,10 @@ public class Won extends AppCompatActivity {
         SharedPreferences.Editor dateEdit = date.edit();
 
         //https://stackoverflow.com/questions/8654990/how-can-i-get-current-date-in-android#:~:text=on%20this%20post.-,Date%20c%20%3D%20Calendar.getInstance().getTime()%3B%20System.,%3D%20df.format(c)%3B
-        String formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        Log.d("haz",formattedDate);
-        dateEdit.putString("date 6",formattedDate);
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+        dateEdit.putString("date6",formattedDate);
         dateEdit.apply();
 
         TextView scoreView= findViewById(R.id.winText);
@@ -49,8 +50,10 @@ public class Won extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         updateUI();
-        SharedPreferences.Editor editor=preferences.edit();
-        editor.putString("userName",userNameEntered.getText().toString() );
+        SharedPreferences name=getSharedPreferences("name",0);
+        SharedPreferences.Editor nameEdit = name.edit();
+        nameEdit.putString("name6",userNameEntered.getText().toString());
+        nameEdit.apply();
         super.onBackPressed();
     }
 

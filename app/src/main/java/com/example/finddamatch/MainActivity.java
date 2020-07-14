@@ -1,12 +1,15 @@
 package com.example.finddamatch;
 
+import android.app.VoiceInteractor;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.finddamatch.Classes.cards;
 import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.Classes.discard;
 import com.example.finddamatch.UI.Main_Menu;
+import com.example.finddamatch.UI.Options_Screen;
 import com.example.finddamatch.UI.gameView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         option =1;
+        SharedPreferences prefs = getSharedPreferences("ThemePrefs",MODE_PRIVATE);
+        option = prefs.getInt("ThemeNum",1);
         setContentView(R.layout.activity_main);
        /* gameView = new gameView(this);
         setContentView(gameView);*/

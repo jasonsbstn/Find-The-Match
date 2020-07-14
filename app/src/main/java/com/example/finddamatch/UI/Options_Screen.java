@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +25,8 @@ public class Options_Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
         createRadioButton();
-        option = getSettings(this);
-        currentOption=option;
+       //option = getSettings(this);
+        //currentOption=option;
     }
 
     public static Intent makeLaunchIntent(Context c){
@@ -35,27 +36,33 @@ public class Options_Screen extends AppCompatActivity {
     private void createRadioButton() {
         RadioGroup group = (RadioGroup) findViewById(R.id.collumnrowRadio);
         String[] themeOptions = getResources().getStringArray(R.array.themeselection);
-        for(int i =0; i<themeOptions.length;i++)
-        {
-            final int optionNum = i+1;
-            final String themeOptionSelection = themeOptions[i];
-            RadioButton button = new RadioButton(this);
-            button.setText(themeOptionSelection);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    option = optionNum;
-                    saveTheme(optionNum);
-                    currentOption=option;
-                }
-            });
-            //select default button
-            group.addView(button);
-            if(option == getSettings(this) )
-            {
-                button.setChecked(true);
+        RadioButton button1 = new RadioButton(this);
+        RadioButton button2 = new RadioButton(this);
+        button1.setText(themeOptions[0]);
+        button2.setText(themeOptions[1]);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                option= 1;
+                saveTheme(option);
             }
-
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                option= 2;
+                saveTheme(option);
+            }
+        });
+        group.addView(button1);
+        group.addView(button2);
+        if(option == 1)
+        {
+            button1.setChecked(true);
+        }
+        else if(option ==2)
+        {
+            button2.setChecked(true);
         }
 
 
@@ -68,7 +75,7 @@ public class Options_Screen extends AppCompatActivity {
         editor.apply();
     }
     static int getSettings(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("SizePrefs",MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences("ThemePrefs",MODE_PRIVATE);
         int  x;
         x= prefs.getInt("ThemeNum",1);
         return x;

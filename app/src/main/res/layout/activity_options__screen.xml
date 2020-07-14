@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".UI.Options_Screen">
 
     <RadioGroup
@@ -11,6 +12,7 @@
         android:layout_width="388dp"
         android:layout_height="153dp"
         android:layout_marginStart="8dp"
+        android:textColor="#F2F0F3"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selecttheme" />
@@ -20,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
+        android:textColor="#F2F0F3"
         android:text="@string/select_board_theme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

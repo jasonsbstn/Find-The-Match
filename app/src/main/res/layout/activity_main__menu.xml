@@ -12,8 +12,8 @@
         android:id="@+id/playButton"
         android:layout_width="157dp"
         android:layout_height="0dp"
-        android:layout_marginTop="69dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gadient_background2"
         android:fontFamily="casual"
         android:text="Play Game"
@@ -28,13 +28,13 @@
         android:id="@+id/helpButton"
         android:layout_width="157dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="74dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gadient_background2"
         android:fontFamily="casual"
         android:text="Help"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/high"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/optionsButton" />
@@ -43,7 +43,7 @@
         android:id="@+id/optionsButton"
         android:layout_width="157dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gadient_background2"
         android:fontFamily="casual"
         android:text="Options"
@@ -56,10 +56,17 @@
 
     <Button
         android:id="@+id/high"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="157dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/gadient_background2"
+        android:fontFamily="casual"
+        android:text="High Score"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

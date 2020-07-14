@@ -21,8 +21,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
-import com.example.finddamatch.Classes.cards;
-import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.R;
 
 import java.util.Random;

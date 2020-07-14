@@ -34,7 +34,7 @@ public class Won extends AppCompatActivity {
     public void onBackPressed() {
         updateUI();
         SharedPreferences.Editor editor=preferences.edit();
-        editor.putString("userName",userNameEntered.getText().toString());
+        editor.putString("userName",userNameEntered.getText().toString() );
         super.onBackPressed();
     }
 

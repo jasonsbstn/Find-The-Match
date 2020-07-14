@@ -25,7 +25,7 @@ public class Won extends AppCompatActivity {
         editor.apply();
 
         TextView scoreView= findViewById(R.id.winText);
-        scoreView.setText("Congratulations, you won. Your time is "+score+" ms.");
+        scoreView.setText("Congratulations, you won! Your time is "+(float)score/1000+" ms.");
 
     }
 }

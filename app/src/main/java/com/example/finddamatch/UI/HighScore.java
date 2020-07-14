@@ -73,10 +73,10 @@ public class HighScore extends AppCompatActivity {
 
         editor.putInt("Sixth", 60000);
         editor.apply();
-        score.setText("First: " + first + "\n" +
-                "Second: " + second + "\n" +
-                "Third: " + third + "\n" +
-                "Fourth: " + fourth + "\n" +
-                "Fifth: " + fifth + "\n");
+        score.setText("First: " + (float) first/1000 + "\n" +
+                "Second: " + (float) second/1000 + "\n" +
+                "Third: " + (float) third/1000 + "\n" +
+                "Fourth: " + (float) fourth/1000 + "\n" +
+                "Fifth: " + (float) fifth/1000 + "\n");
     }
 }

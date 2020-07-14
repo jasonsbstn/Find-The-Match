@@ -79,9 +79,15 @@ public class gameView extends SurfaceView {
     }
 
     public void setImages() {
+        //if user won
         if (top.getCards().equals(hand.getCards())) {
+
+            //calculate time
             score= (int) (SystemClock.elapsedRealtime()-timer);
+
+
             Intent intent = new Intent().setClass(getContext(), Won.class);
+            //pass score value to winning screen activity
             intent.putExtra("score",score);
             ((Activity) getContext()).startActivity(intent);
             ((Activity) getContext()).finish();

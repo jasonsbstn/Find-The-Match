@@ -1,3 +1,7 @@
+/**
+ * Activity for high score screen
+ */
+
 package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,11 +13,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.finddamatch.R;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class HighScore extends AppCompatActivity {
 
@@ -27,6 +26,8 @@ public class HighScore extends AppCompatActivity {
         setContentView(R.layout.activity_high_score);
         TextView score = (TextView) findViewById(R.id.scoreView);
 
+
+        //get high scores (defValue is default value)
         int first, second, third, fourth, fifth, sixth;
 
         SharedPreferences preferences = getSharedPreferences("highScore", 0);
@@ -39,7 +40,7 @@ public class HighScore extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
 
 
-
+        //get high scores corresponding date
         String date1, date2, date3, date4, date5, date6;
 
         SharedPreferences date = getSharedPreferences("date", 0);
@@ -52,9 +53,11 @@ public class HighScore extends AppCompatActivity {
         SharedPreferences.Editor dateEdit = date.edit();
 
 
+
+        //get high scores corresponding username
         String name1, name2, name3, name4, name5, name6;
 
-        SharedPreferences name = getSharedPreferences("date", 0);
+        SharedPreferences name = getSharedPreferences("name", 0);
         name1 = name.getString("name1", "Anonymous");
         name2 = name.getString("name2", "Anonymous");
         name3 = name.getString("name3", "Anonymous");
@@ -64,16 +67,20 @@ public class HighScore extends AppCompatActivity {
         SharedPreferences.Editor nameEdit = name.edit();
 
 
-
+        //update list if high score is change
         if (sixth < fifth) {
+
+            //update score
             fifth = sixth;
             editor.putInt("Fifth", fifth);
             editor.apply();
 
+            //update corresponding date
             date5 = date6;
             dateEdit.putString("date5", date5);
             dateEdit.apply();
 
+            //update corresponding name
             name5 = name6;
             nameEdit.putString("name5", name5);
             nameEdit.apply();
@@ -168,12 +175,15 @@ public class HighScore extends AppCompatActivity {
         }
 
 
+        //reset score
         editor.putInt("Sixth", 60000);
         editor.apply();
-        score.setText("1: " + (float) first / 1000 + " - " + date1 + " - " + name1 +" \n" +
-                      "2: " + (float) second / 1000 + " - " + date2 + " - " + name2 +" \n" +
-                      "3: " + (float) third / 1000 + " - " + date3 + " - " + name3 +" \n" +
-                      "4: " + (float) fourth / 1000 + " - " + date4 + " - " + name4 +" \n" +
-                      "5: " + (float) fifth / 1000 + " - " + date5 + " - " + name5 +" \n");
+
+        //print out value
+        score.setText("1: " + (float) first / 1000 + " - " + date1 + " - " + name1 + " \n" +
+                "2: " + (float) second / 1000 + " - " + date2 + " - " + name2 + " \n" +
+                "3: " + (float) third / 1000 + " - " + date3 + " - " + name3 + " \n" +
+                "4: " + (float) fourth / 1000 + " - " + date4 + " - " + name4 + " \n" +
+                "5: " + (float) fifth / 1000 + " - " + date5 + " - " + name5 + " \n");
     }
 }

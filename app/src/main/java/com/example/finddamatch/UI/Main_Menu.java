@@ -22,6 +22,7 @@ public class Main_Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__menu);
 
+        // Button on click takes the user to Help Screen
         Button HelpButton = (Button) findViewById(R.id.helpButton);
         HelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +32,7 @@ public class Main_Menu extends AppCompatActivity {
             }
         });
 
+        // Button on click takes the user to the Options Screen
         Button OptionButton = (Button) findViewById(R.id.optionsButton);
         OptionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +42,7 @@ public class Main_Menu extends AppCompatActivity {
             }
         });
 
-
+        // Button on click takes the user to Play Screen
         Button PlayButton = (Button) findViewById(R.id.playButton);
         PlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +55,7 @@ public class Main_Menu extends AppCompatActivity {
 
         });
 
+        // Button on click takes the user to Play Screen
         Button HighButton=(Button) findViewById(R.id.high);
         HighButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +66,7 @@ public class Main_Menu extends AppCompatActivity {
 
         });
     }
-
+    // Intent function
     public static Intent makeLaunchIntent(Context c){
         Intent intent = new Intent(c, Main_Menu.class);
         return intent;

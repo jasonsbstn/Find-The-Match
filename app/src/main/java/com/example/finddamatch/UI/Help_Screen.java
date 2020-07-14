@@ -20,7 +20,6 @@ public class Help_Screen extends AppCompatActivity {
         setContentView(R.layout.activity_help__screen);
 
     }
-
     public static Intent makeLaunchIntent(Context c) {
         Intent intent = new Intent(c, Help_Screen.class);
         return intent;

@@ -12,17 +12,20 @@
     <string name="help">HELP</string>
     <string name="skip">SKIP</string>
     <string name="title">Find daMatch</string>
-    <string name="teamMembers">\n
-        + Dang Xuan Anh Tran - 301354210
-        + Jason Sebastian Aritanto - 301377046
+    <string name="teamMembers">
+        Created by:\n
+        * Dang Xuan Anh Tran - 301354210\n
+        * Jason Sebastian Aritanto - 301377046\n
+        * Sehajvir Singh Pannu - 301386534\n
+        * Gursmeep Singh Syan - 301386570
     </string>
     <string name="helpText">\n
-        + The deck have 7 cards, each card have 3 images.\n
-        + Initially, one card is automatically reveal and place inside the discard pile.\n
-        + The game start by revealing the top card from the draw pile, and at the same time, the timer start.\n
-        + Your mission is in the shortest time possible, find the image that appear on both cards from the draw pile and discard pile.\n
-        + When you found the image, the card that is revealed to you is putted onto the discard pile and the next top card is revealed for you to continue.\n
-        + When there is no remaining card, the timer stop. Top 5 shortest times will be displayed in the high score board.\n
+        * The deck have 7 cards, each card have 3 images.\n
+        * Initially, one card is automatically reveal and place inside the discard pile.\n
+        * The game start by revealing the top card from the draw pile, and at the same time, the timer start.\n
+        * Your mission is in the shortest time possible, find the image that appear on both cards from the draw pile and discard pile.\n
+        * When you found the image, the card that is revealed to you is putted onto the discard pile and the next top card is revealed for you to continue.\n
+        * When there is no remaining card, the timer stop. Top 5 shortest times will be displayed in the high score board.\n
     </string>
     <string name="title_activity_won">Won</string>
     <!--

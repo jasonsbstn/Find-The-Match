@@ -77,7 +77,6 @@ public class HighScore extends AppCompatActivity {
                 "Second: " + second + "\n" +
                 "Third: " + third + "\n" +
                 "Fourth: " + fourth + "\n" +
-                "Fifth: " + fifth + "\n" +
-                "Sixth: " + sixth + "\n");
+                "Fifth: " + fifth + "\n");
     }
 }

@@ -19,13 +19,13 @@ public class Won extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_won);
 
-        TextView scoreView= findViewById(R.id.winText);
-        scoreView.setText("Congratulations, you won. Your time is "+score+" ms.");
-
         SharedPreferences preferences = getSharedPreferences("highScore", 0);
         SharedPreferences.Editor editor=preferences.edit();
         editor.putInt("Sixth",score);
         editor.apply();
+
+        TextView scoreView= findViewById(R.id.winText);
+        scoreView.setText("Congratulations, you won. Your time is "+score+" ms.");
 
     }
 }

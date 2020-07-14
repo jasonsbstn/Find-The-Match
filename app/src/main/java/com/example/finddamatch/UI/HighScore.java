@@ -22,56 +22,62 @@ public class HighScore extends AppCompatActivity {
         setContentView(R.layout.activity_high_score);
         TextView score = (TextView) findViewById(R.id.scoreView);
 
-        int first,second,third,fourth,fifth,sixth;
+        int first, second, third, fourth, fifth, sixth;
 
-        SharedPreferences preferences =getSharedPreferences("highScore", 0);
-        first=preferences.getInt("First",0);
-        second=preferences.getInt("Second",0);
-        third=preferences.getInt("Third",0);
-        fourth=preferences.getInt("Fourth",0);
-        fifth=preferences.getInt("Fifth",0);
-        sixth=preferences.getInt("Sixth",0);
+        SharedPreferences preferences = getSharedPreferences("highScore", 0);
+        first = preferences.getInt("First", 20000);
+        second = preferences.getInt("Second", 20000);
+        third = preferences.getInt("Third", 20000);
+        fourth = preferences.getInt("Fourth", 20000);
+        fifth = preferences.getInt("Fifth", 20000);
+        sixth = preferences.getInt("Sixth", 20000);
 
-        if(sixth<fifth) {
-            SharedPreferences.Editor editor=preferences.edit();
-            editor.putInt("Fifth",sixth);
+        SharedPreferences.Editor editor = preferences.edit();
+        if (sixth < fifth) {
+            fifth = sixth;
+            editor.putInt("Fifth", fifth);
             editor.apply();
         }
-        if(sixth<fourth) {
-            SharedPreferences.Editor editor=preferences.edit();
-            editor.putInt("Fifth",fourth);
-            editor.putInt("Fourth",sixth);
+        if (sixth < fourth) {
+            int temp = fourth;
+            fourth = sixth;
+            fifth = temp;
+            editor.putInt("Fifth", fifth);
+            editor.putInt("Fourth", fourth);
             editor.apply();
         }
-        if(sixth<third) {
-            SharedPreferences.Editor editor=preferences.edit();
-            editor.putInt("Fifth",fourth);
-            editor.putInt("Fourth",third);
-            editor.putInt("Third",sixth);
+        if (sixth < third) {
+            int temp = third;
+            third = sixth;
+            fourth = temp;
+            editor.putInt("Third", third);
+            editor.putInt("Fourth", fourth);
             editor.apply();
         }
-        if(sixth<second) {
-            SharedPreferences.Editor editor=preferences.edit();
-            editor.putInt("Fifth",fourth);
-            editor.putInt("Fourth",third);
-            editor.putInt("Third",second);
-            editor.putInt("Second",sixth);
+        if (sixth < second) {
+            int temp = second;
+            second = sixth;
+            third = temp;
+            editor.putInt("Second", second);
+            editor.putInt("Third", third);
             editor.apply();
         }
-        if(sixth<fifth) {
-            SharedPreferences.Editor editor=preferences.edit();
-            editor.putInt("Fifth",fourth);
-            editor.putInt("Fourth",third);
-            editor.putInt("Third",second);
-            editor.putInt("Second",first);
-            editor.putInt("First",sixth);
+        if (sixth < first) {
+            int temp = first;
+            first = sixth;
+            second = temp;
+            editor.putInt("First", first);
+            editor.putInt("Second", second);
             editor.apply();
         }
 
-        score.setText("First: "+first+"\n"+
-                "Second: "+second+"\n"+
-                "Third: "+third+"\n"+
-                "Fourth: "+fourth+"\n"+
-                "Fifth: "+fifth+"\n");
+        editor.putInt("Sixth", 60000);
+        editor.apply();
+        score.setText("First: " + first + "\n" +
+                "Second: " + second + "\n" +
+                "Third: " + third + "\n" +
+                "Fourth: " + fourth + "\n" +
+                "Fifth: " + fifth + "\n" +
+                "Sixth: " + sixth + "\n");
     }
 }

@@ -42,12 +42,6 @@
         android:ems="10"
         android:hint="@string/anonymous"
         android:inputType="textPersonName"
-        android:scrollbarThumbHorizontal="#F2F0F3"
-        android:scrollbarThumbVertical="#F2F0F3"
-        android:textColor="#F2F0F3"
-        android:textColorHint="#F2F0F3"
-        android:textColorLink="#F2F0F3"
-        android:textCursorDrawable="#F2F0F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameenter" />

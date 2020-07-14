@@ -61,7 +61,7 @@ public class HighScore extends AppCompatActivity {
         name4 = name.getString("name4", "Anonymous");
         name5 = name.getString("name5", "Anonymous");
         name6 = name.getString("name6", "Anonymous");
-        SharedPreferences.Editor nameEdit = date.edit();
+        SharedPreferences.Editor nameEdit = name.edit();
 
 
 

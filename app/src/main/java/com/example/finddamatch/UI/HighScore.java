@@ -32,6 +32,7 @@ public class HighScore extends AppCompatActivity {
         fifth = preferences.getInt("Fifth", 20000);
         sixth = preferences.getInt("Sixth", 20000);
 
+
         SharedPreferences.Editor editor = preferences.edit();
         if (sixth < fifth) {
             fifth = sixth;

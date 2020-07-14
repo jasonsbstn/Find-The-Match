@@ -24,4 +24,6 @@
     values-round/strings.xml for round devices.
     -->
     <string name="winText"></string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="anonymous">Anonymous</string>
 </resources>

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +22,22 @@ Description : user chooses the theme
 
  */
 import com.example.finddamatch.R;
+import com.example.finddamatch.flickr.PhotoGalleryActivity;
 
 public class Options_Screen extends AppCompatActivity {
+    Button searchBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
+        searchBtn= findViewById(R.id.searchBtn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Options_Screen.this,PhotoGalleryActivity.class);
+                startActivity(intent);
+            }
+        });
         createRadioButton();
     }
 

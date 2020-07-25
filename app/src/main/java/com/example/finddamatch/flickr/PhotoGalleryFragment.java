@@ -21,11 +21,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.finddamatch.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.finddamatch.MainActivity.option;
 
 public class PhotoGalleryFragment extends Fragment {
     private static final String TAG = "PhotoGalleryFragment";
@@ -33,6 +36,8 @@ public class PhotoGalleryFragment extends Fragment {
     private RecyclerView mPhotoRecyclerView;
     private List<GalleryItem> mItems = new ArrayList<>();
     private ThumbnailDownloader<PhotoHolder> mThumbnailDownloader;
+    public static Bitmap[] flickImgSelected = new Bitmap[7];
+    int imageSelected =0;
 
     public static PhotoGalleryFragment newInstance() {
         return new PhotoGalleryFragment();
@@ -154,6 +159,7 @@ public class PhotoGalleryFragment extends Fragment {
         public void bindDrawable(Drawable drawable) {
             mItemImageView.setImageDrawable(drawable);
         }
+
     }
 
     private class PhotoAdapter extends RecyclerView.Adapter<PhotoHolder> {
@@ -172,17 +178,49 @@ public class PhotoGalleryFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(PhotoHolder photoHolder, int position) {
+        public void onBindViewHolder(final PhotoHolder photoHolder, final int position) {
             GalleryItem galleryItem = mGalleryItems.get(position);
             Drawable placeholder = getResources().getDrawable(R.drawable.bill_up_close);
             photoHolder.bindDrawable(placeholder);
             mThumbnailDownloader.queueThumbnail(photoHolder, galleryItem.getUrl());
+            photoHolder.mItemImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Drawable highlight =getResources().getDrawable(R.drawable.highlight); //https://stackoverflow.com/questions/37000700/how-to-highlight-a-border-of-an-image-view-when-i-clicked-imageview-in-android/37002642
+                    //highlights the image when clicked
+                    photoHolder.mItemImageView.setBackground(highlight);
+                    final int i = imageSelected;
+
+                    if(i<7)
+                    {
+                        BitmapDrawable drawable = (BitmapDrawable) photoHolder.mItemImageView.getDrawable();
+                        flickImgSelected[i] = drawable.getBitmap();
+                        imageSelected++;
+                        option =3;
+                        photoHolder.mItemImageView.setEnabled(false);//prevents double click
+                    }
+                    else{
+                        final Toast toast = Toast.makeText(getContext(), "Maximum amount of pictures selected, please return to game screen", Toast.LENGTH_SHORT);
+                        toast.show();
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                toast.cancel();
+                            }
+                        }, 500);
+                    }
+                }
+            });
         }
+
 
         @Override
         public int getItemCount() {
             return mGalleryItems.size();
         }
+
     }
 
     private class FetchItemsTask extends AsyncTask<Void,Void,List<GalleryItem>> {
@@ -210,5 +248,6 @@ public class PhotoGalleryFragment extends Fragment {
         }
 
     }
+
 
 }

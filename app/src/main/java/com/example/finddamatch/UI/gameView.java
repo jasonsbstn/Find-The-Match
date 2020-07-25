@@ -32,6 +32,7 @@ import static com.example.finddamatch.MainActivity.hand;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
 import static com.example.finddamatch.UI.GameActivity.score;
+import static com.example.finddamatch.flickr.PhotoGalleryFragment.flickImgSelected;
 /*
     Description: using canvas to start the game layout and game logic
  */
@@ -164,8 +165,40 @@ public class gameView extends SurfaceView {
                 else if (card2[j] == "pic7")
                     pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.image14);
             }
+        } else if (option == 3) {
+            for (int i = 0; i < card1.length; i++) {
+                if (card1[i] == "pic1")
+                    pic[i] = flickImgSelected[0];
+                else if (card1[i] == "pic2")
+                    pic[i] = flickImgSelected[1];
+                else if (card1[i] == "pic3")
+                    pic[i] = flickImgSelected[2];
+                else if (card1[i] == "pic4")
+                    pic[i] = flickImgSelected[3];
+                else if (card1[i] == "pic5")
+                    pic[i] = flickImgSelected[4];
+                else if (card1[i] == "pic6")
+                    pic[i] = flickImgSelected[5];
+                else if (card1[i] == "pic7")
+                    pic[i] = flickImgSelected[6];
+            }
+            for (int j = 0; j < card2.length; j++) {
+                if (card2[j] == "pic1")
+                    pic[j + 3] = flickImgSelected[0];
+                else if (card2[j] == "pic2")
+                    pic[j + 3] = flickImgSelected[1];
+                else if (card2[j] == "pic3")
+                    pic[j + 3] = flickImgSelected[2];
+                else if (card2[j] == "pic4")
+                    pic[j + 3] = flickImgSelected[3];
+                else if (card2[j] == "pic5")
+                    pic[j + 3] = flickImgSelected[4];
+                else if (card2[j] == "pic6")
+                    pic[j + 3] = flickImgSelected[5];
+                else if (card2[j] == "pic7")
+                    pic[j + 3] = flickImgSelected[6];
+            }
         }
-
         for (int i = 0; i < card1.length; i++) {
             picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
             picScaled[i + 3] = Bitmap.createScaledBitmap(pic[i + 3], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas

@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         shakeAnimation();
         setSkipButton();
+        // checking https connection
     }
 
     //set animation shake for title

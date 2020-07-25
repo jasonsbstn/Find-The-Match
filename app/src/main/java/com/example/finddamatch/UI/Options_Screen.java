@@ -27,14 +27,26 @@ public class Options_Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
-        createRadioButton();
+        createThemeSelection();
+        createGameOrders();
+        createGameLength();
+    }
+
+    private void createGameOrders() {
+        RadioGroup group = (RadioGroup) findViewById(R.id.orders);
+        int[] gameOrder = getResources().getIntArray(R.array.gameOrders);
+        
+    }
+
+    private void createGameLength() {
+
     }
 
     public static Intent makeLaunchIntent(Context c){
         Intent intent = new Intent(c, Options_Screen.class);
         return intent;
     }
-    private void createRadioButton() {
+    private void createThemeSelection() {
         RadioGroup group = (RadioGroup) findViewById(R.id.collumnrowRadio);
         String[] themeOptions = getResources().getStringArray(R.array.themeselection);
         RadioButton button1 = new RadioButton(this);

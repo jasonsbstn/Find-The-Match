@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public static cards hand;
     public static discard top;
     public static int option;
+    public static int order;
+    public static int length;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
         option =1;
         SharedPreferences prefs = getSharedPreferences("ThemePrefs",MODE_PRIVATE);
         option = prefs.getInt("ThemeNum",1);
+
+        order = 2;
+        SharedPreferences orders = getSharedPreferences("Orders",MODE_PRIVATE);
+        order = orders.getInt("Orders",2);
+
+        length =5;
+        SharedPreferences lengths = getSharedPreferences("gameLength",MODE_PRIVATE);
+        length = lengths.getInt("gameLength",5);
+
         setContentView(R.layout.activity_main);
 
         shakeAnimation();

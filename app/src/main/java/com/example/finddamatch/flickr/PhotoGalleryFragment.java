@@ -187,12 +187,12 @@ public class PhotoGalleryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Drawable highlight =getResources().getDrawable(R.drawable.highlight); //https://stackoverflow.com/questions/37000700/how-to-highlight-a-border-of-an-image-view-when-i-clicked-imageview-in-android/37002642
-                    //highlights the image when clicked
-                    photoHolder.mItemImageView.setBackground(highlight);
                     final int i = imageSelected;
 
                     if(i<7)
                     {
+                        //highlights the image when clicked
+                        photoHolder.mItemImageView.setBackground(highlight);
                         BitmapDrawable drawable = (BitmapDrawable) photoHolder.mItemImageView.getDrawable();
                         flickImgSelected[i] = drawable.getBitmap();
                         imageSelected++;

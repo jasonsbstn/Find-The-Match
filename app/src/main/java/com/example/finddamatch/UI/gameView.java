@@ -55,7 +55,7 @@ public class gameView extends SurfaceView {
         timer=(int) SystemClock.elapsedRealtime();
         score=0;
         setImages();
-        cardBackground = BitmapFactory.decodeResource(getResources(), R.drawable.cardbackground);
+        cardBackground = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
         holder.addCallback(new SurfaceHolder.Callback() {
             @SuppressLint("WrongCall")
             @Override

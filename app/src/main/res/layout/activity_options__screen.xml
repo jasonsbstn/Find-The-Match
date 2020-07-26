@@ -8,14 +8,14 @@
     tools:context=".UI.Options_Screen">
 
     <TextView
-        android:id="@+id/selecttheme2"
+        android:id="@+id/selecttheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Orders"
+        android:text="@string/select_board_theme"
         android:textColor="#F2F0F3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/collumnrowRadio" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/collumnrowRadio"
@@ -28,43 +28,43 @@
         app:layout_constraintTop_toBottomOf="@+id/selecttheme" />
 
     <TextView
-        android:id="@+id/selecttheme"
+        android:id="@+id/Order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/select_board_theme"
+        android:text="@string/select_order"
         android:textColor="#F2F0F3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/collumnrowRadio" />
 
     <RadioGroup
-        android:id="@+id/orders"
+        android:id="@+id/Orders"
         android:layout_width="388sp"
         android:layout_height="153sp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selecttheme2" />
+        app:layout_constraintTop_toBottomOf="@+id/Order" />
+
+    <TextView
+        android:id="@+id/Length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/select_game_length"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Orders" />
 
     <RadioGroup
         android:id="@+id/gameLength"
         android:layout_width="388sp"
         android:layout_height="153sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="32dp"
-        android:text="Game Length"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orders" />
+        app:layout_constraintTop_toBottomOf="@+id/Length" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

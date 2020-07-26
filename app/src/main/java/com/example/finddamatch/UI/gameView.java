@@ -756,7 +756,7 @@ public class gameView extends SurfaceView {
             canvas.drawBitmap(picScaled[4], canvas.getWidth() * 1 / 10, canvas.getHeight() * 6 / 10, null);
             canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 6 / 10, null);
             canvas.drawBitmap(picScaled[6], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 8 / 10, null);
-            canvas.drawBitmap(picScaled[7], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 3 / 10, null);
+            canvas.drawBitmap(picScaled[7], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 8 / 10, null);
         }
         else if(order==5) {
             canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);

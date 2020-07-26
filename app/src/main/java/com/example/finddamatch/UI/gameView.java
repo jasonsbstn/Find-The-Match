@@ -215,31 +215,31 @@ public class gameView extends SurfaceView {
                 }
                 for (int j = 0; j < card2.length; j++) {
                     if (card2[j] == "pic1")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_1);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_1);
                     else if (card2[j] == "pic2")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                     else if (card2[j] == "pic3")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_3);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_3);
                     else if (card2[j] == "pic4")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_4);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_4);
                     else if (card2[j] == "pic5")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_5);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_5);
                     else if (card2[j] == "pic6")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_6);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_6);
                     else if (card2[j] == "pic7")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_7);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_7);
                     else if (card2[j] == "pic8")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_8);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_8);
                     else if (card2[j] == "pic9")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_9);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_9);
                     else if (card2[j] == "pic10")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_10);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_10);
                     else if (card2[j] == "pic11")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_11);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_11);
                     else if (card2[j] == "pic12")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_12);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_12);
                     else if (card2[j] == "pic13")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_13);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_13);
                 }
             } else if (option == 2) {
                 for (int i = 0; i < card1.length; i++) {
@@ -272,36 +272,36 @@ public class gameView extends SurfaceView {
                 }
                 for (int j = 0; j < card2.length; j++) {
                     if (card2[j] == "pic1")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_1);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_1);
                     else if (card2[j] == "pic2")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_2);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_2);
                     else if (card2[j] == "pic3")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_3);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_3);
                     else if (card2[j] == "pic4")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_4);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_4);
                     else if (card2[j] == "pic5")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_5);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_5);
                     else if (card2[j] == "pic6")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_6);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_6);
                     else if (card2[j] == "pic7")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_7);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_7);
                     else if (card2[j] == "pic8")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_8);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_8);
                     else if (card2[j] == "pic9")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_9);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_9);
                     else if (card2[j] == "pic10")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_10);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_10);
                     else if (card2[j] == "pic11")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_11);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_11);
                     else if (card2[j] == "pic12")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_12);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_12);
                     else if (card2[j] == "pic13")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_13);
+                        pic[j + 4] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_13);
                 }
             }
             for (int i = 0; i < card1.length; i++) {
                 picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
-                picScaled[i + 3] = Bitmap.createScaledBitmap(pic[i + 3], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
+                picScaled[i + 4] = Bitmap.createScaledBitmap(pic[i + 4], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
             }
 
 
@@ -390,67 +390,67 @@ public class gameView extends SurfaceView {
                 }
                 for (int j = 0; j < card2.length; j++) {
                     if (card2[j] == "pic1")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_1);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_1);
                     else if (card2[j] == "pic2")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                     else if (card2[j] == "pic3")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_3);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_3);
                     else if (card2[j] == "pic4")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_4);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_4);
                     else if (card2[j] == "pic5")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_5);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_5);
                     else if (card2[j] == "pic6")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_6);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_6);
                     else if (card2[j] == "pic7")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_7);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_7);
                     else if (card2[j] == "pic8")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_8);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_8);
                     else if (card2[j] == "pic9")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_9);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_9);
                     else if (card2[j] == "pic10")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_10);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_10);
                     else if (card2[j] == "pic11")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_11);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_11);
                     else if (card2[j] == "pic12")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_12);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_12);
                     else if (card2[j] == "pic13")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_13);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_13);
                     else if (card2[j] == "pic14")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_14);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_14);
                     else if (card2[j] == "pic15")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_15);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_15);
                     else if (card2[j] == "pic16")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_16);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_16);
                     else if (card2[j] == "pic17")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_17);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_17);
                     else if (card2[j] == "pic18")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_18);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_18);
                     else if (card2[j] == "pic19")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_19);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_19);
                     else if (card2[j] == "pic20")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_20);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_20);
                     else if (card2[j] == "pic21")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_21);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_21);
                     else if (card2[j] == "pic22")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_22);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_22);
                     else if (card2[j] == "pic23")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_23);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_23);
                     else if (card2[j] == "pic24")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_24);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_24);
                     else if (card2[j] == "pic25")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_25);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_25);
                     else if (card2[j] == "pic26")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_26);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_26);
                     else if (card2[j] == "pic27")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_27);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_27);
                     else if (card2[j] == "pic28")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_28);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_28);
                     else if (card2[j] == "pic29")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_29);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_29);
                     else if (card2[j] == "pic30")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_30);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_30);
                     else if (card2[j] == "pic31")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_31);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_31);
                 }
             } else if (option == 2) {
                 for (int i = 0; i < card1.length; i++) {
@@ -519,72 +519,72 @@ public class gameView extends SurfaceView {
                 }
                 for (int j = 0; j < card2.length; j++) {
                     if (card2[j] == "pic1")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_1);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_1);
                     else if (card2[j] == "pic2")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_2);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_2);
                     else if (card2[j] == "pic3")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_3);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_3);
                     else if (card2[j] == "pic4")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_4);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_4);
                     else if (card2[j] == "pic5")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_5);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_5);
                     else if (card2[j] == "pic6")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_6);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_6);
                     else if (card2[j] == "pic7")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_7);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_7);
                     else if (card2[j] == "pic8")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_8);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_8);
                     else if (card2[j] == "pic9")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_9);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_9);
                     else if (card2[j] == "pic10")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_10);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_10);
                     else if (card2[j] == "pic11")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_11);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_11);
                     else if (card2[j] == "pic12")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_12);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_12);
                     else if (card2[j] == "pic13")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_13);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_13);
                     else if (card2[j] == "pic14")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_14);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_14);
                     else if (card2[j] == "pic15")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_15);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_15);
                     else if (card2[j] == "pic16")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_16);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_16);
                     else if (card2[j] == "pic17")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_17);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_17);
                     else if (card2[j] == "pic18")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_18);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_18);
                     else if (card2[j] == "pic19")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_19);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_19);
                     else if (card2[j] == "pic20")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_20);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_20);
                     else if (card2[j] == "pic21")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_21);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_21);
                     else if (card2[j] == "pic22")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_22);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_22);
                     else if (card2[j] == "pic23")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_23);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_23);
                     else if (card2[j] == "pic24")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_24);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_24);
                     else if (card2[j] == "pic25")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_25);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_25);
                     else if (card2[j] == "pic26")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_26);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_26);
                     else if (card2[j] == "pic27")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_27);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_27);
                     else if (card2[j] == "pic28")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_28);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_28);
                     else if (card2[j] == "pic29")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_29);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_29);
                     else if (card2[j] == "pic30")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_30);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_30);
                     else if (card2[j] == "pic31")
-                        pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_31);
+                        pic[j + 6] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_31);
                 }
             }
             for (int i = 0; i < card1.length; i++) {
                 picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
-                picScaled[i + 3] = Bitmap.createScaledBitmap(pic[i + 3], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
+                picScaled[i + 6] = Bitmap.createScaledBitmap(pic[i + 6], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
             }
 
         }

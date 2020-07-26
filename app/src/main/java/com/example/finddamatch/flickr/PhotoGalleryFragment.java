@@ -28,6 +28,8 @@ import com.example.finddamatch.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.finddamatch.MainActivity.bitmaps;
+///import static com.example.finddamatch.MainActivity.flickrImgSelect;
 import static com.example.finddamatch.MainActivity.option;
 
 public class PhotoGalleryFragment extends Fragment {
@@ -36,8 +38,8 @@ public class PhotoGalleryFragment extends Fragment {
     private RecyclerView mPhotoRecyclerView;
     private List<GalleryItem> mItems = new ArrayList<>();
     private ThumbnailDownloader<PhotoHolder> mThumbnailDownloader;
-    public static Bitmap[] flickImgSelected = new Bitmap[7];
     int imageSelected =0;
+   // public static Bitmap[] flickImgSelected = new Bitmap[7];
 
     public static PhotoGalleryFragment newInstance() {
         return new PhotoGalleryFragment();
@@ -187,7 +189,15 @@ public class PhotoGalleryFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Drawable highlight =getResources().getDrawable(R.drawable.highlight); //https://stackoverflow.com/questions/37000700/how-to-highlight-a-border-of-an-image-view-when-i-clicked-imageview-in-android/37002642
-                    final int i = imageSelected;
+                    //highlights the image when clicked
+                    photoHolder.mItemImageView.setBackground(highlight);
+                    BitmapDrawable drawable = (BitmapDrawable) photoHolder.mItemImageView.getDrawable();
+                    Bitmap bitmap = drawable.getBitmap();
+                    bitmaps.add(bitmap);
+                    imageSelected++;
+                    option =3;
+                    photoHolder.mItemImageView.setEnabled(false);//prevents double click
+                    /*final int i = imageSelected;
 
                     if(i<7)
                     {
@@ -210,7 +220,8 @@ public class PhotoGalleryFragment extends Fragment {
                                 toast.cancel();
                             }
                         }, 500);
-                    }
+                    }*/
+
                 }
             });
         }

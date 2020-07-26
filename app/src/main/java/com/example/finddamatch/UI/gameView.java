@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -12,26 +11,24 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.RectF;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.widget.Chronometer;
-import android.widget.Toast;
 
 import com.example.finddamatch.R;
 
 import static android.content.ContentValues.TAG;
-import static com.example.finddamatch.MainActivity.Deck;
+import static com.example.finddamatch.MainActivity.bitmaps;
 import static com.example.finddamatch.MainActivity.hand;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
 import static com.example.finddamatch.UI.GameActivity.score;
+
+
 /*
     Description: using canvas to start the game layout and game logic
  */
@@ -165,6 +162,40 @@ public class gameView extends SurfaceView {
                     pic[j + 3] = BitmapFactory.decodeResource(getResources(), R.drawable.image14);
             }
         }
+        else if (option == 3) {
+            for (int i = 0; i < card1.length; i++) {
+                if (card1[i] == "pic1")
+                    pic[i] = bitmaps.get(0);
+                else if (card1[i] == "pic2")
+                    pic[i] = bitmaps.get(1);
+                else if (card1[i] == "pic3")
+                    pic[i] = bitmaps.get(2);
+                else if (card1[i] == "pic4")
+                    pic[i] = bitmaps.get(3);
+                else if (card1[i] == "pic5")
+                    pic[i] = bitmaps.get(4);
+                else if (card1[i] == "pic6")
+                    pic[i] = bitmaps.get(5);
+                else if (card1[i] == "pic7")
+                    pic[i] = bitmaps.get(6);
+            }
+            for (int j = 0; j < card2.length; j++) {
+                if (card2[j] == "pic1")
+                    pic[j + 3] = bitmaps.get(0);
+                else if (card2[j] == "pic2")
+                    pic[j + 3] = bitmaps.get(1);
+                else if (card2[j] == "pic3")
+                    pic[j + 3] = bitmaps.get(2);
+                else if (card2[j] == "pic4")
+                    pic[j + 3] = bitmaps.get(3);
+                else if (card2[j] == "pic5")
+                    pic[j + 3] = bitmaps.get(4);
+                else if (card2[j] == "pic6")
+                    pic[j + 3] = bitmaps.get(5);
+                else if (card2[j] == "pic7")
+                    pic[j + 3] = bitmaps.get(6);
+            }
+        }
 
         for (int i = 0; i < card1.length; i++) {
             picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
@@ -223,7 +254,27 @@ public class gameView extends SurfaceView {
         canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 3.5 / 10), canvas.getHeight() * 8 / 10, null);
 
     }
+    private Bitmap getCircleBitmap(Bitmap bitmap){//https://stackoverflow.com/questions/12944275/crop-image-as-circle-in-android
+        //crop bitmap into circle
+        int widthLight = bitmap.getWidth();
+        int heightLight = bitmap.getHeight();
 
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(output);
+        Paint paintColor = new Paint();
+        paintColor.setFlags(Paint.ANTI_ALIAS_FLAG);
+
+        RectF rectF = new RectF(new Rect(0, 0, widthLight, heightLight));
+
+        canvas.drawRoundRect(rectF, widthLight / 2 ,heightLight / 2,paintColor);
+
+        Paint paintImage = new Paint();
+        paintImage.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+        canvas.drawBitmap(bitmap, 0, 0, paintImage);
+
+        return output;
+    }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

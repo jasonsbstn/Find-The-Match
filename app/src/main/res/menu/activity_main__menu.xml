@@ -10,69 +10,63 @@
 
     <Button
         android:id="@+id/playButton"
-        android:layout_width="152dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="272dp"
+        android:layout_width="157dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gadient_background2"
-        android:fontFamily="sans-serif"
+        android:fontFamily="casual"
         android:text="Play Game"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/optionsButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/high"
-        android:layout_width="152dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/helpButton"
+        android:layout_width="157dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gadient_background2"
-        android:fontFamily="sans-serif"
-        android:text="High Score"
+        android:fontFamily="casual"
+        android:text="Help"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/high"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helpButton" />
+        app:layout_constraintTop_toBottomOf="@+id/optionsButton" />
 
     <Button
         android:id="@+id/optionsButton"
-        android:layout_width="152dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="157dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/gadient_background2"
-        android:fontFamily="sans-serif"
+        android:fontFamily="casual"
         android:text="Options"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/helpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playButton" />
 
     <Button
-        android:id="@+id/helpButton"
-        android:layout_width="152dp"
-        android:layout_height="73"
-        android:layout_marginTop="16dp"
+        android:id="@+id/high"
+        android:layout_width="157dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/gadient_background2"
-        android:fontFamily="sans-serif"
-        android:text="Help"
+        android:fontFamily="casual"
+        android:text="High Score"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionsButton" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="405dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/finddamatch" />
+        app:layout_constraintTop_toBottomOf="@+id/helpButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

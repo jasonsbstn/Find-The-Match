@@ -6,6 +6,7 @@ package com.example.finddamatch;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.example.finddamatch.Classes.cards;
@@ -22,12 +23,17 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     public static deck Deck;
     public static cards hand;
     public static discard top;
     public static int option;
+ //   public static FlickrImgManager flickrImgSelect;
+ public static List<Bitmap> bitmaps = new ArrayList<Bitmap>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

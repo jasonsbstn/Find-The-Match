@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.finddamatch">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -30,10 +31,7 @@
             android:name=".UI.GameActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Cards.card7" />
-        <activity android:name=".Cards.card6" />
-        <activity android:name=".Cards.card5" />
-        <activity android:name=".Cards.card4" />
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
@@ -44,7 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name="com.example.finddamatch.flickr.PhotoGalleryActivity"
+            android:theme="@style/AppTheme"
+             />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -27,8 +27,8 @@ import static com.example.finddamatch.MainActivity.length;
     Description: using canvas to start the game layout and game logic
  */
 public class gameView extends SurfaceView {
-    private Bitmap[] pic = new Bitmap[6];
-    private Bitmap[] picScaled = new Bitmap[6];
+    private Bitmap[] pic = new Bitmap[12];
+    private Bitmap[] picScaled = new Bitmap[12];
     private Bitmap cardBackground;
     private Bitmap scaledBackground;
     private SurfaceHolder holder;
@@ -208,10 +208,108 @@ public class gameView extends SurfaceView {
             }
         }
         else if(order==3) {
+            if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
+                y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                if (top.contain(card1[0])) {
 
+                    setImages();
+
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+
+                }
+            } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
+                       y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                if (top.contain(card1[1])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+
+                }
+            } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
+                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                if (top.contain(card1[2])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+
+                }
+            } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
+                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                if (top.contain(card1[3])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+                }
+            }
         }
         else if(order==5) {
+            if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
+                y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                if (top.contain(card1[0])) {
 
+                    setImages();
+
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+
+                }
+            } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
+                       y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                if (top.contain(card1[1])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+
+                }
+            } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
+                       y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                if (top.contain(card1[2])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+
+                }
+            } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
+                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                if (top.contain(card1[3])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+                }
+            } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
+                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                if (top.contain(card1[4])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+                }
+            } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
+                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                if (top.contain(card1[5])) {
+
+                    setImages();
+                    holder.lockCanvas();
+                    drawPic(c);
+                    holder.unlockCanvasAndPost(c);
+                }
+            }
         }
 
         return super.onTouchEvent(event);
@@ -221,13 +319,41 @@ public class gameView extends SurfaceView {
         canvas.drawColor(Color.GRAY);
         canvas.drawBitmap(scaledBackground, 0, 0, null);
         canvas.drawBitmap(scaledBackground, 0, canvas.getHeight() / 2, null);
-        canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);
-        canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 1 / 10, null);
-        canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 3.5 / 10), canvas.getHeight() * 3 / 10, null);
+        if(order==2) {
+            canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);
+            canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 1 / 10, null);
+            canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 3.5 / 10), canvas.getHeight() * 3 / 10, null);
 
-        canvas.drawBitmap(picScaled[3], canvas.getWidth() * 1 / 10, canvas.getHeight() * 6 / 10, null);
-        canvas.drawBitmap(picScaled[4], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 6 / 10, null);
-        canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 3.5 / 10), canvas.getHeight() * 8 / 10, null);
+            canvas.drawBitmap(picScaled[3], canvas.getWidth() * 1 / 10, canvas.getHeight() * 6 / 10, null);
+            canvas.drawBitmap(picScaled[4], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 6 / 10, null);
+            canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 3.5 / 10), canvas.getHeight() * 8 / 10, null);
+        }
+        else if (order==3) {
+            canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);
+            canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 1 / 10, null);
+            canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 3 / 10, null);
+            canvas.drawBitmap(picScaled[3], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 3 / 10, null);
+
+            canvas.drawBitmap(picScaled[4], canvas.getWidth() * 1 / 10, canvas.getHeight() * 6 / 10, null);
+            canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 6 / 10, null);
+            canvas.drawBitmap(picScaled[6], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 8 / 10, null);
+            canvas.drawBitmap(picScaled[7], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 3 / 10, null);
+        }
+        else if(order==5) {
+            canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);
+            canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 3.85 / 10), canvas.getHeight() * 1 / 10, null);
+            canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 6.7 / 10), canvas.getHeight() * 1 / 10, null);
+            canvas.drawBitmap(picScaled[3], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 3 / 10, null);
+            canvas.drawBitmap(picScaled[4], (float) (canvas.getWidth() * 3.85 / 10), canvas.getHeight() * 3 / 10, null);
+            canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 6.7 / 10), canvas.getHeight() * 3 / 10, null);
+
+            canvas.drawBitmap(picScaled[6], canvas.getWidth() * 1 / 10, canvas.getHeight() * 6 / 10, null);
+            canvas.drawBitmap(picScaled[7], (float) (canvas.getWidth() * 3.85 / 10), canvas.getHeight() * 6 / 10, null);
+            canvas.drawBitmap(picScaled[8], (float) (canvas.getWidth() * 6.7 / 10), canvas.getHeight() * 6 / 10, null);
+            canvas.drawBitmap(picScaled[9], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 8 / 10, null);
+            canvas.drawBitmap(picScaled[10], (float) (canvas.getWidth() * 3.85 / 10), canvas.getHeight() * 8 / 10, null);
+            canvas.drawBitmap(picScaled[11], (float) (canvas.getWidth() * 6.7 / 10), canvas.getHeight() * 8 / 10, null);
+        }
 
     }
 

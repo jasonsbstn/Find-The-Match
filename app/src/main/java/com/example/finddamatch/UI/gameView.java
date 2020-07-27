@@ -38,6 +38,7 @@ public class gameView extends SurfaceView {
     String[] card1;
     String[] card2;
     Canvas c;
+    private float drawPileSize;
 
     public gameView(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
         super(context);

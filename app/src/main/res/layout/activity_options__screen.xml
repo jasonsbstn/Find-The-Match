@@ -7,33 +7,38 @@
     android:background="@drawable/gradient_background"
     tools:context=".UI.Options_Screen">
 
-    <TextView
-        android:id="@+id/selecttheme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/select_board_theme"
-        android:textColor="#F2F0F3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <RadioGroup
         android:id="@+id/collumnrowRadio"
         android:layout_width="388dp"
         android:layout_height="153dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
         android:textColor="#F2F0F3"
-        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selecttheme" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TextView
+            android:id="@+id/selecttheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/metamorphous"
+            android:text="@string/select_board_theme"
+            android:textColor="#536DFE"
+            android:textSize="18sp" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/Order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/metamorphous"
         android:text="@string/select_order"
-        android:textColor="#F2F0F3"
+        android:textColor="#536DFE"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collumnrowRadio" />
 
@@ -41,19 +46,24 @@
         android:id="@+id/Orders"
         android:layout_width="388sp"
         android:layout_height="153sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Order" />
+        app:layout_constraintTop_toBottomOf="@+id/collumnrowRadio" />
 
     <TextView
         android:id="@+id/Length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/metamorphous"
         android:text="@string/select_game_length"
-        android:textColor="#FFFFFF"
+        android:textColor="#536DFE"
         android:textColorLink="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Orders" />
 
@@ -61,10 +71,24 @@
         android:id="@+id/gameLength"
         android:layout_width="388sp"
         android:layout_height="153sp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Length" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/bungee_shade"
+        android:text="Options"
+        android:textColor="#536DFE"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

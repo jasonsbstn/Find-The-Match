@@ -197,30 +197,6 @@ public class PhotoGalleryFragment extends Fragment {
                     imageSelected++;
                     option =3;
                     photoHolder.mItemImageView.setEnabled(false);//prevents double click
-                    /*final int i = imageSelected;
-
-                    if(i<7)
-                    {
-                        //highlights the image when clicked
-                        photoHolder.mItemImageView.setBackground(highlight);
-                        BitmapDrawable drawable = (BitmapDrawable) photoHolder.mItemImageView.getDrawable();
-                        flickImgSelected[i] = drawable.getBitmap();
-                        imageSelected++;
-                        option =3;
-                        photoHolder.mItemImageView.setEnabled(false);//prevents double click
-                    }
-                    else{
-                        final Toast toast = Toast.makeText(getContext(), "Maximum amount of pictures selected, please return to game screen", Toast.LENGTH_SHORT);
-                        toast.show();
-
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                toast.cancel();
-                            }
-                        }, 500);
-                    }*/
 
                 }
             });

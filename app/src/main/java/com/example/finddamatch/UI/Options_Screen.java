@@ -63,6 +63,7 @@ public class Options_Screen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bitmaps.clear();
+                option =1;
             }
         });
     }

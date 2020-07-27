@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.finddamatch.Classes.deck;
 import com.example.finddamatch.R;
@@ -17,7 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.finddamatch.MainActivity.Deck;
+import static com.example.finddamatch.MainActivity.bitmaps;
+import static com.example.finddamatch.MainActivity.length;
 import static com.example.finddamatch.MainActivity.option;
+import static com.example.finddamatch.MainActivity.order;
 
 public class Main_Menu extends AppCompatActivity {
 
@@ -52,6 +56,42 @@ public class Main_Menu extends AppCompatActivity {
         PlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(option==3)
+                {
+                    if(bitmaps.isEmpty())
+                    {
+                        option=1;
+                    }
+                    if(order==2)
+                    {
+                        if(bitmaps.size()<6)
+                        {
+                            option =1;
+                            length=7;
+                            Toast.makeText(getApplicationContext(), "Lack of image selected for the flickr Image, change to nature theme", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else if(order==3)
+                    {
+                        if(bitmaps.size()<13)
+                        {
+                            option =1;
+                            length=13;
+                            Toast.makeText(getApplicationContext(), "Lack of image selected for the flickr Image, change to nature theme", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(order==5)
+                    {
+                        if(bitmaps.size()<15)
+                        {
+                            option =1;
+                            length=15;
+                            Toast.makeText(getApplicationContext(), "Lack of image selected for the flickr Image, change to nature theme", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                }
                 Deck = new deck();
                 Deck.startGame();//creates a new deck and shuffle draw and discard
                 Intent PlayScreen = GameActivity.makeLaunchIntent(Main_Menu.this);

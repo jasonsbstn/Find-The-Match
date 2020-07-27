@@ -165,6 +165,7 @@ public class gameView extends SurfaceView {
             for (int i = 0; i < card1.length; i++) {
                 picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
                 picScaled[i + 3] = Bitmap.createScaledBitmap(pic[i + 3], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
+                Log.d(TAG, "setImages: " + i);
             }
         }
         else if(order==3) {
@@ -302,6 +303,7 @@ public class gameView extends SurfaceView {
             for (int i = 0; i < card1.length; i++) {
                 picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
                 picScaled[i + 4] = Bitmap.createScaledBitmap(pic[i + 4], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
+                Log.d(TAG, "setImages: " + i);
             }
 
 
@@ -585,6 +587,7 @@ public class gameView extends SurfaceView {
             for (int i = 0; i < card1.length; i++) {
                 picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
                 picScaled[i + 6] = Bitmap.createScaledBitmap(pic[i + 6], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
+                Log.d(TAG, "setImages: " + i);
             }
 
         }

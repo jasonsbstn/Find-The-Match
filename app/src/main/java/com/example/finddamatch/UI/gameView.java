@@ -80,17 +80,7 @@ public class gameView extends SurfaceView {
         //if user won
         if(order==2) {
             if (top.getCards().equals(hand.getCards())) {
-
-                //calculate time
-                score = (int) (SystemClock.elapsedRealtime() - timer);
-
-
-                Intent intent = new Intent().setClass(getContext(), Won.class);
-                //pass score value to winning screen activity
-                intent.putExtra("score", score);
-                ((Activity) getContext()).startActivity(intent);
-                ((Activity) getContext()).finish();
-
+                wonAction();
             }
             card1 = hand.getCards();
             card2 = top.getCards();
@@ -171,17 +161,7 @@ public class gameView extends SurfaceView {
         }
         else if(order==3) {
             if (top.getCards().equals(hand.getCards())) {
-
-                //calculate time
-                score = (int) (SystemClock.elapsedRealtime() - timer);
-
-
-                Intent intent = new Intent().setClass(getContext(), Won.class);
-                //pass score value to winning screen activity
-                intent.putExtra("score", score);
-                ((Activity) getContext()).startActivity(intent);
-                ((Activity) getContext()).finish();
-
+                wonAction();
             }
             card1 = hand.getCards();
             card2 = top.getCards();
@@ -311,17 +291,7 @@ public class gameView extends SurfaceView {
         }
         else if(order==5) {
             if (top.getCards().equals(hand.getCards())) {
-
-                //calculate time
-                score = (int) (SystemClock.elapsedRealtime() - timer);
-
-
-                Intent intent = new Intent().setClass(getContext(), Won.class);
-                //pass score value to winning screen activity
-                intent.putExtra("score", score);
-                ((Activity) getContext()).startActivity(intent);
-                ((Activity) getContext()).finish();
-
+                wonAction();
             }
             card1 = hand.getCards();
             card2 = top.getCards();
@@ -790,5 +760,16 @@ public class gameView extends SurfaceView {
 
         drawPic(canvas);
 
+    }
+
+    private void wonAction() {
+        //calculate time
+        score = (int) (SystemClock.elapsedRealtime() - timer);
+        Intent intent = new Intent().setClass(getContext(), Won.class);
+
+        //pass score value to winning screen activity
+        intent.putExtra("score", score);
+        ((Activity) getContext()).startActivity(intent);
+        ((Activity) getContext()).finish();
     }
 }

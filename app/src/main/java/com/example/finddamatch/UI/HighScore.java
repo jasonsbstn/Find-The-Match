@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.finddamatch.R;
+import static com.example.finddamatch.MainActivity.order;
+import static com.example.finddamatch.MainActivity.length;
 
 public class HighScore extends AppCompatActivity {
 
@@ -24,26 +26,65 @@ public class HighScore extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
-        TextView score = (TextView) findViewById(R.id.scoreView);
 
+        if(order==2) {
+            if(length==5) {
+                createHighScore("highScore_2_5", "date_2_5", "name_2_5",17500);
+            }
+            else if(length==7) {
+                createHighScore("highScore_2_7", "date_2_7", "name_2_7",20000);
+            }
+        }
+        else if(order==3) {
+            if(length==5) {
+                createHighScore("highScore_3_5", "date_3_5", "name_3_5",30000);
+            }
+            else if(length==10) {
+                createHighScore("highScore_3_10", "date_3_10", "name_3_10",35000);
+            }
+            else if(length==13) {
+                createHighScore("highScore_3_13", "date_3_13", "name_3_13",40000);
+            }
+        }
+        else if(order==5) {
+            if(length==5) {
+                createHighScore("highScore_5_5", "date_5_5", "name_5_5",80000);
+            }
+            else if(length==10) {
+                createHighScore("highScore_5_10", "date_5_10", "name_5_10",85000);
+            }
+            else if(length==15) {
+                createHighScore("highScore_5_15", "date_5_15", "name_5_15",90000);
+            }
+            else if(length==20) {
+                createHighScore("highScore_5_20", "date_5_20", "name_5_20",95000);
+            }
+            else if(length==31) {
+                createHighScore("highScore_5_31", "date_5_31", "name_5_31",100000);
+            }
+        }
+    }
+
+    private void createHighScore(String scores, String dates, String names, int def) {
+        TextView score = (TextView) findViewById(R.id.scoreView);
 
         //get high scores (defValue is default value)
         int first, second, third, fourth, fifth, sixth;
 
-        SharedPreferences preferences = getSharedPreferences("highScore", 0);
-        first = preferences.getInt("First", 20000);
-        second = preferences.getInt("Second", 20000);
-        third = preferences.getInt("Third", 20000);
-        fourth = preferences.getInt("Fourth", 20000);
-        fifth = preferences.getInt("Fifth", 20000);
-        sixth = preferences.getInt("Sixth", 20000);
+        SharedPreferences preferences = getSharedPreferences(scores, 0);
+        first = preferences.getInt("First", def);
+        second = preferences.getInt("Second", def);
+        third = preferences.getInt("Third", def);
+        fourth = preferences.getInt("Fourth", def);
+        fifth = preferences.getInt("Fifth", def);
+        sixth = preferences.getInt("Sixth", def);
         SharedPreferences.Editor editor = preferences.edit();
 
 
         //get high scores corresponding date
         String date1, date2, date3, date4, date5, date6;
 
-        SharedPreferences date = getSharedPreferences("date", 0);
+        SharedPreferences date = getSharedPreferences(dates, 0);
         date1 = date.getString("date1", "10-Jul-2020");
         date2 = date.getString("date2", "10-Jul-2020");
         date3 = date.getString("date3", "10-Jul-2020");
@@ -53,11 +94,10 @@ public class HighScore extends AppCompatActivity {
         SharedPreferences.Editor dateEdit = date.edit();
 
 
-
         //get high scores corresponding username
         String name1, name2, name3, name4, name5, name6;
 
-        SharedPreferences name = getSharedPreferences("name", 0);
+        SharedPreferences name = getSharedPreferences(names, 0);
         name1 = name.getString("name1", "Anonymous");
         name2 = name.getString("name2", "Anonymous");
         name3 = name.getString("name3", "Anonymous");

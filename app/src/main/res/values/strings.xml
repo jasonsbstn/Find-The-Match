@@ -6,12 +6,17 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="select_board_theme">Select board theme</string>
+    <string name="select_board_theme">Select board theme: </string>
     <string name="leaderBoard">Leader Board</string>
     <string name="scoreView"></string>
     <string name="help">HELP</string>
     <string name="skip">SKIP</string>
+    <string name="highScore">HIGH SCORE</string>
+    <string name="playGame">PLAY GAME</string>
     <string name="title">Find daMatch</string>
+    <string name="select_order">Orders: </string>
+    <string name="select_game_length">Game Length: </string>
+    <string name="gameMode">Game Mode</string>
     <string name="teamMembers">
         Created by:\n
         * Dang Xuan Anh Tran - 301354210\n
@@ -35,6 +40,7 @@
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
+    <string name="options">Options</string>
     <string name="winText"></string>
     <string name="enter_your_username">Enter your username</string>
     <string name="anonymous">Anonymous</string>

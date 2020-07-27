@@ -46,7 +46,7 @@ public class deck implements Iterable<cards> {
             cardsList.add(new cards(pics5, 5));
             String pics6[] = {"pic9", "pic3", "pic11", "pic6"};
             cardsList.add(new cards(pics6, 6));
-            String pics7[] = {"pic1", "pic9", "pic12", "pic4"};
+            String pics7[] = {"pic1", "pic9", "pic12", "pic5"};
             cardsList.add(new cards(pics7, 7));
             String pics8[] = {"pic2", "pic12", "pic6", "pic7"};
             cardsList.add(new cards(pics8, 8));

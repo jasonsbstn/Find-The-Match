@@ -16,6 +16,7 @@
     <string name="title">Find daMatch</string>
     <string name="select_order">Orders: </string>
     <string name="select_game_length">Game Length: </string>
+    <string name="gameMode">Game Mode</string>
     <string name="teamMembers">
         Created by:\n
         * Dang Xuan Anh Tran - 301354210\n

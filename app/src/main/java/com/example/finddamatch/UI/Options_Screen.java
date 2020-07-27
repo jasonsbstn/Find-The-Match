@@ -11,9 +11,11 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.finddamatch.MainActivity.bitmaps;
 import static com.example.finddamatch.MainActivity.option;
@@ -40,6 +42,29 @@ public class Options_Screen extends AppCompatActivity {
         createGameOrders();
         createGameLength();
         createGameMode();
+        searchBtn= findViewById(R.id.searchBtn);
+        editFlickrPhoto = findViewById(R.id.editBtn);
+        clearFlickrPhoto=findViewById(R.id.clearBtn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Options_Screen.this,PhotoGalleryActivity.class);
+                startActivity(intent);
+            }
+        });
+        editFlickrPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Options_Screen.this,flickrImgClass.class);
+                startActivity(intent);
+            }
+        });
+        clearFlickrPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bitmaps.clear();
+            }
+        });
     }
 
     private void createGameMode() {

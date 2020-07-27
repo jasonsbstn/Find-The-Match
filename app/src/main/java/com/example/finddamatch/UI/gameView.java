@@ -365,22 +365,118 @@ public class gameView extends SurfaceView {
                     pic[i] = bitmaps.get(5);
                 else if (card1[i] == "pic7")
                     pic[i] = bitmaps.get(6);
+                else if (card1[i] == "pic8")
+                    pic[i] = bitmaps.get(7);
+                else if (card1[i] == "pic9")
+                    pic[i] = bitmaps.get(8);
+                else if (card1[i] == "pic10")
+                    pic[i] = bitmaps.get(9);
+                else if (card1[i] == "pic11")
+                    pic[i] = bitmaps.get(10);
+                else if (card1[i] == "pic12")
+                    pic[i] = bitmaps.get(11);
+                else if (card1[i] == "pic13")
+                    pic[i] = bitmaps.get(12);
+                else if (card1[i] == "pic14")
+                    pic[i] = bitmaps.get(13);
+                else if (card1[i] == "pic15")
+                    pic[i] = bitmaps.get(14);
+                else if (card1[i] == "pic16")
+                    pic[i] = bitmaps.get(15);
+                else if (card1[i] == "pic17")
+                    pic[i] = bitmaps.get(16);
+                else if (card1[i] == "pic18")
+                    pic[i] = bitmaps.get(17);
+                else if (card1[i] == "pic19")
+                    pic[i] = bitmaps.get(18);
+                else if (card1[i] == "pic20")
+                    pic[i] = bitmaps.get(19);
+                else if (card1[i] == "pic21")
+                    pic[i] = bitmaps.get(20);
+                else if (card1[i] == "pic22")
+                    pic[i] = bitmaps.get(21);
+                else if (card1[i] == "pic23")
+                    pic[i] = bitmaps.get(22);
+                else if (card1[i] == "pic24")
+                    pic[i] = bitmaps.get(23);
+                else if (card1[i] == "pic25")
+                    pic[i] = bitmaps.get(24);
+                else if (card1[i] == "pic26")
+                    pic[i] = bitmaps.get(25);
+                else if (card1[i] == "pic27")
+                    pic[i] = bitmaps.get(26);
+                else if (card1[i] == "pic28")
+                    pic[i] = bitmaps.get(27);
+                else if (card1[i] == "pic29")
+                    pic[i] = bitmaps.get(28);
+                else if (card1[i] == "pic30")
+                    pic[i] = bitmaps.get(29);
+                else if (card1[i] == "pic31")
+                    pic[i] = bitmaps.get(30);
             }
             for (int j = 0; j < card2.length; j++) {
                 if (card2[j] == "pic1")
-                    pic[j + 3] = bitmaps.get(0);
+                    pic[j+card1.length] = bitmaps.get(0);
                 else if (card2[j] == "pic2")
-                    pic[j + 3] = bitmaps.get(1);
+                    pic[j+card1.length] = bitmaps.get(1);
                 else if (card2[j] == "pic3")
-                    pic[j + 3] = bitmaps.get(2);
+                    pic[j+card1.length] = bitmaps.get(2);
                 else if (card2[j] == "pic4")
-                    pic[j + 3] = bitmaps.get(3);
+                    pic[j+card1.length] = bitmaps.get(3);
                 else if (card2[j] == "pic5")
-                    pic[j + 3] = bitmaps.get(4);
+                    pic[j+card1.length] = bitmaps.get(4);
                 else if (card2[j] == "pic6")
-                    pic[j + 3] = bitmaps.get(5);
+                    pic[j+card1.length] = bitmaps.get(5);
                 else if (card2[j] == "pic7")
-                    pic[j + 3] = bitmaps.get(6);
+                    pic[j+card1.length] = bitmaps.get(6);
+                else if (card2[j] == "pic8")
+                    pic[j+card1.length] = bitmaps.get(7);
+                else if (card2[j] == "pic9")
+                    pic[j+card1.length] = bitmaps.get(8);
+                else if (card2[j] == "pic10")
+                    pic[j+card1.length] = bitmaps.get(9);
+                else if (card2[j] == "pic11")
+                    pic[j+card1.length] = bitmaps.get(10);
+                else if (card2[j] == "pic12")
+                    pic[j+card1.length] = bitmaps.get(11);
+                else if (card2[j] == "pic13")
+                    pic[j+card1.length] = bitmaps.get(12);
+                else if (card2[j] == "pic14")
+                    pic[j+card1.length] = bitmaps.get(13);
+                else if (card2[j] == "pic15")
+                    pic[j+card1.length] = bitmaps.get(14);
+                else if (card2[j] == "pic16")
+                    pic[j+card1.length] = bitmaps.get(15);
+                else if (card2[j] == "pic17")
+                    pic[j+card1.length] = bitmaps.get(16);
+                else if (card2[j] == "pic18")
+                    pic[j+card1.length] = bitmaps.get(17);
+                else if (card2[j] == "pic19")
+                    pic[j+card1.length] = bitmaps.get(18);
+                else if (card2[j] == "pic20")
+                    pic[j+card1.length] = bitmaps.get(19);
+                else if (card2[j] == "pic21")
+                    pic[j+card1.length] = bitmaps.get(20);
+                else if (card2[j] == "pic22")
+                    pic[j+card1.length] = bitmaps.get(21);
+                else if (card2[j] == "pic23")
+                    pic[j+card1.length] = bitmaps.get(22);
+                else if (card2[j] == "pic24")
+                    pic[j+card1.length] = bitmaps.get(23);
+                else if (card2[j] == "pic25")
+                    pic[j+card1.length] = bitmaps.get(24);
+                else if (card2[j] == "pic26")
+                    pic[j+card1.length] = bitmaps.get(25);
+                else if (card2[j] == "pic27")
+                    pic[j+card1.length] = bitmaps.get(26);
+                else if (card2[j] == "pic28")
+                    pic[j+card1.length] = bitmaps.get(27);
+                else if (card2[j] == "pic29")
+                    pic[j+card1.length] = bitmaps.get(28);
+                else if (card2[j] == "pic30")
+                    pic[j+card1.length] = bitmaps.get(29);
+                else if (card2[j] == "pic31")
+                    pic[j+card1.length] = bitmaps.get(30);
             }
         }
 

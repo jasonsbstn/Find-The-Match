@@ -31,6 +31,40 @@ public class Options_Screen extends AppCompatActivity {
         createThemeSelection();
         createGameOrders();
         createGameLength();
+        createGameMode();
+    }
+
+    private void createGameMode() {
+        RadioGroup group = (RadioGroup) findViewById(R.id.gameModes);
+        String[] gameMode = getResources().getStringArray(R.array.game_mode);
+        RadioButton button1 = new RadioButton(this);
+        RadioButton button2 = new RadioButton(this);
+        button1.setText(gameMode[0]);
+        button2.setText(gameMode[1]);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //fill in your activity when click
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //fill in your activity when click
+            }
+        });
+        group.addView(button1);
+        group.addView(button2);
+        if(option ==1)//compare if the mode is set correctly then mark the radio button as presses (a full dot, not a blank one) REMOVE THE OPTION == 1
+        {
+            button1.setChecked(true);
+        }
+        else if(option ==2)//compare if the mode is set correctly then mark the radio button as presses (a full dot, not a blank one) REMOVE THE OPTION == 2
+        {
+            button2.setChecked(true);
+        }
+
+        saveTheme(option);
     }
 
     private void createGameOrders() {

@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import static com.example.finddamatch.MainActivity.bitmaps;
 import static com.example.finddamatch.MainActivity.option;
 
 /*
@@ -48,6 +50,12 @@ public class Options_Screen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Options_Screen.this,flickrImgClass.class);
                 startActivity(intent);
+            }
+        });
+        clearFlickrPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bitmaps.clear();
             }
         });
         createRadioButton();

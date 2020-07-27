@@ -2,6 +2,7 @@ package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,15 +27,26 @@ import com.example.finddamatch.flickr.PhotoGalleryActivity;
 
 public class Options_Screen extends AppCompatActivity {
     Button searchBtn;
+    Button editFlickrPhoto;
+    Button clearFlickrPhoto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
         searchBtn= findViewById(R.id.searchBtn);
+        editFlickrPhoto = findViewById(R.id.editBtn);
+        clearFlickrPhoto=findViewById(R.id.clearBtn);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(Options_Screen.this,PhotoGalleryActivity.class);
+                startActivity(intent);
+            }
+        });
+        editFlickrPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Options_Screen.this,flickrImgClass.class);
                 startActivity(intent);
             }
         });

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.finddamatch">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Won"></activity>
+        <activity android:name=".UI.flickrImgClass"></activity>
+        <activity android:name=".UI.Won" />
         <activity
             android:name=".UI.Main_Menu"
             android:screenOrientation="portrait"
@@ -31,7 +33,6 @@
             android:name=".UI.GameActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
@@ -43,9 +44,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.finddamatch.flickr.PhotoGalleryActivity"
-            android:theme="@style/AppTheme"
-             />
+            android:name=".flickr.PhotoGalleryActivity"
+            android:theme="@style/AppTheme" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

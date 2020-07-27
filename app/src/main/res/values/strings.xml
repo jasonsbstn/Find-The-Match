@@ -38,4 +38,9 @@
     <string name="winText"></string>
     <string name="enter_your_username">Enter your username</string>
     <string name="anonymous">Anonymous</string>
+    <string name="clear">Clear</string>
+    <string name="edit">edit</string>
+    <string name="options">Options</string>
+    <string name="save">Save</string>
+    <string name="delete">delete</string>
 </resources>

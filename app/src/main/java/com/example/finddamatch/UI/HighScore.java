@@ -29,55 +29,55 @@ public class HighScore extends AppCompatActivity {
 
         if(order==2) {
             if(length==5) {
-                createHighScore("highScore_2_5", "date_2_5", "name_2_5");
+                createHighScore("highScore_2_5", "date_2_5", "name_2_5",17500);
             }
             else if(length==7) {
-                createHighScore("highScore_2_7", "date_2_7", "name_2_7");
+                createHighScore("highScore_2_7", "date_2_7", "name_2_7",20000);
             }
         }
         else if(order==3) {
             if(length==5) {
-                createHighScore("highScore_3_5", "date_3_5", "name_3_5");
+                createHighScore("highScore_3_5", "date_3_5", "name_3_5",30000);
             }
             else if(length==10) {
-                createHighScore("highScore_3_10", "date_3_10", "name_3_10");
+                createHighScore("highScore_3_10", "date_3_10", "name_3_10",35000);
             }
             else if(length==13) {
-                createHighScore("highScore_3_13", "date_3_13", "name_3_13");
+                createHighScore("highScore_3_13", "date_3_13", "name_3_13",40000);
             }
         }
         else if(order==5) {
             if(length==5) {
-                createHighScore("highScore_5_5", "date_5_5", "name_5_5");
+                createHighScore("highScore_5_5", "date_5_5", "name_5_5",80000);
             }
             else if(length==10) {
-                createHighScore("highScore_5_10", "date_5_10", "name_5_10");
+                createHighScore("highScore_5_10", "date_5_10", "name_5_10",85000);
             }
             else if(length==15) {
-                createHighScore("highScore_5_15", "date_5_15", "name_5_15");
+                createHighScore("highScore_5_15", "date_5_15", "name_5_15",90000);
             }
             else if(length==20) {
-                createHighScore("highScore_5_20", "date_5_20", "name_5_20");
+                createHighScore("highScore_5_20", "date_5_20", "name_5_20",95000);
             }
             else if(length==31) {
-                createHighScore("highScore_5_31", "date_5_31", "name_5_31");
+                createHighScore("highScore_5_31", "date_5_31", "name_5_31",100000);
             }
         }
     }
 
-    private void createHighScore(String scores, String dates, String names) {
+    private void createHighScore(String scores, String dates, String names, int def) {
         TextView score = (TextView) findViewById(R.id.scoreView);
 
         //get high scores (defValue is default value)
         int first, second, third, fourth, fifth, sixth;
 
         SharedPreferences preferences = getSharedPreferences(scores, 0);
-        first = preferences.getInt("First", 20000);
-        second = preferences.getInt("Second", 20000);
-        third = preferences.getInt("Third", 20000);
-        fourth = preferences.getInt("Fourth", 20000);
-        fifth = preferences.getInt("Fifth", 20000);
-        sixth = preferences.getInt("Sixth", 20000);
+        first = preferences.getInt("First", def);
+        second = preferences.getInt("Second", def);
+        third = preferences.getInt("Third", def);
+        fourth = preferences.getInt("Fourth", def);
+        fifth = preferences.getInt("Fifth", def);
+        sixth = preferences.getInt("Sixth", def);
         SharedPreferences.Editor editor = preferences.edit();
 
 

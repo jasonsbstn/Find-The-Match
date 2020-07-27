@@ -17,6 +17,7 @@ public class deck implements Iterable<cards> {
     private static List<cards> cardsList= new ArrayList<>();
 
     public deck() {
+        cardsList.removeAll(cardsList);
         if(order==2) {
             String pics[] = {"pic1", "pic2", "pic3"};
             cardsList.add(new cards(pics, 1));

@@ -98,11 +98,26 @@
         android:id="@+id/gameMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="120dp"
         android:fontFamily="@font/metamorphous"
-        android:text="@string/gameMode"
-        android:textColor="#536DFE"
-        android:textSize="18sp"
+        android:text="@string/select_board_theme"
+        android:textColor="#F2F0F3"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/optionsHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/bungee_shade"
+        android:text="@string/options"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameLength" />
 
@@ -114,6 +129,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameMode" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="306dp"
+        android:layout_marginBottom="349dp"
+        android:background="@drawable/gradient_background"
+        android:text="@string/search"
+        android:textColor="#F6F6F6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collumnrowRadio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,16 +2,20 @@ package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import static com.example.finddamatch.MainActivity.bitmaps;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
@@ -22,8 +26,12 @@ Description : user chooses the theme
 
  */
 import com.example.finddamatch.R;
+import com.example.finddamatch.flickr.PhotoGalleryActivity;
 
 public class Options_Screen extends AppCompatActivity {
+    Button searchBtn;
+    Button editFlickrPhoto;
+    Button clearFlickrPhoto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

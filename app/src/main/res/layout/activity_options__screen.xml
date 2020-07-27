@@ -105,23 +105,27 @@
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-    <Button
+        app:layout_constraintTop_toBottomOf="@+id/textView3" /><Button
         android:id="@+id/searchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/gradient_background"
         android:text="@string/search"
         android:textColor="#F6F6F6"
-        app:layout_constraintBottom_toTopOf="@+id/editBtn"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editBtn"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/clearBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/gradient_background"
         android:text="@string/clear"
         android:textColor="#F6F6F6"
@@ -132,13 +136,13 @@
         android:id="@+id/editBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/gradient_background"
         android:text="@string/edit"
         android:textColor="#F6F6F6"
-        app:layout_constraintBottom_toTopOf="@+id/clearBtn"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/clearBtn" />
 
     <TextView
         android:id="@+id/textView3"
@@ -146,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
-        android:text="@string/game_modes"
+        android:text="Game Modes"
         android:textColor="#536DFE"
         android:textSize="18sp"
         android:textStyle="bold"

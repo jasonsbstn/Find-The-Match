@@ -38,12 +38,13 @@ public class gameView extends SurfaceView {
     String[] card1;
     String[] card2;
     Canvas c;
-    private float drawPileSize;
+    private int drawPileSize;
 
     public gameView(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
         super(context);
         holder = getHolder();
 
+        drawPileSize=0;
         timer=(int) SystemClock.elapsedRealtime();
         score=0;
         setImages();
@@ -79,7 +80,7 @@ public class gameView extends SurfaceView {
     public void setImages() {
         //if user won
         if(order==2) {
-            if (top.getCards().equals(hand.getCards())) {
+            if (top.getCards().equals(hand.getCards()) || drawPileSize==length-1) {
                 wonAction();
             }
             card1 = hand.getCards();
@@ -160,7 +161,7 @@ public class gameView extends SurfaceView {
             }
         }
         else if(order==3) {
-            if (top.getCards().equals(hand.getCards())) {
+            if (top.getCards().equals(hand.getCards()) || drawPileSize==length-1) {
                 wonAction();
             }
             card1 = hand.getCards();
@@ -290,7 +291,7 @@ public class gameView extends SurfaceView {
 
         }
         else if(order==5) {
-            if (top.getCards().equals(hand.getCards())) {
+            if (top.getCards().equals(hand.getCards()) || drawPileSize==length-1) {
                 wonAction();
             }
             card1 = hand.getCards();
@@ -572,31 +573,15 @@ public class gameView extends SurfaceView {
             //when touched compare the coordinates to see whether it is within the picture's coordinate and check if the picture is contained in the top and hand
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 && y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
-
-                    setImages();
-                    Log.d(TAG, "onTouchEvent: " + top.getCards()[0]);
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 && y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 3.5 / 10 && x < canvasXSize * 3.5 / 10 + 300 && y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[2])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             }
         }
@@ -604,42 +589,22 @@ public class gameView extends SurfaceView {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                 y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
-
-                    setImages();
-
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
                        y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                        y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[2])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
                        y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[3])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
+                    drawAction();
                 }
             }
         }
@@ -647,60 +612,32 @@ public class gameView extends SurfaceView {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                 y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
-
-                    setImages();
-
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
                        y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
                        y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[2])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
-
+                    drawAction();
                 }
             } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                        y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[3])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
+                    drawAction();
                 }
             } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
                        y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[4])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
+                    drawAction();
                 }
             } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
                        y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[5])) {
-
-                    setImages();
-                    holder.lockCanvas();
-                    drawPic(c);
-                    holder.unlockCanvasAndPost(c);
+                    drawAction();
                 }
             }
         }
@@ -763,6 +700,7 @@ public class gameView extends SurfaceView {
     }
 
     private void wonAction() {
+        drawPileSize=0;
         //calculate time
         score = (int) (SystemClock.elapsedRealtime() - timer);
         Intent intent = new Intent().setClass(getContext(), Won.class);
@@ -771,5 +709,13 @@ public class gameView extends SurfaceView {
         intent.putExtra("score", score);
         ((Activity) getContext()).startActivity(intent);
         ((Activity) getContext()).finish();
+    }
+
+    private void drawAction() {
+        setImages();
+        holder.lockCanvas();
+        drawPic(c);
+        holder.unlockCanvasAndPost(c);
+        drawPileSize++;
     }
 }

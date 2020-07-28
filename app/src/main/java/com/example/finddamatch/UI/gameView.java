@@ -359,9 +359,10 @@ public class gameView extends SurfaceView {
             Random rand = new Random();
             int order = MainActivity.order;
             int randNo = rand.nextInt(order) + 1;
-            int[] randArr = new int[randNo];
+            Integer[] randArr = new Integer[randNo];
             for (int i = 0; i < randNo; i++) {
                 randArr[i] = rand.nextInt(length)+1 ;
+                Log.d(TAG, "setImages: rand"+randArr[i]);
             }
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1" && Arrays.asList(randArr).contains(i))
@@ -621,9 +622,10 @@ public class gameView extends SurfaceView {
             Random rand = new Random();
             int order = MainActivity.order;
             int randNo = rand.nextInt(order) + 1;
-            int[] randArr = new int[randNo];
+            Integer[] randArr = new Integer[randNo];
             for (int i = 0; i < randNo; i++) {
                 randArr[i] = rand.nextInt(length) + 1;
+                Log.d(TAG, "setImages: rand"+randArr[i]);
             }
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1" && Arrays.asList(randArr).contains(i))

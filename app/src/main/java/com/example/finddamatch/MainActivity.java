@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     public static int length;
     public static int mode;
     public static List<Bitmap> bitmaps = new ArrayList<Bitmap>();
-    public static int mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

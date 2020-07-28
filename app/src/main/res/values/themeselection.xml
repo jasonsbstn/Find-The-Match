@@ -3,5 +3,6 @@
     <string-array name="themeselection">
         <item>Nature and Abstract Theme</item>
         <item>Cyber Theme</item>
+        <item>Flickr Image</item>
     </string-array>
 </resources>

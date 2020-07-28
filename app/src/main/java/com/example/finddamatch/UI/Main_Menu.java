@@ -84,7 +84,7 @@ public class Main_Menu extends AppCompatActivity {
 
                     else if(order==5)
                     {
-                        if(bitmaps.size()<15)
+                        if(bitmaps.size()<31)
                         {
                             option =1;
                             length=15;

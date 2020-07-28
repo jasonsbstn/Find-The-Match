@@ -300,8 +300,10 @@ public class Options_Screen extends AppCompatActivity {
         String[] themeOptions = getResources().getStringArray(R.array.themeselection);
         RadioButton button1 = new RadioButton(this);
         RadioButton button2 = new RadioButton(this);
+        RadioButton button3 = new RadioButton(this);
         button1.setText(themeOptions[0]);
         button2.setText(themeOptions[1]);
+        button3.setText(themeOptions[2]);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -315,8 +317,15 @@ public class Options_Screen extends AppCompatActivity {
 
             }
         });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                option= 3;
+            }
+        });
         group.addView(button1);
         group.addView(button2);
+        group.addView(button3);
         if(option == 1)
         {
             button1.setChecked(true);
@@ -325,7 +334,10 @@ public class Options_Screen extends AppCompatActivity {
         {
             button2.setChecked(true);
         }
-
+        else if(option ==3)
+        {
+            button3.setChecked(true);
+        }
         saveTheme(option);
 
     }

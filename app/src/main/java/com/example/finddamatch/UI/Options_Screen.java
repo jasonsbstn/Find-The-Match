@@ -2,19 +2,14 @@ package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.finddamatch.MainActivity.bitmaps;
@@ -35,6 +30,7 @@ public class Options_Screen extends AppCompatActivity {
     Button searchBtn;
     Button editFlickrPhoto;
     Button clearFlickrPhoto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,20 +39,20 @@ public class Options_Screen extends AppCompatActivity {
         createGameOrders();
         createGameLength();
         createGameMode();
-        searchBtn= findViewById(R.id.searchBtn);
+        searchBtn = findViewById(R.id.searchBtn);
         editFlickrPhoto = findViewById(R.id.editBtn);
-        clearFlickrPhoto=findViewById(R.id.clearBtn);
+        clearFlickrPhoto = findViewById(R.id.clearBtn);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Options_Screen.this,PhotoGalleryActivity.class);
+                Intent intent = new Intent(Options_Screen.this, PhotoGalleryActivity.class);
                 startActivity(intent);
             }
         });
         editFlickrPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Options_Screen.this,flickrImgClass.class);
+                Intent intent = new Intent(Options_Screen.this, flickrImgClass.class);
                 startActivity(intent);
             }
         });
@@ -64,10 +60,11 @@ public class Options_Screen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bitmaps.clear();
-                option =1;
+                option = 1;
             }
         });
     }
+
     private void createGameMode() {
         RadioGroup group = (RadioGroup) findViewById(R.id.gameModes);
         String[] gameMode = getResources().getStringArray(R.array.game_mode);
@@ -77,37 +74,33 @@ public class Options_Screen extends AppCompatActivity {
         button2.setText(gameMode[1]);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                mode=1;
+            public void onClick(View v) {
+                mode = 1;
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                mode=2;
+            public void onClick(View v) {
+                mode = 2;
             }
         });
         group.addView(button1);
         group.addView(button2);
-        if(mode ==1)
-        {
+        if (mode == 1) {
             button1.setChecked(true);
-        }
-        else if(mode ==2)
-        {
+        } else if (mode == 2) {
             button2.setChecked(true);
         }
 
         saveGameMode(mode);
-    }  private void saveGameMode(int optionNum) {
-        SharedPreferences prefs = this.getSharedPreferences("ThemePrefs",MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("GameMode",optionNum);
-        editor.apply();
     }
 
+    private void saveGameMode(int optionNum) {
+        SharedPreferences prefs = this.getSharedPreferences("ThemePrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("GameMode", optionNum);
+        editor.apply();
+    }
 
 
     private void createGameOrders() {
@@ -118,16 +111,16 @@ public class Options_Screen extends AppCompatActivity {
         final RadioButton btn2 = new RadioButton(this);
         final RadioButton btn3 = new RadioButton(this);
 
-        btn1.setText("Order "+gameOrder[0]);
-        btn2.setText("Order "+gameOrder[1]);
-        btn3.setText("Order "+gameOrder[2]);
+        btn1.setText("Order " + gameOrder[0]);
+        btn2.setText("Order " + gameOrder[1]);
+        btn3.setText("Order " + gameOrder[2]);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order=gameOrder[0];
-                if(length>7) {
-                    length=7;
+                order = gameOrder[0];
+                if (length > 7) {
+                    length = 7;
                     Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
                 }
                 btn1.setChecked(true);
@@ -136,12 +129,12 @@ public class Options_Screen extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order=gameOrder[1];
-                if(length>13 || length==7) {
-                    if(length==7)
-                        length=10;
+                order = gameOrder[1];
+                if (length > 13 || length == 7) {
+                    if (length == 7)
+                        length = 10;
                     else
-                        length=13;
+                        length = 13;
                     Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
                 }
                 btn2.setChecked(true);
@@ -150,12 +143,12 @@ public class Options_Screen extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order=gameOrder[2];
-                if(length==7 || length==13) {
-                    if(length==7)
-                        length=10;
-                    else if(length==13)
-                        length=15;
+                order = gameOrder[2];
+                if (length == 7 || length == 13) {
+                    if (length == 7)
+                        length = 10;
+                    else if (length == 13)
+                        length = 15;
                     Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
                 }
                 btn3.setChecked(true);
@@ -168,16 +161,11 @@ public class Options_Screen extends AppCompatActivity {
 
         saveOrders(order);
 
-        if(order == 2)
-        {
+        if (order == 2) {
             btn1.setChecked(true);
-        }
-        else if(order ==3)
-        {
+        } else if (order == 3) {
             btn2.setChecked(true);
-        }
-        else if(order ==5)
-        {
+        } else if (order == 5) {
             btn3.setChecked(true);
         }
     }
@@ -192,29 +180,28 @@ public class Options_Screen extends AppCompatActivity {
         final RadioButton btn4 = new RadioButton(this);
         final RadioButton btn5 = new RadioButton(this);
 
-        btn1.setText("Draw-pile size "+gameLength[0]);
-        btn2.setText("Draw-pile size "+gameLength[1]);
-        btn3.setText("Draw-pile size "+gameLength[2]);
-        btn4.setText("Draw-pile size "+gameLength[3]);
-        btn5.setText("Draw-pile size "+gameLength[4]);
+        btn1.setText("Draw-pile size " + gameLength[0]);
+        btn2.setText("Draw-pile size " + gameLength[1]);
+        btn3.setText("Draw-pile size " + gameLength[2]);
+        btn4.setText("Draw-pile size " + gameLength[3]);
+        btn5.setText("Draw-pile size " + gameLength[4]);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                length=5;
+                length = 5;
                 btn1.setChecked(true);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(order == 2) {
-                    Toast.makeText(getApplicationContext(),"Unavailable option, automatically changed to nearest pile length",Toast.LENGTH_SHORT).show();
-                    length=7;
+                if (order == 2) {
+                    Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
+                    length = 7;
                     btn5.setChecked(true);
-                }
-                else {
-                    length=10;
+                } else {
+                    length = 10;
                     btn2.setChecked(true);
                 }
             }
@@ -222,18 +209,16 @@ public class Options_Screen extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(order == 2) {
-                    Toast.makeText(getApplicationContext(),"Unavailable option, automatically changed to nearest pile length",Toast.LENGTH_SHORT).show();
-                    length=7;
+                if (order == 2) {
+                    Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
+                    length = 7;
                     btn5.setChecked(true);
-                }
-                else if(order ==3) {
-                    Toast.makeText(getApplicationContext(),"Unavailable option, automatically changed to nearest pile length",Toast.LENGTH_SHORT).show();
-                    length=13;
+                } else if (order == 3) {
+                    Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
+                    length = 13;
                     btn5.setChecked(true);
-                }
-                else {
-                    length=15;
+                } else {
+                    length = 15;
                     btn3.setChecked(true);
                 }
             }
@@ -241,18 +226,16 @@ public class Options_Screen extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(order == 2) {
-                    Toast.makeText(getApplicationContext(),"Unavailable option, automatically changed to nearest pile length",Toast.LENGTH_SHORT).show();
-                    length=7;
+                if (order == 2) {
+                    Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
+                    length = 7;
                     btn5.setChecked(true);
-                }
-                else if(order ==3) {
-                    Toast.makeText(getApplicationContext(),"Unavailable option, automatically changed to nearest pile length",Toast.LENGTH_SHORT).show();
-                    length=13;
+                } else if (order == 3) {
+                    Toast.makeText(getApplicationContext(), "Unavailable option, automatically changed to nearest pile length", Toast.LENGTH_SHORT).show();
+                    length = 13;
                     btn5.setChecked(true);
-                }
-                else {
-                    length=20;
+                } else {
+                    length = 20;
                     btn4.setChecked(true);
                 }
             }
@@ -260,14 +243,12 @@ public class Options_Screen extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(order == 2) {
-                    length=7;
-                }
-                else if(order ==3) {
-                    length=13;
-                }
-                else {
-                    length=31;
+                if (order == 2) {
+                    length = 7;
+                } else if (order == 3) {
+                    length = 13;
+                } else {
+                    length = 31;
                 }
                 btn5.setChecked(true);
             }
@@ -279,13 +260,13 @@ public class Options_Screen extends AppCompatActivity {
         group.addView(btn4);
         group.addView(btn5);
 
-        if(length==5)
+        if (length == 5)
             btn1.setChecked(true);
-        else if(length==10)
+        else if (length == 10)
             btn2.setChecked(true);
-        else if(length==15)
+        else if (length == 15)
             btn3.setChecked(true);
-        else if(length==20)
+        else if (length == 20)
             btn4.setChecked(true);
         else
             btn5.setChecked(true);
@@ -293,10 +274,11 @@ public class Options_Screen extends AppCompatActivity {
         saveLength(length);
     }
 
-    public static Intent makeLaunchIntent(Context c){
+    public static Intent makeLaunchIntent(Context c) {
         Intent intent = new Intent(c, Options_Screen.class);
         return intent;
     }
+
     private void createThemeSelection() {
         RadioGroup group = (RadioGroup) findViewById(R.id.collumnrowRadio);
         String[] themeOptions = getResources().getStringArray(R.array.themeselection);
@@ -307,48 +289,46 @@ public class Options_Screen extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                option= 1;
+                option = 1;
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                option= 2;
+                option = 2;
 
             }
         });
         group.addView(button1);
         group.addView(button2);
-        if(option == 1)
-        {
+        if (option == 1) {
             button1.setChecked(true);
-        }
-        else if(option ==2)
-        {
+        } else if (option == 2) {
             button2.setChecked(true);
         }
 
         saveTheme(option);
 
     }
+
     private void saveTheme(int optionNum) {
-        SharedPreferences prefs = this.getSharedPreferences("ThemePrefs",MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("ThemePrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("ThemeNum",optionNum);
+        editor.putInt("ThemeNum", optionNum);
         editor.apply();
     }
 
     private void saveOrders(int optionNum) {
-        SharedPreferences orders = this.getSharedPreferences("Orders",MODE_PRIVATE);
+        SharedPreferences orders = this.getSharedPreferences("Orders", MODE_PRIVATE);
         SharedPreferences.Editor editor = orders.edit();
-        editor.putInt("Orders",optionNum);
+        editor.putInt("Orders", optionNum);
         editor.apply();
     }
 
     private void saveLength(int optionNum) {
-        SharedPreferences lengths = this.getSharedPreferences("gameLength",MODE_PRIVATE);
+        SharedPreferences lengths = this.getSharedPreferences("gameLength", MODE_PRIVATE);
         SharedPreferences.Editor editor = lengths.edit();
-        editor.putInt("gameLength",optionNum);
+        editor.putInt("gameLength", optionNum);
         editor.apply();
     }
 

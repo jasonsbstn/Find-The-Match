@@ -29,6 +29,7 @@ import static com.example.finddamatch.MainActivity.top;
 import static com.example.finddamatch.UI.GameActivity.score;
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
+
 /*
     Description: using canvas to start the game layout and game logic
  */
@@ -50,14 +51,14 @@ public class gameView extends SurfaceView {
         super(context);
         holder = getHolder();
 
-        drawPileSize=0;
-        timer=(int) SystemClock.elapsedRealtime();
-        score=0;
+        drawPileSize = 0;
+        timer = (int) SystemClock.elapsedRealtime();
+        score = 0;
         setImages();
-        if (option == 1){
+        if (option == 1) {
             cardBackground = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
-        }else{
-            cardBackground = BitmapFactory.decodeResource(getResources(),R.drawable.bg1);
+        } else {
+            cardBackground = BitmapFactory.decodeResource(getResources(), R.drawable.bg1);
         }
         holder.addCallback(new SurfaceHolder.Callback() {
             @SuppressLint("WrongCall")
@@ -84,7 +85,7 @@ public class gameView extends SurfaceView {
     }
 
     public void setImages() {
-        if (top.getCards().equals(hand.getCards()) || drawPileSize==length-1) {
+        if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
             wonAction();
         }
         card1 = hand.getCards();
@@ -348,8 +349,7 @@ public class gameView extends SurfaceView {
                 else if (card2[j] == "pic31")
                     pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_31);
             }
-        }
-        else if (option == 3) {
+        } else if (option == 3) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1")
                     pic[i] = bitmaps.get(0);
@@ -416,67 +416,67 @@ public class gameView extends SurfaceView {
             }
             for (int j = 0; j < card2.length; j++) {
                 if (card2[j] == "pic1")
-                    pic[j+card1.length] = bitmaps.get(0);
+                    pic[j + card1.length] = bitmaps.get(0);
                 else if (card2[j] == "pic2")
-                    pic[j+card1.length] = bitmaps.get(1);
+                    pic[j + card1.length] = bitmaps.get(1);
                 else if (card2[j] == "pic3")
-                    pic[j+card1.length] = bitmaps.get(2);
+                    pic[j + card1.length] = bitmaps.get(2);
                 else if (card2[j] == "pic4")
-                    pic[j+card1.length] = bitmaps.get(3);
+                    pic[j + card1.length] = bitmaps.get(3);
                 else if (card2[j] == "pic5")
-                    pic[j+card1.length] = bitmaps.get(4);
+                    pic[j + card1.length] = bitmaps.get(4);
                 else if (card2[j] == "pic6")
-                    pic[j+card1.length] = bitmaps.get(5);
+                    pic[j + card1.length] = bitmaps.get(5);
                 else if (card2[j] == "pic7")
-                    pic[j+card1.length] = bitmaps.get(6);
+                    pic[j + card1.length] = bitmaps.get(6);
                 else if (card2[j] == "pic8")
-                    pic[j+card1.length] = bitmaps.get(7);
+                    pic[j + card1.length] = bitmaps.get(7);
                 else if (card2[j] == "pic9")
-                    pic[j+card1.length] = bitmaps.get(8);
+                    pic[j + card1.length] = bitmaps.get(8);
                 else if (card2[j] == "pic10")
-                    pic[j+card1.length] = bitmaps.get(9);
+                    pic[j + card1.length] = bitmaps.get(9);
                 else if (card2[j] == "pic11")
-                    pic[j+card1.length] = bitmaps.get(10);
+                    pic[j + card1.length] = bitmaps.get(10);
                 else if (card2[j] == "pic12")
-                    pic[j+card1.length] = bitmaps.get(11);
+                    pic[j + card1.length] = bitmaps.get(11);
                 else if (card2[j] == "pic13")
-                    pic[j+card1.length] = bitmaps.get(12);
+                    pic[j + card1.length] = bitmaps.get(12);
                 else if (card2[j] == "pic14")
-                    pic[j+card1.length] = bitmaps.get(13);
+                    pic[j + card1.length] = bitmaps.get(13);
                 else if (card2[j] == "pic15")
-                    pic[j+card1.length] = bitmaps.get(14);
+                    pic[j + card1.length] = bitmaps.get(14);
                 else if (card2[j] == "pic16")
-                    pic[j+card1.length] = bitmaps.get(15);
+                    pic[j + card1.length] = bitmaps.get(15);
                 else if (card2[j] == "pic17")
-                    pic[j+card1.length] = bitmaps.get(16);
+                    pic[j + card1.length] = bitmaps.get(16);
                 else if (card2[j] == "pic18")
-                    pic[j+card1.length] = bitmaps.get(17);
+                    pic[j + card1.length] = bitmaps.get(17);
                 else if (card2[j] == "pic19")
-                    pic[j+card1.length] = bitmaps.get(18);
+                    pic[j + card1.length] = bitmaps.get(18);
                 else if (card2[j] == "pic20")
-                    pic[j+card1.length] = bitmaps.get(19);
+                    pic[j + card1.length] = bitmaps.get(19);
                 else if (card2[j] == "pic21")
-                    pic[j+card1.length] = bitmaps.get(20);
+                    pic[j + card1.length] = bitmaps.get(20);
                 else if (card2[j] == "pic22")
-                    pic[j+card1.length] = bitmaps.get(21);
+                    pic[j + card1.length] = bitmaps.get(21);
                 else if (card2[j] == "pic23")
-                    pic[j+card1.length] = bitmaps.get(22);
+                    pic[j + card1.length] = bitmaps.get(22);
                 else if (card2[j] == "pic24")
-                    pic[j+card1.length] = bitmaps.get(23);
+                    pic[j + card1.length] = bitmaps.get(23);
                 else if (card2[j] == "pic25")
-                    pic[j+card1.length] = bitmaps.get(24);
+                    pic[j + card1.length] = bitmaps.get(24);
                 else if (card2[j] == "pic26")
-                    pic[j+card1.length] = bitmaps.get(25);
+                    pic[j + card1.length] = bitmaps.get(25);
                 else if (card2[j] == "pic27")
-                    pic[j+card1.length] = bitmaps.get(26);
+                    pic[j + card1.length] = bitmaps.get(26);
                 else if (card2[j] == "pic28")
-                    pic[j+card1.length] = bitmaps.get(27);
+                    pic[j + card1.length] = bitmaps.get(27);
                 else if (card2[j] == "pic29")
-                    pic[j+card1.length] = bitmaps.get(28);
+                    pic[j + card1.length] = bitmaps.get(28);
                 else if (card2[j] == "pic30")
-                    pic[j+card1.length] = bitmaps.get(29);
+                    pic[j + card1.length] = bitmaps.get(29);
                 else if (card2[j] == "pic31")
-                    pic[j+card1.length] = bitmaps.get(30);
+                    pic[j + card1.length] = bitmaps.get(30);
             }
         }
 
@@ -491,8 +491,8 @@ public class gameView extends SurfaceView {
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
-        if(order==2) {
-            //when touched compare the coordinates to see whether it is within the picture's coordinate and check if the picture is contained in the top and hand
+        //when touched compare the coordinates to see whether it is within the picture's coordinate and check if the picture is contained in the top and hand
+        if (order == 2) {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 && y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
                     drawAction();
@@ -506,58 +506,56 @@ public class gameView extends SurfaceView {
                     drawAction();
                 }
             }
-        }
-        else if(order==3) {
+        } else if (order == 3) {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
-                y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                    y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
-                       y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                    y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
-                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                    y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[2])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
-                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                    y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[3])) {
                     drawAction();
                 }
             }
-        }
-        else if(order==5) {
+        } else if (order == 5) {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
-                y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                    y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
-                       y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                    y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
-                       y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
+                    y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[2])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
-                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                    y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[3])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
-                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                    y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[4])) {
                     drawAction();
                 }
             } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
-                       y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
+                    y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[5])) {
                     drawAction();
                 }
@@ -571,7 +569,7 @@ public class gameView extends SurfaceView {
         canvas.drawColor(Color.GRAY);
         canvas.drawBitmap(scaledBackground, 0, 0, null);
         canvas.drawBitmap(scaledBackground, 0, canvas.getHeight() / 2, null);
-        if(order==2) {
+        if (order == 2) {
             canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);
             canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 1 / 10, null);
             canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 3.5 / 10), canvas.getHeight() * 3 / 10, null);
@@ -579,8 +577,7 @@ public class gameView extends SurfaceView {
             canvas.drawBitmap(picScaled[3], canvas.getWidth() * 1 / 10, canvas.getHeight() * 6 / 10, null);
             canvas.drawBitmap(picScaled[4], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 6 / 10, null);
             canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 3.5 / 10), canvas.getHeight() * 8 / 10, null);
-        }
-        else if (order==3) {
+        } else if (order == 3) {
             canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);
             canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 1 / 10, null);
             canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 3 / 10, null);
@@ -590,8 +587,7 @@ public class gameView extends SurfaceView {
             canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 6 / 10, null);
             canvas.drawBitmap(picScaled[6], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 8 / 10, null);
             canvas.drawBitmap(picScaled[7], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 8 / 10, null);
-        }
-        else if(order==5) {
+        } else if (order == 5) {
             canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 10, null);
             canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 3.85 / 10), canvas.getHeight() * 1 / 10, null);
             canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 6.7 / 10), canvas.getHeight() * 1 / 10, null);
@@ -608,7 +604,8 @@ public class gameView extends SurfaceView {
         }
 
     }
-    private Bitmap getCircleBitmap(Bitmap bitmap){//https://stackoverflow.com/questions/12944275/crop-image-as-circle-in-android
+
+    private Bitmap getCircleBitmap(Bitmap bitmap) {//https://stackoverflow.com/questions/12944275/crop-image-as-circle-in-android
         //crop bitmap into circle
         int widthLight = bitmap.getWidth();
         int heightLight = bitmap.getHeight();
@@ -621,7 +618,7 @@ public class gameView extends SurfaceView {
 
         RectF rectF = new RectF(new Rect(0, 0, widthLight, heightLight));
 
-        canvas.drawRoundRect(rectF, widthLight / 2 ,heightLight / 2,paintColor);
+        canvas.drawRoundRect(rectF, widthLight / 2, heightLight / 2, paintColor);
 
         Paint paintImage = new Paint();
         paintImage.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
@@ -629,6 +626,7 @@ public class gameView extends SurfaceView {
 
         return output;
     }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -642,7 +640,7 @@ public class gameView extends SurfaceView {
     }
 
     private void wonAction() {
-        drawPileSize=0;
+        drawPileSize = 0;
         //calculate time
         score = (int) (SystemClock.elapsedRealtime() - timer);
         Intent intent = new Intent().setClass(getContext(), Won.class);

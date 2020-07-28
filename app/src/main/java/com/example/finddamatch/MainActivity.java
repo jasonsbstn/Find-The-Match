@@ -15,6 +15,7 @@ import com.example.finddamatch.Classes.discard;
 import com.example.finddamatch.UI.Main_Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.CountDownTimer;
 import android.view.View;
 
@@ -36,22 +37,23 @@ public class MainActivity extends AppCompatActivity {
     public static int length;
     public static List<Bitmap> bitmaps = new ArrayList<Bitmap>();
     public static int mode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        option =1;
-        SharedPreferences prefs = getSharedPreferences("ThemePrefs",MODE_PRIVATE);
-        option = prefs.getInt("ThemeNum",1);
+        option = 1;
+        SharedPreferences prefs = getSharedPreferences("ThemePrefs", MODE_PRIVATE);
+        option = prefs.getInt("ThemeNum", 1);
 
         order = 2;
-        SharedPreferences orders = getSharedPreferences("Orders",MODE_PRIVATE);
-        order = orders.getInt("Orders",2);
+        SharedPreferences orders = getSharedPreferences("Orders", MODE_PRIVATE);
+        order = orders.getInt("Orders", 2);
 
-        length =5;
-        SharedPreferences lengths = getSharedPreferences("gameLength",MODE_PRIVATE);
-        length = lengths.getInt("gameLength",5);
+        length = 5;
+        SharedPreferences lengths = getSharedPreferences("gameLength", MODE_PRIVATE);
+        length = lengths.getInt("gameLength", 5);
 
         setContentView(R.layout.activity_main);
 

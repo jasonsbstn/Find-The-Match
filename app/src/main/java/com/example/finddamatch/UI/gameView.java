@@ -885,7 +885,7 @@ public class gameView extends SurfaceView {
 
 
 
-        else if (option == 3) {
+        else if (option == 3 && mode==1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1")
                     pic[i] = bitmaps.get(0);

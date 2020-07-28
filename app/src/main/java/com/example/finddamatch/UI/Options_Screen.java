@@ -102,9 +102,9 @@ public class Options_Screen extends AppCompatActivity {
 
         saveGameMode(mode);
     }  private void saveGameMode(int optionNum) {
-        SharedPreferences prefs = this.getSharedPreferences("ThemePrefs",MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("modes",MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("GameMode",optionNum);
+        editor.putInt("modes",optionNum);
         editor.apply();
     }
 

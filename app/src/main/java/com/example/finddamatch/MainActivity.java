@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences lengths = getSharedPreferences("gameLength",MODE_PRIVATE);
         length = lengths.getInt("gameLength",5);
 
+        mode =1;
+        SharedPreferences modes = getSharedPreferences("modes",MODE_PRIVATE);
+        mode= modes.getInt("modes",1);
+
         setContentView(R.layout.activity_main);
 
         shakeAnimation();

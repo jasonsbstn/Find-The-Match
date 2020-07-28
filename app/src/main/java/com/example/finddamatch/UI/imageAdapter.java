@@ -1,3 +1,7 @@
+/*
+Description: Grid view adapter to display images
+based on :https://www.youtube.com/watch?v=2gbPOEH7cQ8
+ */
 package com.example.finddamatch.UI;
 
 import android.content.Context;

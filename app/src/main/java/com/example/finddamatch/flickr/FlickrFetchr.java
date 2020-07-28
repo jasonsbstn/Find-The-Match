@@ -1,3 +1,7 @@
+/*
+Description: flickr api location
+taken from the book source code
+ */
 package com.example.finddamatch.flickr;
 
 import android.net.Uri;

@@ -1,3 +1,7 @@
+/*
+Description: using grid view to  diplay images from flickr
+based on :https://www.youtube.com/watch?v=2gbPOEH7cQ8
+ */
 package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,3 +1,6 @@
+/*
+Description:taken from book source code to get image url
+ */
 package com.example.finddamatch.flickr;
 
 public class GalleryItem {

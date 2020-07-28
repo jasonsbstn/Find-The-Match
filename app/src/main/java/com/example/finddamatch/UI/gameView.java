@@ -608,27 +608,7 @@ public class gameView extends SurfaceView {
         }
 
     }
-    private Bitmap getCircleBitmap(Bitmap bitmap){//https://stackoverflow.com/questions/12944275/crop-image-as-circle-in-android
-        //crop bitmap into circle
-        int widthLight = bitmap.getWidth();
-        int heightLight = bitmap.getHeight();
 
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(output);
-        Paint paintColor = new Paint();
-        paintColor.setFlags(Paint.ANTI_ALIAS_FLAG);
-
-        RectF rectF = new RectF(new Rect(0, 0, widthLight, heightLight));
-
-        canvas.drawRoundRect(rectF, widthLight / 2 ,heightLight / 2,paintColor);
-
-        Paint paintImage = new Paint();
-        paintImage.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-        canvas.drawBitmap(bitmap, 0, 0, paintImage);
-
-        return output;
-    }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

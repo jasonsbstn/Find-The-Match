@@ -1,3 +1,7 @@
+/*
+Description:fragment activities where the onclick, and image are shown
+taken from book source code
+ */
 package com.example.finddamatch.flickr;
 
 import android.graphics.Bitmap;

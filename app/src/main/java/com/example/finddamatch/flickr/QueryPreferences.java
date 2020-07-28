@@ -1,3 +1,6 @@
+/*
+Description: taken from book source code to search images
+ */
 package com.example.finddamatch.flickr;
 
 import android.content.Context;

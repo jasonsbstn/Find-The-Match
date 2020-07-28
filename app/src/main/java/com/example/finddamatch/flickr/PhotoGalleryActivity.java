@@ -1,3 +1,6 @@
+/*
+Description: makes the fragment for the flickr photos, taken from the book source code
+ */
 package com.example.finddamatch.flickr;
 
 

@@ -1,3 +1,6 @@
+/*
+Description:download the images, taken from book source code
+ */
 package com.example.finddamatch.flickr;
 
 import android.graphics.Bitmap;

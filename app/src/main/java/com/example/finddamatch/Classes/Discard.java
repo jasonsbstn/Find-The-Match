@@ -6,10 +6,10 @@ Description : contains the newest card that is discarded
  */
 import static com.example.finddamatch.MainActivity.Deck;
 
-public class discard {
-    cards top;
+public class Discard {
+    Cards top;
 
-    public discard(cards top) {
+    public Discard(Cards top) {
         this.top = top;
     }
     public boolean contain(String selected)

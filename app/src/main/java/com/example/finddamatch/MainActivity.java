@@ -9,9 +9,8 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import com.example.finddamatch.Classes.cards;
-import com.example.finddamatch.Classes.deck;
-import com.example.finddamatch.Classes.discard;
+import com.example.finddamatch.Classes.Cards;
+import com.example.finddamatch.Classes.Discard;
 import com.example.finddamatch.UI.Main_Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,14 +28,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static deck Deck;
-    public static cards hand;
-    public static discard top;
+    public static com.example.finddamatch.Classes.Deck Deck;
+    public static Cards hand;
+    public static Discard top;
     public static int option;
     public static int order;
     public static int length;
     public static int mode;
-    public static List<Bitmap> bitmaps = new ArrayList<Bitmap>(); 
+    public static List<Bitmap> bitmaps = new ArrayList<Bitmap>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

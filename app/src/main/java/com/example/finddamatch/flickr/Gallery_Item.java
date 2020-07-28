@@ -3,7 +3,7 @@ Description:taken from book source code to get image url
  */
 package com.example.finddamatch.flickr;
 
-public class GalleryItem {
+public class Gallery_Item {
     private String mCaption;
     private String mId;
     private String mUrl;

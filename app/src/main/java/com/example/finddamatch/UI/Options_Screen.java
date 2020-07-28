@@ -52,7 +52,7 @@ public class Options_Screen extends AppCompatActivity {
         editFlickrPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Options_Screen.this, flickrImgClass.class);
+                Intent intent = new Intent(Options_Screen.this, Flickr_Img_Class.class);
                 startActivity(intent);
             }
         });

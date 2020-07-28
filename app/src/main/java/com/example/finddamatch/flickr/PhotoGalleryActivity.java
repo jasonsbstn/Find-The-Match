@@ -6,10 +6,10 @@ package com.example.finddamatch.flickr;
 
 import androidx.fragment.app.Fragment;
 
-public class PhotoGalleryActivity extends SingleFragmentActivity {
+public class PhotoGalleryActivity extends Single_Fragment_Activity {
 
     @Override
     protected Fragment createFragment() {
-        return PhotoGalleryFragment.newInstance();
+        return Photo_Gallery_Fragment.newInstance();
     }
 }

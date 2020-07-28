@@ -6,7 +6,7 @@ package com.example.finddamatch.flickr;
 import android.content.Context;
 import android.preference.PreferenceManager;
 
-public class QueryPreferences {
+public class Query_Preferences {
 
     private static final String PREF_SEARCH_QUERY = "searchQuery";
 

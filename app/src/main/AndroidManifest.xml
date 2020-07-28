@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.flickrImgClass"></activity>
+        <activity android:name=".UI.Flickr_Img_Class"></activity>
         <activity android:name=".UI.Won" />
         <activity
             android:name=".UI.Main_Menu"
@@ -26,11 +26,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UI.HighScore"
+            android:name=".UI.High_Score"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UI.GameActivity"
+            android:name=".UI.Game_Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -31,14 +31,14 @@ import static com.example.finddamatch.MainActivity.hand;
 import static com.example.finddamatch.MainActivity.mode;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.top;
-import static com.example.finddamatch.UI.GameActivity.score;
+import static com.example.finddamatch.UI.Game_Activity.score;
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
 
 /*
     Description: using canvas to start the game layout and game logic
  */
-public class gameView extends SurfaceView {
+public class Game_View extends SurfaceView {
     private Bitmap[] pic = new Bitmap[12];
     private Bitmap[] picScaled = new Bitmap[12];
     private Bitmap cardBackground;
@@ -52,7 +52,7 @@ public class gameView extends SurfaceView {
     Canvas c;
     private int drawPileSize;
 
-    public gameView(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
+    public Game_View(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
         super(context);
         holder = getHolder();
 

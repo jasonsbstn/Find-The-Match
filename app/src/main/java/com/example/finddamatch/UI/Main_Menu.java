@@ -1,21 +1,20 @@
+/**
+ * Activity for main menu screen
+ */
+
 package com.example.finddamatch.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.finddamatch.Classes.deck;
+import com.example.finddamatch.Classes.Deck;
 import com.example.finddamatch.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.finddamatch.MainActivity.Deck;
 import static com.example.finddamatch.MainActivity.bitmaps;
@@ -100,9 +99,9 @@ public class Main_Menu extends AppCompatActivity {
                     }
 
                 }
-                Deck = new deck();
+                Deck = new Deck();
                 Deck.startGame();//creates a new deck and shuffle draw and discard
-                Intent PlayScreen = GameActivity.makeLaunchIntent(Main_Menu.this);
+                Intent PlayScreen = Game_Activity.makeLaunchIntent(Main_Menu.this);
                 startActivity(PlayScreen);
             }
 
@@ -113,7 +112,7 @@ public class Main_Menu extends AppCompatActivity {
         HighButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent HighScreen = HighScore.makeLaunchIntent(Main_Menu.this);
+                Intent HighScreen = High_Score.makeLaunchIntent(Main_Menu.this);
                 startActivity(HighScreen);
             }
 

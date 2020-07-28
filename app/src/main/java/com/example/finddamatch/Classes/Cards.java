@@ -4,11 +4,11 @@ package com.example.finddamatch.Classes;
 Description : stores the image of the cards
 
  */
-public class cards {
+public class Cards {
     public String images[];
     public int number;
 
-    public cards(String[] images, int number) {
+    public Cards(String[] images, int number) {
         this.images = images;
         this.number = number;
     }

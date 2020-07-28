@@ -10,16 +10,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.finddamatch.R;
+
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
 
-public class HighScore extends AppCompatActivity {
+public class High_Score extends AppCompatActivity {
 
     public static Intent makeLaunchIntent(Context c) {
-        return new Intent(c, HighScore.class);
+        return new Intent(c, High_Score.class);
     }
 
     @Override
@@ -63,6 +66,55 @@ public class HighScore extends AppCompatActivity {
                 createHighScore("highScore_5_31", "date_5_31", "name_5_31",100000);
             }
         }
+
+        resetButton();
+    }
+
+    private void resetButton() {
+        Button resetButton = findViewById(R.id.reset);
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(order==2) {
+                    if(length==5) {
+                        resetHighScore("highScore_2_5", "date_2_5", "name_2_5",17500);
+                    }
+                    else if(length==7) {
+                        resetHighScore("highScore_2_7", "date_2_7", "name_2_7",20000);
+                    }
+                }
+                else if(order==3) {
+                    if(length==5) {
+                        resetHighScore("highScore_3_5", "date_3_5", "name_3_5",30000);
+                    }
+                    else if(length==10) {
+                        resetHighScore("highScore_3_10", "date_3_10", "name_3_10",35000);
+                    }
+                    else if(length==13) {
+                        resetHighScore("highScore_3_13", "date_3_13", "name_3_13",40000);
+                    }
+                }
+                else if(order==5) {
+                    if(length==5) {
+                        resetHighScore("highScore_5_5", "date_5_5", "name_5_5",80000);
+                    }
+                    else if(length==10) {
+                        resetHighScore("highScore_5_10", "date_5_10", "name_5_10",85000);
+                    }
+                    else if(length==15) {
+                        resetHighScore("highScore_5_15", "date_5_15", "name_5_15",90000);
+                    }
+                    else if(length==20) {
+                        resetHighScore("highScore_5_20", "date_5_20", "name_5_20",95000);
+                    }
+                    else if(length==31) {
+                        resetHighScore("highScore_5_31", "date_5_31", "name_5_31",100000);
+                    }
+                }
+                Intent mainMenu = Main_Menu.makeLaunchIntent(High_Score.this);
+                startActivity(mainMenu);
+            }
+        });
     }
 
     private void createHighScore(String scores, String dates, String names, int def) {
@@ -225,5 +277,67 @@ public class HighScore extends AppCompatActivity {
                 "3: " + (float) third / 1000 + " - " + date3 + " - " + name3 + " \n" +
                 "4: " + (float) fourth / 1000 + " - " + date4 + " - " + name4 + " \n" +
                 "5: " + (float) fifth / 1000 + " - " + date5 + " - " + name5 + " \n");
+    }
+
+    private void resetHighScore(String scores, String dates, String names, int def) {
+        int first, second, third, fourth, fifth, sixth;
+
+        SharedPreferences preferences = getSharedPreferences(scores, 0);
+        first = preferences.getInt("First", def);
+        second = preferences.getInt("Second", def);
+        third = preferences.getInt("Third", def);
+        fourth = preferences.getInt("Fourth", def);
+        fifth = preferences.getInt("Fifth", def);
+        sixth = preferences.getInt("Sixth", def);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putInt("First",def);
+        editor.putInt("Second",def);
+        editor.putInt("Third",def);
+        editor.putInt("Fourth",def);
+        editor.putInt("Fifth",def);
+        editor.putInt("Sixth",def);
+        editor.apply();
+
+
+        //get high scores corresponding date
+        String date1, date2, date3, date4, date5, date6;
+
+        SharedPreferences date = getSharedPreferences(dates, 0);
+        date1 = date.getString("date1", "10-Jul-2020");
+        date2 = date.getString("date2", "10-Jul-2020");
+        date3 = date.getString("date3", "10-Jul-2020");
+        date4 = date.getString("date4", "10-Jul-2020");
+        date5 = date.getString("date5", "10-Jul-2020");
+        date6 = date.getString("date6", "10-Jul-2020");
+        SharedPreferences.Editor dateEdit = date.edit();
+
+        dateEdit.putString("date1","10-Jul-2020");
+        dateEdit.putString("date2","10-Jul-2020");
+        dateEdit.putString("date3","10-Jul-2020");
+        dateEdit.putString("date4","10-Jul-2020");
+        dateEdit.putString("date5","10-Jul-2020");
+        dateEdit.putString("date6","10-Jul-2020");
+        dateEdit.apply();
+
+        //get high scores corresponding username
+        String name1, name2, name3, name4, name5, name6;
+
+        SharedPreferences name = getSharedPreferences(names, 0);
+        name1 = name.getString("name1", "Anonymous");
+        name2 = name.getString("name2", "Anonymous");
+        name3 = name.getString("name3", "Anonymous");
+        name4 = name.getString("name4", "Anonymous");
+        name5 = name.getString("name5", "Anonymous");
+        name6 = name.getString("name6", "Anonymous");
+        SharedPreferences.Editor nameEdit = name.edit();
+
+        nameEdit.putString("name1","Anonymous");
+        nameEdit.putString("name2","Anonymous");
+        nameEdit.putString("name3","Anonymous");
+        nameEdit.putString("name4","Anonymous");
+        nameEdit.putString("name5","Anonymous");
+        nameEdit.putString("name6","Anonymous");
+        nameEdit.apply();
     }
 }

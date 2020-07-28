@@ -6,23 +6,21 @@ package com.example.finddamatch.UI;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.graphics.drawable.BitmapDrawable;
 
 import com.example.finddamatch.R;
 
 import static com.example.finddamatch.MainActivity.bitmaps;
-import static com.example.finddamatch.UI.flickrImgClass.toBeDeleted;
+import static com.example.finddamatch.UI.Flickr_Img_Class.toBeDeleted;
 
-public class imageAdapter extends BaseAdapter {
+public class Image_Adapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
-    public imageAdapter(Context c)
+    public Image_Adapter(Context c)
     {
         context = c;
     }

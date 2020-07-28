@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.finddamatch.R;
 
-public abstract class SingleFragmentActivity extends AppCompatActivity {
+public abstract class Single_Fragment_Activity extends AppCompatActivity {
 
     protected abstract Fragment createFragment();
 

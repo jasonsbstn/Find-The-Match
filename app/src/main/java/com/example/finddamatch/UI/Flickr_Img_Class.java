@@ -18,7 +18,7 @@ import java.util.List;
 
 import static com.example.finddamatch.MainActivity.bitmaps;
 
-public class flickrImgClass extends AppCompatActivity {
+public class Flickr_Img_Class extends AppCompatActivity {
     GridView gridView;
     public static List<Integer> toBeDeleted;
     Button saveBtn;
@@ -29,7 +29,7 @@ public class flickrImgClass extends AppCompatActivity {
         toBeDeleted=new ArrayList<>();
         gridView=findViewById(R.id.grid_view);
         saveBtn=findViewById(R.id.deleteBtn);
-        imageAdapter adapter = new imageAdapter(flickrImgClass.this);
+        Image_Adapter adapter = new Image_Adapter(Flickr_Img_Class.this);
         gridView.setAdapter(adapter);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override

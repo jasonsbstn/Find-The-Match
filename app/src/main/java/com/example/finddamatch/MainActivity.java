@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static int option;
     public static int order;
     public static int length;
+    public static int mode;
     public static List<Bitmap> bitmaps = new ArrayList<Bitmap>();
     public static int mode;
 
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         length = 5;
         SharedPreferences lengths = getSharedPreferences("gameLength", MODE_PRIVATE);
         length = lengths.getInt("gameLength", 5);
+
+        mode =1;
+        SharedPreferences modes = getSharedPreferences("modes",MODE_PRIVATE);
+        mode= modes.getInt("modes",1);
 
         setContentView(R.layout.activity_main);
 

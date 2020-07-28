@@ -64,7 +64,6 @@ public class Options_Screen extends AppCompatActivity {
             }
         });
     }
-
     private void createGameMode() {
         RadioGroup group = (RadioGroup) findViewById(R.id.gameModes);
         String[] gameMode = getResources().getStringArray(R.array.game_mode);
@@ -74,31 +73,34 @@ public class Options_Screen extends AppCompatActivity {
         button2.setText(gameMode[1]);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                mode = 1;
+            public void onClick(View v)
+            {
+                mode=1;
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                mode = 2;
+            public void onClick(View v)
+            {
+                mode=2;
             }
         });
         group.addView(button1);
         group.addView(button2);
-        if (mode == 1) {
+        if(mode ==1)
+        {
             button1.setChecked(true);
-        } else if (mode == 2) {
+        }
+        else if(mode ==2)
+        {
             button2.setChecked(true);
         }
 
         saveGameMode(mode);
-    }
-
-    private void saveGameMode(int optionNum) {
-        SharedPreferences prefs = this.getSharedPreferences("ThemePrefs", MODE_PRIVATE);
+    }  private void saveGameMode(int optionNum) {
+        SharedPreferences prefs = this.getSharedPreferences("modes",MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("GameMode", optionNum);
+        editor.putInt("modes",optionNum);
         editor.apply();
     }
 
@@ -284,8 +286,10 @@ public class Options_Screen extends AppCompatActivity {
         String[] themeOptions = getResources().getStringArray(R.array.themeselection);
         RadioButton button1 = new RadioButton(this);
         RadioButton button2 = new RadioButton(this);
+        RadioButton button3 = new RadioButton(this);
         button1.setText(themeOptions[0]);
         button2.setText(themeOptions[1]);
+        button3.setText(themeOptions[2]);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -299,14 +303,25 @@ public class Options_Screen extends AppCompatActivity {
 
             }
         });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                option= 3;
+            }
+        });
         group.addView(button1);
         group.addView(button2);
-        if (option == 1) {
+        group.addView(button3);
+        if(option == 1)
+        {
             button1.setChecked(true);
         } else if (option == 2) {
             button2.setChecked(true);
         }
-
+        else if(option ==3)
+        {
+            button3.setChecked(true);
+        }
         saveTheme(option);
 
     }

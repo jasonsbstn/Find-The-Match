@@ -20,6 +20,7 @@ import java.util.List;
 import static com.example.finddamatch.MainActivity.Deck;
 import static com.example.finddamatch.MainActivity.bitmaps;
 import static com.example.finddamatch.MainActivity.length;
+import static com.example.finddamatch.MainActivity.mode;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.order;
 
@@ -83,12 +84,19 @@ public class Main_Menu extends AppCompatActivity {
 
                     else if(order==5)
                     {
-                        if(bitmaps.size()<15)
+                        if(bitmaps.size()<31)
                         {
                             option =1;
                             length=15;
                             Toast.makeText(getApplicationContext(), "Lack of image selected for the flickr Image, change to nature theme", Toast.LENGTH_SHORT).show();
                         }
+                    }
+                    if (mode ==2)
+                    {
+
+                            option =1;
+                        Toast.makeText(getApplicationContext(), "This mode not available for selected option", Toast.LENGTH_SHORT).show();
+
                     }
 
                 }

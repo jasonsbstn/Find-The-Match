@@ -15,6 +15,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -88,6 +89,15 @@ public class Game_View extends SurfaceView {
             }
         });
 
+    }
+
+    public void correctImgSound(Context context){
+        MediaPlayer correctImgSound = MediaPlayer.create(context, R.raw.positive);
+        correctImgSound.start();
+    }
+    public void incorrectImgSound(Context context){
+        MediaPlayer incorrectImgSound = MediaPlayer.create(context, R.raw.negative);
+        incorrectImgSound.start();
     }
 
     public void setImages() {
@@ -1029,69 +1039,109 @@ public class Game_View extends SurfaceView {
         if (order == 2) {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 && y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }
+                else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 && y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 3.5 / 10 && x < canvasXSize * 3.5 / 10 + 300 && y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[2])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             }
         } else if (order == 3) {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                     y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
                     y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                     y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[2])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 6.5 / 10 && x < canvasXSize * 6.5 / 10 + 300 &&
                     y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[3])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             }
         } else if (order == 5) {
             if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                     y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[0])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
                     y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[1])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
                     y > canvasYSize * 1 / 10 && y < canvasYSize * 1 / 10 + 300) {
                 if (top.contain(card1[2])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 1 / 10 && x < canvasXSize * 1 / 10 + 300 &&
                     y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[3])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 3.85 / 10 && x < canvasXSize * 3.85 / 10 + 300 &&
                     y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[4])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             } else if (x > canvasXSize * 6.7 / 10 && x < canvasXSize * 6.7 / 10 + 300 &&
                     y > canvasYSize * 3 / 10 && y < canvasYSize * 3 / 10 + 300) {
                 if (top.contain(card1[5])) {
+                    correctImgSound(getContext());
                     drawAction();
+                }else {
+                    incorrectImgSound(getContext());
                 }
             }
         }

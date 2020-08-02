@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,8 @@ public class Main_Menu extends AppCompatActivity {
         PlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MediaPlayer playGame = MediaPlayer.create(Main_Menu.this,R.raw.playgame);
+                playGame.start();
                 if(option==3)
                 {
                     if(bitmaps.isEmpty())

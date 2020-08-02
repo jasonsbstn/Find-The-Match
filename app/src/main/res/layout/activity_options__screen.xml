@@ -14,7 +14,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/bungee_shade"
         android:text="@string/options"
-        android:textColor="#536DFE"
+        android:textColor="#F6F7F8"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -28,7 +28,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/select_order"
-        android:textColor="#536DFE"
+        android:textColor="#F6F7F8"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -42,7 +42,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/select_game_length"
-        android:textColor="#536DFE"
+        android:textColor="#F6F7F8"
         android:textColorLink="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -58,7 +58,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/game_modes"
-        android:textColor="#536DFE"
+        android:textColor="#F6F7F8"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/select_board_theme"
-        android:textColor="#536DFE"
+        android:textColor="#F6F7F8"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +154,18 @@
         android:textColor="#F6F6F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backButtonOptionsScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="#E53268"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

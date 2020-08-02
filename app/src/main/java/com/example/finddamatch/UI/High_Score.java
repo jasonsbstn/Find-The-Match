@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.finddamatch.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
@@ -29,6 +30,14 @@ public class High_Score extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
+
+        FloatingActionButton backButton = (FloatingActionButton) findViewById(R.id.backButtonHighScoreScreen);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         if(order==2) {
             if(length==5) {

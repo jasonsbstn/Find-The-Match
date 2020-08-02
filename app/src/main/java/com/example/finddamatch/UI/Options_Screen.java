@@ -25,6 +25,7 @@ Description : user chooses the theme
  */
 import com.example.finddamatch.R;
 import com.example.finddamatch.flickr.PhotoGalleryActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Options_Screen extends AppCompatActivity {
     Button searchBtn;
@@ -35,6 +36,13 @@ public class Options_Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options__screen);
+        FloatingActionButton backButton = (FloatingActionButton) findViewById(R.id.backButtonOptionsScreen);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         createThemeSelection();
         createGameOrders();
         createGameLength();

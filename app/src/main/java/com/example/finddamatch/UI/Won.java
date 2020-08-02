@@ -12,6 +12,7 @@ import static com.example.finddamatch.UI.Game_Activity.score;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -35,7 +36,8 @@ public class Won extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_won);
-
+        MediaPlayer wonSound = MediaPlayer.create(this, R.raw.gamewon);
+        wonSound.start();
         FloatingActionButton backButton = (FloatingActionButton) findViewById(R.id.backButtonWonScreen);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

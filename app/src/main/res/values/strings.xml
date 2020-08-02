@@ -18,7 +18,7 @@
     <string name="select_game_length">Game Length: </string>
     <string name="gameMode">Game Mode</string>
     <string name="reset">RESET</string>
-    <string name="saveUsername">SAVE USERNAME</string>
+    <string name="saveUsername">CONFIRM</string>
     <string name="teamMembers">
         Created by:\n
         * Dang Xuan Anh Tran - 301354210\n
@@ -43,7 +43,7 @@
     values-round/strings.xml for round devices.
     -->
     <string name="winText"></string>
-    <string name="enter_your_username">Enter your username</string>
+    <string name="enter_your_username">Enter your \nusername</string>
     <string name="anonymous">Anonymous</string>
     <string name="clear">Clear</string>
     <string name="edit">edit</string>

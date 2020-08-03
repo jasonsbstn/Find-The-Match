@@ -117,7 +117,63 @@ public class Main_Menu extends AppCompatActivity {
             }
 
         });
-    }
+
+    Button saveBtn=(Button) findViewById(R.id.saveImg);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(option==3)
+            {
+                if(bitmaps.isEmpty())
+                {
+                    option=1;
+                }
+                if(order==2)
+                {
+                    if(bitmaps.size()<6)
+                    {
+                        option =1;
+                        length=7;
+                        Toast.makeText(getApplicationContext(), "Lack of image selected for the flickr Image, change to nature theme", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else if(order==3)
+                {
+                    if(bitmaps.size()<13)
+                    {
+                        option =1;
+                        length=13;
+                        Toast.makeText(getApplicationContext(), "Lack of image selected for the flickr Image, change to nature theme", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(order==5)
+                {
+                    if(bitmaps.size()<31)
+                    {
+                        option =1;
+                        length=15;
+                        Toast.makeText(getApplicationContext(), "Lack of image selected for the flickr Image, change to nature theme", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if (mode ==2)
+                {
+
+                    option =1;
+                    Toast.makeText(getApplicationContext(), "This mode not available for selected option", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+            Deck = new Deck();
+            Deck.startGame();
+            Intent intent = saveCardActivity.makeLaunchIntent(Main_Menu.this);
+            startActivity(intent);
+        }
+
+    });
+}
+
     // Intent function
     public static Intent makeLaunchIntent(Context c){
         Intent intent = new Intent(c, Main_Menu.class);

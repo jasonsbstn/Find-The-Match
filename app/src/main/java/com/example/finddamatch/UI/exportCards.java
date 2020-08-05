@@ -19,16 +19,20 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import com.example.finddamatch.MainActivity;
 import com.example.finddamatch.R;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
 import static android.content.ContentValues.TAG;
+import static com.example.finddamatch.MainActivity.Deck;
 import static com.example.finddamatch.MainActivity.bitmaps;
 import static com.example.finddamatch.MainActivity.hand;
 import static com.example.finddamatch.MainActivity.mode;
@@ -47,30 +51,33 @@ public class exportCards extends SurfaceView {
     private Bitmap cardBackground;
     private Bitmap scaledBackground;
     private SurfaceHolder holder;
-    private float canvasXSize;
-    private float canvasYSize;
     String[] card1;
-    Canvas c;
+    private int drawPileSize;
+
+
+    Canvas canvas ;
 
 
     public exportCards(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
         super(context);
         holder = getHolder();
-        score = 0;
+        drawPileSize = 0;
+        Log.d(TAG, "exportCards: " + this.getHeight());
         setImages();
         if (option == 1) {
             cardBackground = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
         } else {
             cardBackground = BitmapFactory.decodeResource(getResources(), R.drawable.bg1);
         }
+
         holder.addCallback(new SurfaceHolder.Callback() {
             @SuppressLint("WrongCall")
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
 
-                c = holder.lockCanvas();
-                onDraw(c);
-                holder.unlockCanvasAndPost(c);
+                canvas = holder.lockCanvas();
+               onDraw(canvas);
+               holder.unlockCanvasAndPost(canvas);
 
             }
 
@@ -89,6 +96,9 @@ public class exportCards extends SurfaceView {
 
 
     public void setImages() {
+        if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
+            saveFinish();
+        }
         card1 = hand.getCards();
         Log.d(TAG, "setImages: " + card1[0]);
         if (option == 1 && mode == 1) {
@@ -572,79 +582,83 @@ public class exportCards extends SurfaceView {
         }
     }
 
-  /*  @Override
+    private void saveFinish() {
+        drawPileSize = 0;
+        Toast.makeText(getContext(), "Saved all cards, find the image in gallery/photo app", Toast.LENGTH_SHORT).show();
+        ((Activity) getContext()).finish();
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-        //when touched compare the coordinates to see whether it is within the picture's coordinate and check if the picture is contained in the top and hand
-        saveImage();
+        Log.d(TAG, "onTouchEvent: "+this.getWidth()+" "+this.getHeight());
+        Bitmap bitmap = Bitmap.createBitmap(this.getWidth(),this.getHeight(),Bitmap.Config.ARGB_8888);
+        Canvas saveCanvas= new Canvas(bitmap);
+        drawPic(saveCanvas);
 
+        File file = new File(Environment.getExternalStorageDirectory() + "/cards"+drawPileSize+".jpeg");
+
+        try {
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
+        } catch (Exception e) {
+            Log.d(TAG, "saveImage: fails");
+            e.printStackTrace();
+        }
+        Deck.discard();
+        Deck.draw();
+        Toast.makeText(getContext(), "Card saved, click to save another card", Toast.LENGTH_SHORT).show();
+        drawAction();
         return super.onTouchEvent(event);
-    }*/
-
-    private Bitmap saveImage() {
-            Bitmap  bitmap = Bitmap.createBitmap(c.getWidth(), c.getHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            this.draw(canvas);
-
-            File file = new File(Environment.getExternalStorageDirectory() + "/sign.png");
-
-            try {
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
-            } catch (Exception e) {
-                Log.d(TAG, "saveImage: fails");
-                e.printStackTrace();
-            }
-            return bitmap;
-
     }
 
     private void drawPic(Canvas canvas) {
-        canvas.drawColor(Color.GRAY);
+        canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(scaledBackground, 0, 0, null);
         if (order == 2) {
-            canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 5, null);
-            canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 1 / 5, null);
-            canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 3.5/10), canvas.getHeight() * 3 / 5, null);
+            canvas.drawBitmap(picScaled[0], this.getWidth() * 1 / 10, this.getHeight() * 1 / 5, null);
+            canvas.drawBitmap(picScaled[1], (float) (this.getWidth() * 6.5 / 10), this.getHeight() * 1 / 5, null);
+            canvas.drawBitmap(picScaled[2], (float) (this.getWidth() * 3.5/10), this.getHeight() * 3 / 5, null);
 
 
 
         } else if (order == 3) {
-            canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 5, null);
-            canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 1 / 5, null);
-            canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 3 / 5, null);
-            canvas.drawBitmap(picScaled[3], (float) (canvas.getWidth() * 6.5 / 10), canvas.getHeight() * 3 / 5, null);
+            canvas.drawBitmap(picScaled[0], this.getWidth() * 1 / 10, this.getHeight() * 1 / 5, null);
+            canvas.drawBitmap(picScaled[1], (float) (this.getWidth() * 6.5 / 10), this.getHeight() * 1 / 5, null);
+            canvas.drawBitmap(picScaled[2], (float) (this.getWidth() * 1 / 10), this.getHeight() * 3 / 5, null);
+            canvas.drawBitmap(picScaled[3], (float) (this.getWidth() * 6.5 / 10), this.getHeight() * 3 / 5, null);
 
 
 
         } else if (order == 5) {
-            canvas.drawBitmap(picScaled[0], canvas.getWidth() * 1 / 10, canvas.getHeight() * 1 / 5, null);
-            canvas.drawBitmap(picScaled[1], (float) (canvas.getWidth() * 3.85 / 10), canvas.getHeight() * 1 / 5, null);
-            canvas.drawBitmap(picScaled[2], (float) (canvas.getWidth() * 6.7 / 10), canvas.getHeight() * 1 / 5, null);
-            canvas.drawBitmap(picScaled[3], (float) (canvas.getWidth() * 1 / 10), canvas.getHeight() * 3 / 5, null);
-            canvas.drawBitmap(picScaled[4], (float) (canvas.getWidth() * 3.85 / 10), canvas.getHeight() * 3 /5, null);
-            canvas.drawBitmap(picScaled[5], (float) (canvas.getWidth() * 6.7 / 10), canvas.getHeight() * 3 /5, null);
+            canvas.drawBitmap(picScaled[0], this.getWidth() * 1 / 10, this.getHeight() * 1 / 5, null);
+            canvas.drawBitmap(picScaled[1], (float) (this.getWidth() * 3.85 / 10), this.getHeight() * 1 / 5, null);
+            canvas.drawBitmap(picScaled[2], (float) (this.getWidth() * 6.7 / 10), this.getHeight() * 1 / 5, null);
+            canvas.drawBitmap(picScaled[3], (float) (this.getWidth() * 1 / 10), this.getHeight() * 3 / 5, null);
+            canvas.drawBitmap(picScaled[4], (float) (this.getWidth() * 3.85 / 10), this.getHeight() * 3 /5, null);
+            canvas.drawBitmap(picScaled[5], (float) (this.getWidth() * 6.7 / 10), this.getHeight() * 3 /5, null);
 
         }
 
     }
 
-    @Override
+
+  @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        scaledBackground = Bitmap.createScaledBitmap(cardBackground, canvas.getWidth(), canvas.getHeight(), true);
-        canvasXSize = canvas.getWidth();
-        canvasYSize = canvas.getHeight();
-
-
-        drawPic(canvas);
+     /*   getDrawingCache(true);
+        Log.d(TAG, "onDraw: "+canvas.getWidth() +""+canvas.getHeight());
+        bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(),Bitmap.Config.ARGB_8888);
+        canvas= new Canvas(bitmap);
+        Log.d(TAG, "surfaceCreated: "+bitmap.isMutable());
+        invalidate();*/
+        scaledBackground = Bitmap.createScaledBitmap(cardBackground, this.getWidth(), this.getHeight(), true);
+       drawPic(canvas);
     }
-
 
     private void drawAction() {
         setImages();
         holder.lockCanvas();
-        drawPic(c);
-        holder.unlockCanvasAndPost(c);
+        drawPic(canvas);
+        holder.unlockCanvasAndPost(canvas);
+        drawPileSize++;
     }
 }

@@ -8,11 +8,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.SystemClock;
 import android.provider.MediaStore;
@@ -20,6 +24,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.ImageView;
 
 import com.example.finddamatch.MainActivity;
 import com.example.finddamatch.R;
@@ -37,6 +42,7 @@ import static com.example.finddamatch.UI.Game_Activity.score;
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
 import static com.example.finddamatch.MainActivity.imagesToRotate;
+import static com.example.finddamatch.MainActivity.difficultmode;
 
 /*
     Description: using canvas to start the game layout and game logic
@@ -101,6 +107,42 @@ public class Game_View extends SurfaceView {
         incorrectImgSound.start();
     }
 
+    public void randomRotateImage(ImageView image){
+        Matrix matrix = new Matrix();
+        float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+        image.setScaleType(ImageView.ScaleType.MATRIX);
+        matrix.postRotate(toDegrees,image.getDrawable().getBounds().width()/2,image.getDrawable().getBounds().height()/2);
+        image.setImageMatrix(matrix);
+
+    }
+
+    public void resizeBitmap(Bitmap bitmap){
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        int newWidth = 75;
+        int newHeight = 75;
+
+        // calculate the scale - in this case = 0.4f
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+
+        // createa matrix for the manipulation
+        Matrix matrix = new Matrix();
+        // resize the bit map
+        matrix.postScale(scaleWidth, scaleHeight);
+        // rotate the Bitmap
+        matrix.postRotate(120);
+
+        // recreate the new Bitmap
+        Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0,
+                width, height, matrix, true);
+
+
+        // make a Drawable from Bitmap to allow to set the BitMap
+        // to the ImageView, ImageButton or what ever
+        BitmapDrawable bmd = new BitmapDrawable(resizedBitmap);
+    }
+
     public void setImages() {
         if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
             wonAction();
@@ -108,10 +150,15 @@ public class Game_View extends SurfaceView {
         card1 = hand.getCards();
         card2 = top.getCards();
         Log.d(TAG, "setImages: " + card1[0] + card2[0]);
-        if (option == 1 && mode == 1) {
+        if (option == 1 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
-                if (card1[i] == "pic1")
-                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_1);
+                if (card1[i] == "pic1"){
+                    //ImageView ig = (ImageView)findViewById(R.id.check);
+                    //ig.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));
+                    //randomRotateImage(ig);
+                    //ig.buildDrawingCache();
+                    //Bitmap bp = ig.getDrawingCache();
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);}
                 else if (card1[i] == "pic2")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card1[i] == "pic3")

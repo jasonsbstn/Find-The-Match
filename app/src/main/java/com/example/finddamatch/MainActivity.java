@@ -16,6 +16,7 @@ import com.example.finddamatch.UI.Main_Menu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 
 import android.view.animation.Animation;
@@ -25,6 +26,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,12 +39,15 @@ public class MainActivity extends AppCompatActivity {
     public static int order;
     public static int length;
     public static int mode;
+    public static int difficultmode;
     public static List<Bitmap> bitmaps = new ArrayList<Bitmap>();
+    public static Integer[] imagesToRotate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Array filled with random indices which are going to rotated/resized
 
         option = 1;
         SharedPreferences prefs = getSharedPreferences("ThemePrefs", MODE_PRIVATE);
@@ -57,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
         mode =1;
         SharedPreferences modes = getSharedPreferences("modes",MODE_PRIVATE);
         mode= modes.getInt("modes",1);
+
+        difficultmode = 1;
+        SharedPreferences diffMode = getSharedPreferences("DiffModes", MODE_PRIVATE);
+        difficultmode = diffMode.getInt("DiffModes",1);
+
+        Random  rand= new Random();
+        int orderOfCards = MainActivity.order;
+        int randomIndices = rand.nextInt(orderOfCards) + 1;
+        imagesToRotate = new Integer[length];
+        for(int i = 0 ; i < length; i++){
+            imagesToRotate[i] = rand.nextInt(length) + 1;
+            Log.d (TAG, " rotateImages : rand "+imagesToRotate[i]);
+        }
 
         setContentView(R.layout.activity_main);
 

@@ -36,10 +36,11 @@ import static com.example.finddamatch.MainActivity.top;
 import static com.example.finddamatch.UI.Game_Activity.score;
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
+import static com.example.finddamatch.MainActivity.imagesToRotate;
 
 /*
     Description: using canvas to start the game layout and game logic
- */
+*/
 public class Game_View extends SurfaceView {
     private Bitmap[] pic = new Bitmap[12];
     private Bitmap[] picScaled = new Bitmap[12];
@@ -371,8 +372,8 @@ public class Game_View extends SurfaceView {
             Random rand = new Random();
             int order = MainActivity.order;
             int randNo = rand.nextInt(order) + 1;
-            Integer[] randArr = new Integer[randNo];
-            for (int i = 0; i < randNo; i++) {
+            Integer[] randArr = new Integer[length];
+            for (int i = 0; i < length; i++) {
                 randArr[i] = rand.nextInt(length)+1 ;
                 Log.d(TAG, "setImages: rand"+randArr[i]);
             }
@@ -634,8 +635,8 @@ public class Game_View extends SurfaceView {
             Random rand = new Random();
             int order = MainActivity.order;
             int randNo = rand.nextInt(order) + 1;
-            Integer[] randArr = new Integer[randNo];
-            for (int i = 0; i < randNo; i++) {
+            Integer[] randArr = new Integer[length];
+            for (int i = 0; i < length; i++) {
                 randArr[i] = rand.nextInt(length) + 1;
                 Log.d(TAG, "setImages: rand"+randArr[i]);
             }

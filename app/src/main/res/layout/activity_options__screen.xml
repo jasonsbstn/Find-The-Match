@@ -11,7 +11,6 @@
         android:id="@+id/textView2"
         android:layout_width="177dp"
         android:layout_height="60dp"
-        android:layout_marginTop="12dp"
         android:fontFamily="@font/bungee_shade"
         android:text="@string/options"
         android:textColor="#F6F7F8"
@@ -25,11 +24,13 @@
         android:id="@+id/Order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/select_order"
         android:textColor="#F6F7F8"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +40,7 @@
         android:id="@+id/Length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/select_game_length"
@@ -55,6 +57,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/game_modes"
@@ -70,7 +73,7 @@
         android:id="@+id/selecttheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/select_board_theme"
@@ -116,7 +119,7 @@
         android:id="@+id/gameModes"
         android:layout_width="388dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
@@ -166,6 +169,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
+
+    <TextView
+        android:id="@+id/DifficultyMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/metamorphous"
+        android:text="@string/DifficultyMode"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameModes" />
+
+    <RadioGroup
+        android:id="@+id/DifficultyModes"
+        android:layout_width="391dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DifficultyMode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

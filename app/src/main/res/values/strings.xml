@@ -19,6 +19,7 @@
     <string name="gameMode">Game Mode</string>
     <string name="reset">RESET</string>
     <string name="saveUsername">CONFIRM</string>
+    <string name="DifficultyMode">Difficulty Mode</string>
     <string name="teamMembers">
         Created by:\n
         * Dang Xuan Anh Tran - 301354210\n

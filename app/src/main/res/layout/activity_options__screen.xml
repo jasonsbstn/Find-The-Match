@@ -57,17 +57,15 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="60dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/game_modes"
         android:textColor="#F6F7F8"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameLength" />
+        app:layout_constraintTop_toBottomOf="@+id/collumnrowRadio" />
 
     <TextView
         android:id="@+id/selecttheme"
@@ -98,31 +96,30 @@
 
     <RadioGroup
         android:id="@+id/Orders"
-        android:layout_width="388dp"
-        android:layout_height="wrap_content"
+        android:layout_width="127dp"
+        android:layout_height="6dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Order" />
 
     <RadioGroup
         android:id="@+id/gameLength"
-        android:layout_width="388sp"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Length" />
 
     <RadioGroup
         android:id="@+id/gameModes"
-        android:layout_width="388dp"
-        android:layout_height="wrap_content"
+        android:layout_width="134dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="92dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Orders"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
@@ -174,23 +171,23 @@
         android:id="@+id/DifficultyMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="40dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/DifficultyMode"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameModes" />
 
     <RadioGroup
         android:id="@+id/DifficultyModes"
-        android:layout_width="391dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="159dp"
+        android:layout_height="2dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DifficultyMode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

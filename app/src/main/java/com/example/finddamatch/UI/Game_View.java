@@ -107,15 +107,6 @@ public class Game_View extends SurfaceView {
         incorrectImgSound.start();
     }
 
-    public void randomRotateImage(ImageView image){
-        Matrix matrix = new Matrix();
-        float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-        image.setScaleType(ImageView.ScaleType.MATRIX);
-        matrix.postRotate(toDegrees,image.getDrawable().getBounds().width()/2,image.getDrawable().getBounds().height()/2);
-        image.setImageMatrix(matrix);
-
-    }
-
     public void resizeBitmap(Bitmap bitmap){
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
@@ -126,7 +117,7 @@ public class Game_View extends SurfaceView {
         float scaleWidth = ((float) newWidth) / width;
         float scaleHeight = ((float) newHeight) / height;
 
-        // createa matrix for the manipulation
+        // create a matrix for the manipulation
         Matrix matrix = new Matrix();
         // resize the bit map
         matrix.postScale(scaleWidth, scaleHeight);
@@ -140,7 +131,22 @@ public class Game_View extends SurfaceView {
 
         // make a Drawable from Bitmap to allow to set the BitMap
         // to the ImageView, ImageButton or what ever
-        BitmapDrawable bmd = new BitmapDrawable(resizedBitmap);
+        //BitmapDrawable bmd = new BitmapDrawable(resizedBitmap);
+    }
+
+    public static Bitmap rotateImage(Bitmap originalBitmap)
+    {
+        // create new matrix
+        Matrix matrix = new Matrix();
+        float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+        // setup rotation degree
+        matrix.postRotate(toDegrees);
+        Bitmap scaledBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getWidth(), originalBitmap.getHeight(), matrix, true);
+        return scaledBitmap;
+    }
+
+    public void randomRotate(){
+
     }
 
     public void setImages() {
@@ -153,12 +159,8 @@ public class Game_View extends SurfaceView {
         if (option == 1 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1"){
-                    //ImageView ig = (ImageView)findViewById(R.id.check);
-                    //ig.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));
-                    //randomRotateImage(ig);
-                    //ig.buildDrawingCache();
-                    //Bitmap bp = ig.getDrawingCache();
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);}
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));
+                    picScaled[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));}
                 else if (card1[i] == "pic2")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card1[i] == "pic3")
@@ -1198,7 +1200,7 @@ public class Game_View extends SurfaceView {
     }
 
     private void drawPic(Canvas canvas) {
-        canvas.drawColor(Color.GRAY);
+        canvas.drawColor(0x00AAAAAA);
         canvas.drawBitmap(scaledBackground, 0, 0, null);
         canvas.drawBitmap(scaledBackground, 0, canvas.getHeight() / 2, null);
         if (order == 2) {

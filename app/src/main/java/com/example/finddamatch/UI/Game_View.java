@@ -159,8 +159,7 @@ public class Game_View extends SurfaceView {
         if (option == 1 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1"){
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));
-                    picScaled[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));}
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1)); }
                 else if (card1[i] == "pic2")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card1[i] == "pic3")
@@ -224,7 +223,7 @@ public class Game_View extends SurfaceView {
             }
             for (int j = 0; j < card2.length; j++) {
                 if (card2[j] == "pic1")
-                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_1);
+                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_1));
                 else if (card2[j] == "pic2")
                     pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card2[j] == "pic3")

@@ -300,23 +300,23 @@ public class Game_View extends SurfaceView {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i)){
                     float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[i] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1),angles[i]);
+                    angles[0] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1),angles[0]);
                 }
                 else if(card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i) == false)
                     pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);
                 else if (card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i)){
                     float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[i] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2),angles[i]);
+                    angles[1] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2),angles[1]);
                 }
                 else if(card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i) == false ){
                     pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_2);
                 }
                 else if (card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i)){
                     float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[i] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3),angles[i]);
+                    angles[2] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3),angles[2]);
                 }
                 else if(card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i) == false){
                     pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_3);
@@ -380,15 +380,15 @@ public class Game_View extends SurfaceView {
             }
             for (int j = 0; j < card2.length; j++) {
                 if (card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j))
-                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_1),angles[j]);
+                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_1),angles[0]);
                 else if(card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j) == false)
                     pic[j + card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);
                 else if (card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j))
-                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2),angles[j]);
+                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2),angles[1]);
                 else if(card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j) == false)
                     pic[j + card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_2);
                 else if (card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j))
-                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3),angles[j]);
+                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3),angles[2]);
                 else if(card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j) == false)
                     pic[j + card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_3);
                 else if (card2[j] == "pic4")

@@ -60,6 +60,7 @@ public class Game_View extends SurfaceView {
     String[] card2;
     Canvas c;
     private int drawPileSize;
+    public float[] angles = new float[100];
 
     public Game_View(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
         super(context);
@@ -134,13 +135,13 @@ public class Game_View extends SurfaceView {
         //BitmapDrawable bmd = new BitmapDrawable(resizedBitmap);
     }
 
-    public static Bitmap rotateImage(Bitmap originalBitmap)
+    public static Bitmap rotateImage(Bitmap originalBitmap, float angle)
     {
         // create new matrix
         Matrix matrix = new Matrix();
         float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
         // setup rotation degree
-        matrix.postRotate(toDegrees);
+        matrix.postRotate(angle);
         Bitmap scaledBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getWidth(), originalBitmap.getHeight(), matrix, true);
         return scaledBitmap;
     }
@@ -159,7 +160,9 @@ public class Game_View extends SurfaceView {
         if (option == 1 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1"){
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1)); }
+                    //float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    //angles[i] = toDegrees;
+                    pic[i] = (BitmapFactory.decodeResource(getResources(),R.drawable.img1_1)); }
                 else if (card1[i] == "pic2")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card1[i] == "pic3")
@@ -223,7 +226,7 @@ public class Game_View extends SurfaceView {
             }
             for (int j = 0; j < card2.length; j++) {
                 if (card2[j] == "pic1")
-                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_1));
+                    pic[j + card1.length] = (BitmapFactory.decodeResource(getResources(), R.drawable.img1_1));
                 else if (card2[j] == "pic2")
                     pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card2[j] == "pic3")
@@ -285,8 +288,168 @@ public class Game_View extends SurfaceView {
                 else if (card2[j] == "pic31")
                     pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_31);
             }
-        }
-        else if (option == 2 && mode == 1) {
+        }else if(option == 1 && mode == 1 && difficultmode == 2){
+            Random rand1 = new Random();
+            int order = MainActivity.order;
+            int randNo = rand1.nextInt(order) + 1;
+            Integer[] randRotateArr = new Integer[length];
+            for (int i = 0; i < length; i++) {
+                randRotateArr[i] = rand1.nextInt(length)+1 ;
+                Log.d(TAG, "setImages: rand"+randRotateArr[i]);
+            }
+            for (int i = 0; i < card1.length; i++) {
+                if (card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[i] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1),angles[i]);
+                }
+                else if(card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i) == false)
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);
+                else if (card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[i] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2),angles[i]);
+                }
+                else if(card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i) == false ){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_2);
+                }
+                else if (card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[i] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3),angles[i]);
+                }
+                else if(card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_3);
+                }
+                else if (card1[i] == "pic4")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_4);
+                else if (card1[i] == "pic5")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_5);
+                else if (card1[i] == "pic6")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_6);
+                else if (card1[i] == "pic7")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_7);
+                else if (card1[i] == "pic8")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_8);
+                else if (card1[i] == "pic9")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_9);
+                else if (card1[i] == "pic10")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_10);
+                else if (card1[i] == "pic11")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_11);
+                else if (card1[i] == "pic12")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_12);
+                else if (card1[i] == "pic13")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_13);
+                else if (card1[i] == "pic14")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_14);
+                else if (card1[i] == "pic15")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_15);
+                else if (card1[i] == "pic16")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_16);
+                else if (card1[i] == "pic17")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_17);
+                else if (card1[i] == "pic18")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_18);
+                else if (card1[i] == "pic19")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_19);
+                else if (card1[i] == "pic20")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_20);
+                else if (card1[i] == "pic21")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_21);
+                else if (card1[i] == "pic22")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_22);
+                else if (card1[i] == "pic23")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_23);
+                else if (card1[i] == "pic24")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_24);
+                else if (card1[i] == "pic25")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_25);
+                else if (card1[i] == "pic26")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_26);
+                else if (card1[i] == "pic27")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_27);
+                else if (card1[i] == "pic28")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_28);
+                else if (card1[i] == "pic29")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_29);
+                else if (card1[i] == "pic30")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_30);
+                else if (card1[i] == "pic31")
+                    pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_31);
+            }
+            for (int j = 0; j < card2.length; j++) {
+                if (card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j))
+                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_1),angles[j]);
+                else if(card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j) == false)
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);
+                else if (card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j))
+                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2),angles[j]);
+                else if(card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j) == false)
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_2);
+                else if (card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j))
+                    pic[j + card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3),angles[j]);
+                else if(card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j) == false)
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_3);
+                else if (card2[j] == "pic4")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_4);
+                else if (card2[j] == "pic5")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_5);
+                else if (card2[j] == "pic6")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_6);
+                else if (card2[j] == "pic7")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_7);
+                else if (card2[j] == "pic8")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_8);
+                else if (card2[j] == "pic9")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_9);
+                else if (card2[j] == "pic10")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_10);
+                else if (card2[j] == "pic11")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_11);
+                else if (card2[j] == "pic12")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_12);
+                else if (card2[j] == "pic13")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_13);
+                else if (card2[j] == "pic14")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_14);
+                else if (card2[j] == "pic15")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_15);
+                else if (card2[j] == "pic16")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_16);
+                else if (card2[j] == "pic17")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_17);
+                else if (card2[j] == "pic18")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_18);
+                else if (card2[j] == "pic19")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_19);
+                else if (card2[j] == "pic20")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_20);
+                else if (card2[j] == "pic21")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_21);
+                else if (card2[j] == "pic22")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_22);
+                else if (card2[j] == "pic23")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_23);
+                else if (card2[j] == "pic24")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_24);
+                else if (card2[j] == "pic25")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_25);
+                else if (card2[j] == "pic26")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_26);
+                else if (card2[j] == "pic27")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_27);
+                else if (card2[j] == "pic28")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_28);
+                else if (card2[j] == "pic29")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_29);
+                else if (card2[j] == "pic30")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_30);
+                else if (card2[j] == "pic31")
+                    pic[j + card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_31);
+            }
+
+        } else if (option == 2 && mode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_1);

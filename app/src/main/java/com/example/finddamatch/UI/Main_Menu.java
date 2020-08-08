@@ -168,6 +168,7 @@ public class Main_Menu extends AppCompatActivity {
             Deck = new Deck();
             Deck.startGame();
             Intent intent = saveCardActivity.makeLaunchIntent(Main_Menu.this);
+            Toast.makeText(getApplicationContext(), "Click to save image", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
 

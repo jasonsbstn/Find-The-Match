@@ -1,3 +1,8 @@
+/*
+
+Description : saves the image to the device storage.
+
+ */
 package com.example.finddamatch.UI;
 
 import android.annotation.SuppressLint;
@@ -592,10 +597,11 @@ public class exportCards extends SurfaceView {
     public boolean onTouchEvent(MotionEvent event) {
         Log.d(TAG, "onTouchEvent: "+this.getWidth()+" "+this.getHeight());
         Bitmap bitmap = Bitmap.createBitmap(this.getWidth(),this.getHeight(),Bitmap.Config.ARGB_8888);
-        Canvas saveCanvas= new Canvas(bitmap);
+        Canvas saveCanvas= new Canvas(bitmap);//redraw the canvas to a bitmap
         drawPic(saveCanvas);
 
-        File file = new File(Environment.getExternalStorageDirectory() + "/cards"+drawPileSize+".jpeg");
+        File file = new File(Environment.getExternalStorageDirectory() + "/cards"+drawPileSize+".jpeg");//save when clicked
+        //https://stackoverflow.com/questions/15001455/saving-canvas-to-bitmap-on-android
 
         try {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
@@ -605,7 +611,6 @@ public class exportCards extends SurfaceView {
         }
         Deck.discard();
         Deck.draw();
-        Toast.makeText(getContext(), "Card saved, click to save another card", Toast.LENGTH_SHORT).show();
         drawAction();
         return super.onTouchEvent(event);
     }

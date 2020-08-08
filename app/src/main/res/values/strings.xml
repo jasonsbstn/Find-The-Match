@@ -51,5 +51,6 @@
     <string name="save">Save</string>
     <string name="delete">delete</string>
     <string name="game_modes">Game Modes</string>
+    <string name="save_cards">Save Cards</string>
 
 </resources>

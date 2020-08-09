@@ -3,6 +3,7 @@
     package="com.example.finddamatch">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Flickr_Img_Class"></activity>
+        <activity android:name=".UI.Flickr_Img_Class" />
         <activity android:name=".UI.Won" />
         <activity
             android:name=".UI.Main_Menu"
@@ -44,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".flickr.PhotoGalleryActivity"
+            android:name=".Flickr_and_Import.PhotoGalleryActivity"
             android:theme="@style/AppTheme" />
 
         <meta-data

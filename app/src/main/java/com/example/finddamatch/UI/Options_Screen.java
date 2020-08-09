@@ -1,36 +1,46 @@
 package com.example.finddamatch.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.finddamatch.Flickr_and_Import.PhotoGalleryActivity;
+import com.example.finddamatch.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import static com.example.finddamatch.MainActivity.bitmaps;
+import static com.example.finddamatch.MainActivity.length;
 import static com.example.finddamatch.MainActivity.mode;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.order;
-import static com.example.finddamatch.MainActivity.length;
+import static com.example.finddamatch.Flickr_and_Import.Photo_Gallery_Fragment.imageSelected;
 
 /*
 
 Description : user chooses the theme
 
  */
-import com.example.finddamatch.R;
-import com.example.finddamatch.flickr.PhotoGalleryActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Options_Screen extends AppCompatActivity {
     Button searchBtn;
     Button editFlickrPhoto;
     Button clearFlickrPhoto;
+    private static final int PICK_IMAGE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +57,7 @@ public class Options_Screen extends AppCompatActivity {
         createGameOrders();
         createGameLength();
         createGameMode();
+        createImportButton();
         searchBtn = findViewById(R.id.searchBtn);
         editFlickrPhoto = findViewById(R.id.editBtn);
         clearFlickrPhoto = findViewById(R.id.clearBtn);
@@ -71,7 +82,55 @@ public class Options_Screen extends AppCompatActivity {
                 option = 1;
             }
         });
+
     }
+
+    private void createImportButton() {
+        Button btn = findViewById(R.id.chooseImage);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenGallery();
+            }
+        });
+    }
+
+    private void OpenGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        gallery.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        startActivityForResult(Intent.createChooser(gallery, "Select Picture"), PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+            ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
+            if (data.getClipData() != null) {
+                ClipData mClipData = data.getClipData();
+                for (int i = 0; i < mClipData.getItemCount(); i++) {
+                    ClipData.Item item = mClipData.getItemAt(i);
+                    Uri uri = item.getUri();
+                    mArrayUri.add(uri);
+                }
+            }
+
+            for (int i = 0; i < mArrayUri.size(); i++) {
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mArrayUri.get(i));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Bitmap scaledBitmap;
+                scaledBitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+                bitmaps.add(scaledBitmap);
+            }
+        }
+        imageSelected++;
+        option = 3;
+    }
+
     private void createGameMode() {
         RadioGroup group = (RadioGroup) findViewById(R.id.gameModes);
         String[] gameMode = getResources().getStringArray(R.array.game_mode);
@@ -81,34 +140,31 @@ public class Options_Screen extends AppCompatActivity {
         button2.setText(gameMode[1]);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                mode=1;
+            public void onClick(View v) {
+                mode = 1;
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                mode=2;
+            public void onClick(View v) {
+                mode = 2;
             }
         });
         group.addView(button1);
         group.addView(button2);
-        if(mode ==1)
-        {
+        if (mode == 1) {
             button1.setChecked(true);
-        }
-        else if(mode ==2)
-        {
+        } else if (mode == 2) {
             button2.setChecked(true);
         }
 
         saveGameMode(mode);
-    }  private void saveGameMode(int optionNum) {
-        SharedPreferences prefs = this.getSharedPreferences("modes",MODE_PRIVATE);
+    }
+
+    private void saveGameMode(int optionNum) {
+        SharedPreferences prefs = this.getSharedPreferences("modes", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("modes",optionNum);
+        editor.putInt("modes", optionNum);
         editor.apply();
     }
 
@@ -314,20 +370,17 @@ public class Options_Screen extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                option= 3;
+                option = 3;
             }
         });
         group.addView(button1);
         group.addView(button2);
         group.addView(button3);
-        if(option == 1)
-        {
+        if (option == 1) {
             button1.setChecked(true);
         } else if (option == 2) {
             button2.setChecked(true);
-        }
-        else if(option ==3)
-        {
+        } else if (option == 3) {
             button3.setChecked(true);
         }
         saveTheme(option);

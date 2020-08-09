@@ -2,7 +2,7 @@
 Description: flickr api location
 taken from the book source code
  */
-package com.example.finddamatch.flickr;
+package com.example.finddamatch.Flickr_and_Import;
 
 import android.net.Uri;
 import android.util.Log;

@@ -1,7 +1,7 @@
 /*
 Description: fragment taken from book source code
  */
-package com.example.finddamatch.flickr;
+package com.example.finddamatch.Flickr_and_Import;
 
 import android.os.Bundle;
 

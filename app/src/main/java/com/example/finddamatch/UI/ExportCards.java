@@ -50,7 +50,7 @@ import static com.example.finddamatch.MainActivity.length;
 /*
     Description: using canvas to start the game layout and game logic
  */
-public class exportCards extends SurfaceView {
+public class ExportCards extends SurfaceView {
     private Bitmap[] pic = new Bitmap[6];
     private Bitmap[] picScaled = new Bitmap[6];
     private Bitmap cardBackground;
@@ -63,7 +63,7 @@ public class exportCards extends SurfaceView {
     Canvas canvas ;
 
 
-    public exportCards(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
+    public ExportCards(Context context) {//https://www.youtube.com/watch?v=3V5aV-iM8YA&t=7s
         super(context);
         holder = getHolder();
         drawPileSize = 0;

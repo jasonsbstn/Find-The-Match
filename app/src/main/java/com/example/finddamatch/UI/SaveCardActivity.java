@@ -10,11 +10,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.os.Bundle;
 
-public class saveCardActivity extends AppCompatActivity {
+public class SaveCardActivity extends AppCompatActivity {
 
     // Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -27,7 +25,7 @@ public class saveCardActivity extends AppCompatActivity {
      * Checks if the app has permission to write to device storage
      *
      * If the app does not has permission then the user will be prompted to grant permissions
-     *
+     * https://stackoverflow.com/questions/33719170/android-6-0-file-write-permission-denied
      * @param activity
      */
     public static void verifyStoragePermissions(Activity activity) {
@@ -43,18 +41,18 @@ public class saveCardActivity extends AppCompatActivity {
             );
         }
     }
-    exportCards export;
+    ExportCards export;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        export = new exportCards(this);
+        export = new ExportCards(this);
         verifyStoragePermissions(this);
         setContentView(export);
     }
 
 
     public static Intent makeLaunchIntent(Context c){
-        Intent intent = new Intent(c, saveCardActivity.class);
+        Intent intent = new Intent(c, SaveCardActivity.class);
         return intent;
     }
 }

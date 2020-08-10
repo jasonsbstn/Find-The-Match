@@ -168,7 +168,7 @@ public class Game_View extends SurfaceView {
         }
         card1 = hand.getCards();
         card2 = top.getCards();
-        Log.d(TAG, "setRotatedImages: " + card1[0] + card2[0]);
+        Log.d(TAG, "setRotatedImagesTheme2: " + card1[0] + card2[0]);
         if (option == 2 && mode == 1 && difficultmode == 2){
             Random rand1 = new Random();
             int order = MainActivity.order;
@@ -176,7 +176,7 @@ public class Game_View extends SurfaceView {
             Integer[] randRotateArr = new Integer[length];
             for (int i = 0; i < length; i++) {
                 randRotateArr[i] = rand1.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
+                Log.d(TAG, "setRotatedImagesTheme2: rand"+randRotateArr[i]);
             }
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i)){
@@ -634,13 +634,13 @@ public class Game_View extends SurfaceView {
             Integer[] randArr = new Integer[length];
             for (int i = 0; i < length; i++) {
                 randArr[i] = rand.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randArr[i]);
+                Log.d(TAG, "setRotatedImagesTheme2: rand"+randArr[i]);
             }
             Random rand1 = new Random();
             Integer[] randRotateArr = new Integer[length];
             for (int i = 0; i < length; i++) {
                 randRotateArr[i] = rand1.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
+                Log.d(TAG, "setRotatedImagesTheme2: rand"+randRotateArr[i]);
             }
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
@@ -1500,11 +1500,11 @@ public class Game_View extends SurfaceView {
                 }
             }
         }
-        /*for (int i = 0; i < card1.length; i++) {
+        for (int i = 0; i < card1.length; i++) {
             picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
             picScaled[i + card1.length] = Bitmap.createScaledBitmap(pic[i + card1.length], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
-            Log.d(TAG, "setRotatedImages: " + i);
-        }*/
+            Log.d(TAG, "setRotatedImagesTheme2: " + i);
+        }
     }
     public void setRotatedImagesTheme1() {
         if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
@@ -1512,7 +1512,7 @@ public class Game_View extends SurfaceView {
         }
         card1 = hand.getCards();
         card2 = top.getCards();
-        Log.d(TAG, "setRotatedImages: " + card1[0] + card2[0]);
+        Log.d(TAG, "setRotatedImagesTheme1: " + card1[0] + card2[0]);
         if(option == 1 && mode == 1 && difficultmode == 2){
             Random rand1 = new Random();
             int order = MainActivity.order;
@@ -1520,7 +1520,7 @@ public class Game_View extends SurfaceView {
             Integer[] randRotateArr = new Integer[length];
             for (int i = 0; i < length; i++) {
                 randRotateArr[i] = rand1.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
+                Log.d(TAG, "setRotatedImagesTheme1: rand"+randRotateArr[i]);
             }
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i)){
@@ -1978,13 +1978,13 @@ public class Game_View extends SurfaceView {
             Integer[] randArr = new Integer[length];
             for (int i = 0; i < length; i++) {
                 randArr[i] = rand.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randArr[i]);
+                Log.d(TAG, "setRotatedImagesTheme1: rand"+randArr[i]);
             }
             Random rand1 = new Random();
             Integer[] randRotateArr = new Integer[length];
             for (int i = 0; i < length; i++) {
                 randRotateArr[i] = rand1.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
+                Log.d(TAG, "setRotatedImagesTheme1: rand"+randRotateArr[i]);
             }
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
@@ -2844,11 +2844,11 @@ public class Game_View extends SurfaceView {
                 }
             }
         }
-        /*for (int i = 0; i < card1.length; i++) {
+        for (int i = 0; i < card1.length; i++) {
             picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
             picScaled[i + card1.length] = Bitmap.createScaledBitmap(pic[i + card1.length], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
             Log.d(TAG, "setRotatedImages: " + i);
-        }*/
+        }
     }
 
     public static Bitmap resize(Bitmap bitmap, int newWidth, int newHeight){

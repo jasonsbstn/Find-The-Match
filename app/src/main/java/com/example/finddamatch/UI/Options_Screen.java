@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -20,8 +22,10 @@ import com.example.finddamatch.Flickr_and_Import.PhotoGalleryActivity;
 import com.example.finddamatch.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.finddamatch.MainActivity.bitmaps;
 import static com.example.finddamatch.MainActivity.length;
@@ -129,6 +133,27 @@ public class Options_Screen extends AppCompatActivity {
         }
         imageSelected++;
         option = 3;
+        saveBitmap(bitmaps);
+    }
+
+    private void saveBitmap(List<Bitmap> bitmaps) {
+        SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor edit=shre.edit();
+        for(int i=0;i<bitmaps.size();i++) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmaps.get(i).compress(Bitmap.CompressFormat.PNG, 100, baos);
+            byte[] b = baos.toByteArray();
+
+            String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+            edit.putString("image_data"+i,encodedImage);
+            edit.commit();
+        }
+
+        SharedPreferences prefs = this.getSharedPreferences("numberPics", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("numberPics", bitmaps.size());
+        editor.apply();
     }
 
     private void createGameMode() {

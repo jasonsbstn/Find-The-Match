@@ -522,8 +522,6 @@ public class Game_View extends SurfaceView {
                     pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
                 }
                 else if (card2[j] == "pic15" && Arrays.asList(randRotateArr).contains(j)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[14] = toDegrees;
                     pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_15),angles[14]);
                 }
                 else if(card2[j] == "pic15" && Arrays.asList(randRotateArr).contains(j) == false){
@@ -2847,26 +2845,26 @@ public class Game_View extends SurfaceView {
         for (int i = 0; i < card1.length; i++) {
             picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
             picScaled[i + card1.length] = Bitmap.createScaledBitmap(pic[i + card1.length], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
-            Log.d(TAG, "setRotatedImages: " + i);
+            Log.d(TAG, "setRotatedImagesTheme2: " + i);
         }
     }
 
     public static Bitmap resize(Bitmap bitmap, int newWidth, int newHeight){
-        Bitmap resizedBitmap = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888);
+        Bitmap scaledBitmap = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888);
 
-        float scaleX = newWidth / (float) bitmap.getWidth();
-        float scaleY = newHeight / (float) bitmap.getHeight();
-        float pivotX = 0;
-        float pivotY = 0;
+        float ratioX = newWidth / (float) bitmap.getWidth();
+        float ratioY = newHeight / (float) bitmap.getHeight();
+        float middleX = newWidth / 2.0f;
+        float middleY = newHeight / 2.0f;
 
         Matrix scaleMatrix = new Matrix();
-        scaleMatrix.setScale(scaleX, scaleY, pivotX, pivotY);
+        scaleMatrix.setScale(ratioX, ratioY, middleX, middleY);
 
-        Canvas canvas = new Canvas(resizedBitmap);
+        Canvas canvas = new Canvas(scaledBitmap);
         canvas.setMatrix(scaleMatrix);
-        canvas.drawBitmap(bitmap, 0, 0, new Paint(Paint.FILTER_BITMAP_FLAG));
+        canvas.drawBitmap(bitmap, middleX - bitmap.getWidth() / 2, middleY - bitmap.getHeight() / 2, new Paint(Paint.FILTER_BITMAP_FLAG));
 
-        return resizedBitmap;
+        return scaledBitmap;
     }
 
     public void setImages() {
@@ -2879,7 +2877,7 @@ public class Game_View extends SurfaceView {
         if (option == 1 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1"){
-                    pic[i] = resize(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1), 50,50); }
+                    pic[i] = (BitmapFactory.decodeResource(getResources(),R.drawable.img1_1)); }
                 else if (card1[i] == "pic2")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card1[i] == "pic3")

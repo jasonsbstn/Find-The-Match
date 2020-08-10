@@ -14,17 +14,12 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.SystemClock;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.ImageView;
 
 import com.example.finddamatch.MainActivity;
 import com.example.finddamatch.R;
@@ -41,7 +36,6 @@ import static com.example.finddamatch.MainActivity.top;
 import static com.example.finddamatch.UI.Game_Activity.score;
 import static com.example.finddamatch.MainActivity.order;
 import static com.example.finddamatch.MainActivity.length;
-import static com.example.finddamatch.MainActivity.imagesToRotate;
 import static com.example.finddamatch.MainActivity.difficultmode;
 
 /*
@@ -69,7 +63,8 @@ public class Game_View extends SurfaceView {
         drawPileSize = 0;
         timer = (int) SystemClock.elapsedRealtime();
         score = 0;
-        setRotatedImages();
+        setRotatedImagesTheme1();
+        setRotatedImagesTheme2();
         setImages();
         if (option == 1) {
             cardBackground = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
@@ -148,7 +143,7 @@ public class Game_View extends SurfaceView {
 
         // "RECREATE" THE NEW BITMAP
         Bitmap resizedBitmap = Bitmap.createBitmap(
-                bm, 0, 0, width, height, matrix, false);
+                bm, 0, 0, width, height, matrix, true);
         bm.recycle();
         return resizedBitmap;
     }
@@ -167,7 +162,1351 @@ public class Game_View extends SurfaceView {
     public void randomRotate(){
 
     }
-    public void setRotatedImages() {
+    public void setRotatedImagesTheme2(){
+        if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
+            wonAction();
+        }
+        card1 = hand.getCards();
+        card2 = top.getCards();
+        Log.d(TAG, "setRotatedImages: " + card1[0] + card2[0]);
+        if (option == 2 && mode == 1 && difficultmode == 2){
+            Random rand1 = new Random();
+            int order = MainActivity.order;
+            int randNo = rand1.nextInt(order) + 1;
+            Integer[] randRotateArr = new Integer[length];
+            for (int i = 0; i < length; i++) {
+                randRotateArr[i] = rand1.nextInt(length)+1 ;
+                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
+            }
+            for (int i = 0; i < card1.length; i++) {
+                if (card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[0] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1),angles[0]);
+                }
+                else if(card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i) == false)
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
+                else if (card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[1] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_2),angles[1]);
+                }
+                else if(card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i) == false ){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
+                }
+                else if (card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[2] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_3),angles[2]);
+                }
+                else if(card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
+                } else if (card1[i] == "pic4" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[3] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_4),angles[3]);
+                }
+                else if(card1[i] == "pic4" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
+                }
+                else if (card1[i] == "pic5" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[4] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_5),angles[4]);
+                }
+                else if(card1[i] == "pic5" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
+                }
+                else if (card1[i] == "pic6" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[5] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_6),angles[5]);
+                }
+                else if(card1[i] == "pic6" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
+                }
+                else if (card1[i] == "pic7" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[6] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_7),angles[6]);
+                }
+                else if(card1[i] == "pic7" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
+                }
+                else if (card1[i] == "pic8" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[7] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_8),angles[7]);
+                }
+                else if(card1[i] == "pic8" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
+                }
+                else if (card1[i] == "pic9" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[8] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_9),angles[8]);
+                }
+                else if(card1[i] == "pic9" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
+                }
+                else if (card1[i] == "pic10" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[9] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_10),angles[9]);
+                }
+                else if(card1[i] == "pic10" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
+                }
+                else if (card1[i] == "pic11" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[10] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_11),angles[10]);
+                }
+                else if(card1[i] == "pic11" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
+                }
+                else if (card1[i] == "pic12" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[11] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_12),angles[11]);
+                }
+                else if(card1[i] == "pic12" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
+                }
+                else if (card1[i] == "pic13" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[12] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_13),angles[12]);
+                }
+                else if(card1[i] == "pic13" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
+                } else if (card1[i] == "pic14" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[13] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_14),angles[13]);
+                }
+                else if(card1[i] == "pic14" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
+                }
+                else if (card1[i] == "pic15" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[14] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_15),angles[14]);
+                }
+                else if(card1[i] == "pic15" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
+                }
+                else if (card1[i] == "pic16" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[15] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_16),angles[15]);
+                }
+                else if(card1[i] == "pic16" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
+                }
+                else if (card1[i] == "pic17" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[16] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_17),angles[16]);
+                }
+                else if(card1[i] == "pic17" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
+                }
+                else if (card1[i] == "pic18" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[17] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_18),angles[17]);
+                }
+                else if(card1[i] == "pic18" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
+                }
+                else if (card1[i] == "pic19" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[18] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_19),angles[18]);
+                }
+                else if(card1[i] == "pic19" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
+                }
+                else if (card1[i] == "pic20" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[19] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_20),angles[19]);
+                }
+                else if(card1[i] == "pic20" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
+                }
+                else if (card1[i] == "pic21" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[20] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_21),angles[20]);
+                }
+                else if(card1[i] == "pic21" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
+                }
+                else if (card1[i] == "pic22" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[21] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_22),angles[21]);
+                }
+                else if(card1[i] == "pic22" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
+                }
+                else if (card1[i] == "pic23" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[22] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_23),angles[22]);
+                }
+                else if(card1[i] == "pic23" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
+                }
+                else if (card1[i] == "pic24" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[23] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_24),angles[23]);
+                }
+                else if(card1[i] == "pic24" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
+                }
+                else if (card1[i] == "pic25" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[24] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_25),angles[24]);
+                }
+                else if(card1[i] == "pic25" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
+                }
+                else if (card1[i] == "pic26" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[25] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_26),angles[25]);
+                }
+                else if(card1[i] == "pic26" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
+                }
+                else if (card1[i] == "pic27" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[26] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_27),angles[26]);
+                }
+                else if(card1[i] == "pic27" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
+                }
+                else if (card1[i] == "pic28" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[27] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_28),angles[27]);
+                }
+                else if(card1[i] == "pic28" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
+                }
+                else if (card1[i] == "pic29" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[28] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_29),angles[28]);
+                }
+                else if(card1[i] == "pic29" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
+                }
+                else if (card1[i] == "pic30" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[29] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_30),angles[29]);
+                }
+                else if(card1[i] == "pic30" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
+                }
+                else if (card1[i] == "pic31" && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[30] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_31),angles[30]);
+                }
+                else if(card1[i] == "pic31" && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
+                }
+            }
+            for (int j = 0; j < card2.length; j++) {
+                if (card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1),angles[0]);
+                }
+                else if(card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j) == false)
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
+                else if (card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_2),angles[1]);
+                }
+                else if(card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j) == false ){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
+                }
+                else if (card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_3),angles[2]);
+                }
+                else if(card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
+                } else if (card2[j] == "pic4" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_4),angles[3]);
+                }
+                else if(card2[j] == "pic4" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
+                }
+                else if (card2[j] == "pic5" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_5),angles[4]);
+                }
+                else if(card2[j] == "pic5" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
+                }
+                else if (card2[j] == "pic6" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_6),angles[5]);
+                }
+                else if(card2[j] == "pic6" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
+                }
+                else if (card2[j] == "pic7" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_7),angles[6]);
+                }
+                else if(card2[j] == "pic7" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
+                }
+                else if (card2[j] == "pic8" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_8),angles[7]);
+                }
+                else if(card2[j] == "pic8" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
+                }
+                else if (card2[j] == "pic9" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_9),angles[8]);
+                }
+                else if(card2[j] == "pic9" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
+                }
+                else if (card2[j] == "pic10" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_10),angles[9]);
+                }
+                else if(card2[j] == "pic10" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
+                }
+                else if (card2[j] == "pic11" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_11),angles[10]);
+                }
+                else if(card2[j] == "pic11" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
+                }
+                else if (card2[j] == "pic12" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_12),angles[11]);
+                }
+                else if(card2[j] == "pic12" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
+                }
+                else if (card2[j] == "pic13" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_13),angles[12]);
+                }
+                else if(card2[j] == "pic13" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
+                } else if (card2[j] == "pic14" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_14),angles[13]);
+                }
+                else if(card2[j] == "pic14" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
+                }
+                else if (card2[j] == "pic15" && Arrays.asList(randRotateArr).contains(j)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[14] = toDegrees;
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_15),angles[14]);
+                }
+                else if(card2[j] == "pic15" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
+                }
+                else if (card2[j] == "pic16" && Arrays.asList(randRotateArr).contains(j)){
+
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_16),angles[15]);
+                }
+                else if(card2[j] == "pic16" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
+                }
+                else if (card2[j] == "pic17" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_17),angles[16]);
+                }
+                else if(card2[j] == "pic17" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
+                }
+                else if (card2[j] == "pic18" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_18),angles[17]);
+                }
+                else if(card2[j] == "pic18" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
+                }
+                else if (card2[j] == "pic19" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_19),angles[18]);
+                }
+                else if(card2[j] == "pic19" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
+                }
+                else if (card2[j] == "pic20" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_20),angles[19]);
+                }
+                else if(card2[j] == "pic20" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
+                }
+                else if (card2[j] == "pic21" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_21),angles[20]);
+                }
+                else if(card2[j] == "pic21" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
+                }
+                else if (card2[j] == "pic22" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_22),angles[21]);
+                }
+                else if(card2[j] == "pic22" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
+                }
+                else if (card2[j] == "pic23" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_23),angles[22]);
+                }
+                else if(card2[j] == "pic23" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
+                }
+                else if (card2[j] == "pic24" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_24),angles[23]);
+                }
+                else if(card2[j] == "pic24" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
+                }
+                else if (card2[j] == "pic25" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_25),angles[24]);
+                }
+                else if(card2[j] == "pic25" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
+                }
+                else if (card2[j] == "pic26" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_26),angles[25]);
+                }
+                else if(card2[j] == "pic26" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
+                }
+                else if (card2[j] == "pic27" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_27),angles[26]);
+                }
+                else if(card2[j] == "pic27" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
+                }
+                else if (card2[j] == "pic28" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_28),angles[27]);
+                }
+                else if(card2[j] == "pic28" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
+                }
+                else if (card2[j] == "pic29" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_29),angles[28]);
+                }
+                else if(card2[j] == "pic29" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
+                }
+                else if (card2[j] == "pic30" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_30),angles[29]);
+                }
+                else if(card2[j] == "pic30" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
+                }
+                else if (card2[j] == "pic31" && Arrays.asList(randRotateArr).contains(j)){
+                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_31),angles[30]);
+                }
+                else if(card2[j] == "pic31" && Arrays.asList(randRotateArr).contains(j) == false){
+                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
+                }
+            }
+
+        }
+        else if(option == 2 && mode == 2 && difficultmode == 2){
+            Random rand = new Random();
+            Integer[] randArr = new Integer[length];
+            for (int i = 0; i < length; i++) {
+                randArr[i] = rand.nextInt(length)+1 ;
+                Log.d(TAG, "setRotatedImages: rand"+randArr[i]);
+            }
+            Random rand1 = new Random();
+            Integer[] randRotateArr = new Integer[length];
+            for (int i = 0; i < length; i++) {
+                randRotateArr[i] = rand1.nextInt(length)+1 ;
+                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
+            }
+            for (int i = 0; i < card1.length; i++) {
+                if (card1[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[0] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_1),angles[0]);
+                }
+                else if(card1[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_1);
+                }
+                else if(card1[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[0] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1), angles[0]);
+                }
+                else if(card1[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
+                }
+                else if (card1[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[1] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_2),angles[1]);
+                }
+                else if(card1[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_2);
+                }
+                else if(card1[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[1] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_2), angles[1]);
+                }
+                else if(card1[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
+                }
+                else if (card1[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[2] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_3),angles[2]);
+                }
+                else if(card1[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_3);
+                }
+                else if(card1[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[2] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_3), angles[2]);
+                }
+                else if(card1[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
+                }
+                else if (card1[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[3] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_4),angles[3]);
+                }
+                else if(card1[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_4);
+                }
+                else if(card1[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[3] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_4), angles[3]);
+                }
+                else if(card1[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
+                }
+                else if (card1[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[4] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_5),angles[4]);
+                }
+                else if(card1[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_5);
+                }
+                else if(card1[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[4] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_5), angles[4]);
+                }
+                else if(card1[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
+                }
+                else if (card1[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[5] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_6),angles[5]);
+                }
+                else if(card1[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_6);
+                }
+                else if(card1[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[5] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_6), angles[5]);
+                }
+                else if(card1[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
+                }
+                else if (card1[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[6] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_7),angles[6]);
+                }
+                else if(card1[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_7);
+                }
+                else if(card1[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[6] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_7), angles[6]);
+                }
+                else if(card1[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
+                }
+                else if (card1[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[7] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_8),angles[7]);
+                }
+                else if(card1[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_8);
+                }
+                else if(card1[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[7] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_8), angles[7]);
+                }
+                else if(card1[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
+                }
+                else if (card1[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[8] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_9),angles[8]);
+                }
+                else if(card1[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_9);
+                }
+                else if(card1[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[8] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_9), angles[8]);
+                }
+                else if(card1[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
+                }
+                else if (card1[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[9] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_10),angles[9]);
+                }
+                else if(card1[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_10);
+                }
+                else if(card1[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[9] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_10), angles[9]);
+                }
+                else if(card1[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
+                }
+                else if (card1[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[10] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_11),angles[10]);
+                }
+                else if(card1[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_11);
+                }
+                else if(card1[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[10] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_11), angles[10]);
+                }
+                else if(card1[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
+                }
+                else if (card1[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[11] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_12),angles[11]);
+                }
+                else if(card1[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_12);
+                }
+                else if(card1[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[11] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_12), angles[11]);
+                }
+                else if(card1[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
+                }
+                else if (card1[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[12] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_13),angles[12]);
+                }
+                else if(card1[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_13);
+                }
+                else if(card1[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[12] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_13), angles[12]);
+                }
+                else if(card1[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
+                }
+                else if (card1[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[13] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_14),angles[13]);
+                }
+                else if(card1[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_14);
+                }
+                else if(card1[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[13] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_14), angles[13]);
+                }
+                else if(card1[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
+                }
+                else if (card1[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[14] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_15),angles[14]);
+                }
+                else if(card1[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_15);
+                }
+                else if(card1[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[14] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_15), angles[14]);
+                }
+                else if(card1[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
+                }
+                else if (card1[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[15] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_16),angles[15]);
+                }
+                else if(card1[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_16);
+                }
+                else if(card1[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[15] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_16), angles[15]);
+                }
+                else if(card1[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
+                }
+                else if (card1[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[16] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_17),angles[16]);
+                }
+                else if(card1[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_17);
+                }
+                else if(card1[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[16] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_17), angles[16]);
+                }
+                else if(card1[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
+                }
+                else if (card1[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[17] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_18),angles[17]);
+                }
+                else if(card1[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_18);
+                }
+                else if(card1[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[17] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_18), angles[17]);
+                }
+                else if(card1[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
+                }
+                else if (card1[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[18] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_19),angles[18]);
+                }
+                else if(card1[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_19);
+                }
+                else if(card1[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[18] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_19), angles[18]);
+                }
+                else if(card1[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
+                }
+                else if (card1[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[19] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_20),angles[19]);
+                }
+                else if(card1[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_20);
+                }
+                else if(card1[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[19] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_20), angles[19]);
+                }
+                else if(card1[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
+                }
+                else if (card1[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[20] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_21),angles[20]);
+                }
+                else if(card1[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_21);
+                }
+                else if(card1[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[20] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_21), angles[20]);
+                }
+                else if(card1[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
+                }
+                else if (card1[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[21] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_22),angles[21]);
+                }
+                else if(card1[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_22);
+                }
+                else if(card1[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[21] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_22), angles[21]);
+                }
+                else if(card1[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
+                }
+                else if (card1[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[22] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_23),angles[22]);
+                }
+                else if(card1[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_23);
+                }
+                else if(card1[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[22] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_23), angles[22]);
+                }
+                else if(card1[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
+                }
+                else if (card1[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[23] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_24),angles[23]);
+                }
+                else if(card1[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_24);
+                }
+                else if(card1[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[23] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_24), angles[23]);
+                }
+                else if(card1[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
+                }
+                else if (card1[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[24] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_25),angles[24]);
+                }
+                else if(card1[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_25);
+                }
+                else if(card1[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[24] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_25), angles[24]);
+                }
+                else if(card1[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
+                }
+                else if (card1[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[25] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_26),angles[25]);
+                }
+                else if(card1[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_26);
+                }
+                else if(card1[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[25] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_26), angles[25]);
+                }
+                else if(card1[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
+                }
+                else if (card1[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[26] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_27),angles[26]);
+                }
+                else if(card1[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_27);
+                }
+                else if(card1[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[26] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_27), angles[26]);
+                }
+                else if(card1[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
+                }
+                else if (card1[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[27] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_28),angles[27]);
+                }
+                else if(card1[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_28);
+                }
+                else if(card1[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[27] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_28), angles[27]);
+                }
+                else if(card1[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
+                }
+                else if (card1[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[28] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_29),angles[28]);
+                }
+                else if(card1[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_29);
+                }
+                else if(card1[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[28] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_29), angles[28]);
+                }
+                else if(card1[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
+                }
+                else if (card1[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[29] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_30),angles[29]);
+                }
+                else if(card1[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_30);
+                }
+                else if(card1[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[29] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_30), angles[29]);
+                }
+                else if(card1[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
+                }
+                else if (card1[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[30] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_31),angles[30]);
+                }
+                else if(card1[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_31);
+                }
+                else if(card1[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
+                    angles[30] = toDegrees;
+                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_31), angles[30]);
+                }
+                else if(card1[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
+                }
+            }
+            for (int i = 0; i < card2.length; i++) {
+
+                {
+                    if (card2[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i))
+                    { pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_1),angles[0]);
+                    }
+                    else if(card2[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_1);
+                    }
+                    else if(card2[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i))
+                    { pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1), angles[0]);
+                    }
+                    else if(card2[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
+                    }
+                    else if (card2[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_2),angles[1]);
+                    }
+                    else if(card2[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_2);
+                    }
+                    else if(card2[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_2), angles[1]);
+                    }
+                    else if(card2[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
+                    }
+                    else if (card2[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_3),angles[2]);
+                    }
+                    else if(card2[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_3);
+                    }
+                    else if(card2[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_3), angles[2]);
+                    }
+                    else if(card2[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
+                    }
+                    else if (card2[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_4),angles[3]);
+                    }
+                    else if(card2[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_4);
+                    }
+                    else if(card2[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_4), angles[3]);
+                    }
+                    else if(card2[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
+                    }
+                    else if (card2[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_5),angles[4]);
+                    }
+                    else if(card2[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_5);
+                    }
+                    else if(card2[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_5), angles[4]);
+                    }
+                    else if(card2[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
+                    }
+                    else if (card2[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_6),angles[5]);
+                    }
+                    else if(card2[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_6);
+                    }
+                    else if(card2[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_6), angles[5]);
+                    }
+                    else if(card2[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
+                    }
+                    else if (card2[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_7),angles[6]);
+                    }
+                    else if(card2[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_7);
+                    }
+                    else if(card2[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_7), angles[6]);
+                    }
+                    else if(card2[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
+                    }
+                    else if (card2[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_8),angles[7]);
+                    }
+                    else if(card2[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_8);
+                    }
+                    else if(card2[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_8), angles[7]);
+                    }
+                    else if(card2[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
+                    }
+                    else if (card2[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_9),angles[8]);
+                    }
+                    else if(card2[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_9);
+                    }
+                    else if(card2[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_9), angles[8]);
+                    }
+                    else if(card2[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
+                    }
+                    else if (card2[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_10),angles[9]);
+                    }
+                    else if(card2[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_10);
+                    }
+                    else if(card2[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_10), angles[9]);
+                    }
+                    else if(card2[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
+                    }
+                    else if (card2[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_11),angles[10]);
+                    }
+                    else if(card2[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_11);
+                    }
+                    else if(card2[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_11), angles[10]);
+                    }
+                    else if(card2[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
+                    }
+                    else if (card2[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_12),angles[11]);
+                    }
+                    else if(card2[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_12);
+                    }
+                    else if(card2[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_12), angles[11]);
+                    }
+                    else if(card2[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
+                    }
+                    else if (card2[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_13),angles[12]);
+                    }
+                    else if(card2[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_13);
+                    }
+                    else if(card2[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_13), angles[12]);
+                    }
+                    else if(card2[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
+                    }
+                    else if (card2[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_14),angles[13]);
+                    }
+                    else if(card2[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_14);
+                    }
+                    else if(card2[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_14), angles[13]);
+                    }
+                    else if(card2[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
+                    }
+                    else if (card2[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_15),angles[14]);
+                    }
+                    else if(card2[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_15);
+                    }
+                    else if(card2[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_15), angles[14]);
+                    }
+                    else if(card2[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
+                    }
+                    else if (card2[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_16),angles[15]);
+                    }
+                    else if(card2[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_16);
+                    }
+                    else if(card2[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_16), angles[15]);
+                    }
+                    else if(card2[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
+                    }
+                    else if (card2[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_17),angles[16]);
+                    }
+                    else if(card2[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_17);
+                    }
+                    else if(card2[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_17), angles[16]);
+                    }
+                    else if(card2[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
+                    }
+                    else if (card2[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_18),angles[17]);
+                    }
+                    else if(card2[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_18);
+                    }
+                    else if(card2[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_18), angles[17]);
+                    }
+                    else if(card2[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
+                    }
+                    else if (card2[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_19),angles[18]);
+                    }
+                    else if(card2[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_19);
+                    }
+                    else if(card2[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_19), angles[18]);
+                    }
+                    else if(card2[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
+                    }
+                    else if (card2[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_20),angles[19]);
+                    }
+                    else if(card2[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_20);
+                    }
+                    else if(card2[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_20), angles[19]);
+                    }
+                    else if(card2[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
+                    }
+                    else if (card2[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_21),angles[20]);
+                    }
+                    else if(card2[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_21);
+                    }
+                    else if(card2[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_21), angles[20]);
+                    }
+                    else if(card2[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
+                    }
+                    else if (card2[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_22),angles[21]);
+                    }
+                    else if(card2[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_22);
+                    }
+                    else if(card2[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_22), angles[21]);
+                    }
+                    else if(card2[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
+                    }
+                    else if (card2[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_23),angles[22]);
+                    }
+                    else if(card2[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_23);
+                    }
+                    else if(card2[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_23), angles[22]);
+                    }
+                    else if(card2[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
+                    }
+                    else if (card2[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_24),angles[23]);
+                    }
+                    else if(card2[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_24);
+                    }
+                    else if(card2[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_24), angles[23]);
+                    }
+                    else if(card2[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
+                    }
+                    else if (card2[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_25),angles[24]);
+                    }
+                    else if(card2[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_25);
+                    }
+                    else if(card2[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_25), angles[24]);
+                    }
+                    else if(card2[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
+                    }
+                    else if (card2[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_26),angles[25]);
+                    }
+                    else if(card2[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_26);
+                    }
+                    else if(card2[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_26), angles[25]);
+                    }
+                    else if(card2[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
+                    }
+                    else if (card2[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_27),angles[26]);
+                    }
+                    else if(card2[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_27);
+                    }
+                    else if(card2[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_27), angles[26]);
+                    }
+                    else if(card2[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
+                    }
+                    else if (card2[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_28),angles[27]);
+                    }
+                    else if(card2[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_28);
+                    }
+                    else if(card2[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_28), angles[27]);
+                    }
+                    else if(card2[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
+                    }
+                    else if (card2[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_29),angles[28]);
+                    }
+                    else if(card2[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_29);
+                    }
+                    else if(card2[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_29), angles[28]);
+                    }
+                    else if(card2[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
+                    }
+                    else if (card2[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_30),angles[29]);
+                    }
+                    else if(card2[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_30);
+                    }
+                    else if(card2[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_30), angles[29]);
+                    }
+                    else if(card2[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
+                    }
+                    else if (card2[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_31),angles[30]);
+                    }
+                    else if(card2[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_31);
+                    }
+                    else if(card2[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
+                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_31), angles[30]);
+                    }
+                    else if(card2[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
+                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
+                    }
+                }
+            }
+        }
+        /*for (int i = 0; i < card1.length; i++) {
+            picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
+            picScaled[i + card1.length] = Bitmap.createScaledBitmap(pic[i + card1.length], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
+            Log.d(TAG, "setRotatedImages: " + i);
+        }*/
+    }
+    public void setRotatedImagesTheme1() {
         if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
             wonAction();
         }
@@ -1505,1342 +2844,29 @@ public class Game_View extends SurfaceView {
                 }
             }
         }
-        else if (option == 2 && mode == 1 && difficultmode == 2){
-            Random rand1 = new Random();
-            int order = MainActivity.order;
-            int randNo = rand1.nextInt(order) + 1;
-            Integer[] randRotateArr = new Integer[length];
-            for (int i = 0; i < length; i++) {
-                randRotateArr[i] = rand1.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
-            }
-            for (int i = 0; i < card1.length; i++) {
-                if (card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[0] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1),angles[0]);
-                }
-                else if(card1[i] == "pic1" && Arrays.asList(randRotateArr).contains(i) == false)
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
-                else if (card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[1] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_2),angles[1]);
-                }
-                else if(card1[i] == "pic2" && Arrays.asList(randRotateArr).contains(i) == false ){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
-                }
-                else if (card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[2] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_3),angles[2]);
-                }
-                else if(card1[i] == "pic3" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
-                } else if (card1[i] == "pic4" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[3] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_4),angles[3]);
-                }
-                else if(card1[i] == "pic4" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
-                }
-                else if (card1[i] == "pic5" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[4] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_5),angles[4]);
-                }
-                else if(card1[i] == "pic5" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
-                }
-                else if (card1[i] == "pic6" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[5] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_6),angles[5]);
-                }
-                else if(card1[i] == "pic6" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
-                }
-                else if (card1[i] == "pic7" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[6] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_7),angles[6]);
-                }
-                else if(card1[i] == "pic7" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
-                }
-                else if (card1[i] == "pic8" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[7] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_8),angles[7]);
-                }
-                else if(card1[i] == "pic8" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
-                }
-                else if (card1[i] == "pic9" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[8] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_9),angles[8]);
-                }
-                else if(card1[i] == "pic9" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
-                }
-                else if (card1[i] == "pic10" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[9] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_10),angles[9]);
-                }
-                else if(card1[i] == "pic10" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
-                }
-                else if (card1[i] == "pic11" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[10] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_11),angles[10]);
-                }
-                else if(card1[i] == "pic11" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
-                }
-                else if (card1[i] == "pic12" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[11] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_12),angles[11]);
-                }
-                else if(card1[i] == "pic12" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
-                }
-                else if (card1[i] == "pic13" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[12] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_13),angles[12]);
-                }
-                else if(card1[i] == "pic13" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
-                } else if (card1[i] == "pic14" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[13] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_14),angles[13]);
-                }
-                else if(card1[i] == "pic14" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
-                }
-                else if (card1[i] == "pic15" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[14] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_15),angles[14]);
-                }
-                else if(card1[i] == "pic15" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
-                }
-                else if (card1[i] == "pic16" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[15] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_16),angles[15]);
-                }
-                else if(card1[i] == "pic16" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
-                }
-                else if (card1[i] == "pic17" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[16] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_17),angles[16]);
-                }
-                else if(card1[i] == "pic17" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
-                }
-                else if (card1[i] == "pic18" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[17] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_18),angles[17]);
-                }
-                else if(card1[i] == "pic18" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
-                }
-                else if (card1[i] == "pic19" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[18] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_19),angles[18]);
-                }
-                else if(card1[i] == "pic19" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
-                }
-                else if (card1[i] == "pic20" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[19] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_20),angles[19]);
-                }
-                else if(card1[i] == "pic20" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
-                }
-                else if (card1[i] == "pic21" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[20] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_21),angles[20]);
-                }
-                else if(card1[i] == "pic21" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
-                }
-                else if (card1[i] == "pic22" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[21] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_22),angles[21]);
-                }
-                else if(card1[i] == "pic22" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
-                }
-                else if (card1[i] == "pic23" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[22] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_23),angles[22]);
-                }
-                else if(card1[i] == "pic23" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
-                }
-                else if (card1[i] == "pic24" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[23] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_24),angles[23]);
-                }
-                else if(card1[i] == "pic24" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
-                }
-                else if (card1[i] == "pic25" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[24] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_25),angles[24]);
-                }
-                else if(card1[i] == "pic25" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
-                }
-                else if (card1[i] == "pic26" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[25] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_26),angles[25]);
-                }
-                else if(card1[i] == "pic26" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
-                }
-                else if (card1[i] == "pic27" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[26] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_27),angles[26]);
-                }
-                else if(card1[i] == "pic27" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
-                }
-                else if (card1[i] == "pic28" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[27] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_28),angles[27]);
-                }
-                else if(card1[i] == "pic28" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
-                }
-                else if (card1[i] == "pic29" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[28] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_29),angles[28]);
-                }
-                else if(card1[i] == "pic29" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
-                }
-                else if (card1[i] == "pic30" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[29] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_30),angles[29]);
-                }
-                else if(card1[i] == "pic30" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
-                }
-                else if (card1[i] == "pic31" && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[30] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_31),angles[30]);
-                }
-                else if(card1[i] == "pic31" && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
-                }
-            }
-            for (int j = 0; j < card2.length; j++) {
-                if (card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1),angles[0]);
-                }
-                else if(card2[j] == "pic1" && Arrays.asList(randRotateArr).contains(j) == false)
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
-                else if (card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_2),angles[1]);
-                }
-                else if(card2[j] == "pic2" && Arrays.asList(randRotateArr).contains(j) == false ){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
-                }
-                else if (card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_3),angles[2]);
-                }
-                else if(card2[j] == "pic3" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
-                } else if (card2[j] == "pic4" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_4),angles[3]);
-                }
-                else if(card2[j] == "pic4" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
-                }
-                else if (card2[j] == "pic5" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_5),angles[4]);
-                }
-                else if(card2[j] == "pic5" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
-                }
-                else if (card2[j] == "pic6" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_6),angles[5]);
-                }
-                else if(card2[j] == "pic6" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
-                }
-                else if (card2[j] == "pic7" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_7),angles[6]);
-                }
-                else if(card2[j] == "pic7" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
-                }
-                else if (card2[j] == "pic8" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_8),angles[7]);
-                }
-                else if(card2[j] == "pic8" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
-                }
-                else if (card2[j] == "pic9" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_9),angles[8]);
-                }
-                else if(card2[j] == "pic9" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
-                }
-                else if (card2[j] == "pic10" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_10),angles[9]);
-                }
-                else if(card2[j] == "pic10" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
-                }
-                else if (card2[j] == "pic11" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_11),angles[10]);
-                }
-                else if(card2[j] == "pic11" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
-                }
-                else if (card2[j] == "pic12" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_12),angles[11]);
-                }
-                else if(card2[j] == "pic12" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
-                }
-                else if (card2[j] == "pic13" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_13),angles[12]);
-                }
-                else if(card2[j] == "pic13" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
-                } else if (card2[j] == "pic14" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_14),angles[13]);
-                }
-                else if(card2[j] == "pic14" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
-                }
-                else if (card2[j] == "pic15" && Arrays.asList(randRotateArr).contains(j)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[14] = toDegrees;
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_15),angles[14]);
-                }
-                else if(card2[j] == "pic15" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
-                }
-                else if (card2[j] == "pic16" && Arrays.asList(randRotateArr).contains(j)){
-
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_16),angles[15]);
-                }
-                else if(card2[j] == "pic16" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
-                }
-                else if (card2[j] == "pic17" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_17),angles[16]);
-                }
-                else if(card2[j] == "pic17" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
-                }
-                else if (card2[j] == "pic18" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_18),angles[17]);
-                }
-                else if(card2[j] == "pic18" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
-                }
-                else if (card2[j] == "pic19" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_19),angles[18]);
-                }
-                else if(card2[j] == "pic19" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
-                }
-                else if (card2[j] == "pic20" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_20),angles[19]);
-                }
-                else if(card2[j] == "pic20" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
-                }
-                else if (card2[j] == "pic21" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_21),angles[20]);
-                }
-                else if(card2[j] == "pic21" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
-                }
-                else if (card2[j] == "pic22" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_22),angles[21]);
-                }
-                else if(card2[j] == "pic22" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
-                }
-                else if (card2[j] == "pic23" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_23),angles[22]);
-                }
-                else if(card2[j] == "pic23" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
-                }
-                else if (card2[j] == "pic24" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_24),angles[23]);
-                }
-                else if(card2[j] == "pic24" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
-                }
-                else if (card2[j] == "pic25" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_25),angles[24]);
-                }
-                else if(card2[j] == "pic25" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
-                }
-                else if (card2[j] == "pic26" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_26),angles[25]);
-                }
-                else if(card2[j] == "pic26" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
-                }
-                else if (card2[j] == "pic27" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_27),angles[26]);
-                }
-                else if(card2[j] == "pic27" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
-                }
-                else if (card2[j] == "pic28" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_28),angles[27]);
-                }
-                else if(card2[j] == "pic28" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
-                }
-                else if (card2[j] == "pic29" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_29),angles[28]);
-                }
-                else if(card2[j] == "pic29" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
-                }
-                else if (card2[j] == "pic30" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_30),angles[29]);
-                }
-                else if(card2[j] == "pic30" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
-                }
-                else if (card2[j] == "pic31" && Arrays.asList(randRotateArr).contains(j)){
-                    pic[j+card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2_31),angles[30]);
-                }
-                else if(card2[j] == "pic31" && Arrays.asList(randRotateArr).contains(j) == false){
-                    pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
-                }
-            }
-
-        }
-        else if(option == 2 && mode == 2 && difficultmode == 2){
-            Random rand = new Random();
-            Integer[] randArr = new Integer[length];
-            for (int i = 0; i < length; i++) {
-                randArr[i] = rand.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randArr[i]);
-            }
-            Random rand1 = new Random();
-            Integer[] randRotateArr = new Integer[length];
-            for (int i = 0; i < length; i++) {
-                randRotateArr[i] = rand1.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImages: rand"+randRotateArr[i]);
-            }
-            for (int i = 0; i < card1.length; i++) {
-                if (card1[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[0] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_1),angles[0]);
-                }
-                else if(card1[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_1);
-                }
-                else if(card1[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[0] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1), angles[0]);
-                }
-                else if(card1[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
-                }
-                else if (card1[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[1] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_2),angles[1]);
-                }
-                else if(card1[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_2);
-                }
-                else if(card1[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[1] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_2), angles[1]);
-                }
-                else if(card1[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
-                }
-                else if (card1[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[2] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_3),angles[2]);
-                }
-                else if(card1[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_3);
-                }
-                else if(card1[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[2] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_3), angles[2]);
-                }
-                else if(card1[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
-                }
-                else if (card1[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[3] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_4),angles[3]);
-                }
-                else if(card1[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_4);
-                }
-                else if(card1[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[3] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_4), angles[3]);
-                }
-                else if(card1[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
-                }
-                else if (card1[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[4] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_5),angles[4]);
-                }
-                else if(card1[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_5);
-                }
-                else if(card1[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[4] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_5), angles[4]);
-                }
-                else if(card1[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
-                }
-                else if (card1[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[5] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_6),angles[5]);
-                }
-                else if(card1[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_6);
-                }
-                else if(card1[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[5] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_6), angles[5]);
-                }
-                else if(card1[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
-                }
-                else if (card1[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[6] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_7),angles[6]);
-                }
-                else if(card1[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_7);
-                }
-                else if(card1[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[6] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_7), angles[6]);
-                }
-                else if(card1[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
-                }
-                else if (card1[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[7] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_8),angles[7]);
-                }
-                else if(card1[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_8);
-                }
-                else if(card1[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[7] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_8), angles[7]);
-                }
-                else if(card1[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
-                }
-                else if (card1[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[8] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_9),angles[8]);
-                }
-                else if(card1[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_9);
-                }
-                else if(card1[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[8] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_9), angles[8]);
-                }
-                else if(card1[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
-                }
-                else if (card1[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[9] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_10),angles[9]);
-                }
-                else if(card1[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_10);
-                }
-                else if(card1[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[9] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_10), angles[9]);
-                }
-                else if(card1[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
-                }
-                else if (card1[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[10] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_11),angles[10]);
-                }
-                else if(card1[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_11);
-                }
-                else if(card1[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[10] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_11), angles[10]);
-                }
-                else if(card1[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
-                }
-                else if (card1[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[11] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_12),angles[11]);
-                }
-                else if(card1[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_12);
-                }
-                else if(card1[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[11] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_12), angles[11]);
-                }
-                else if(card1[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
-                }
-                else if (card1[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[12] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_13),angles[12]);
-                }
-                else if(card1[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_13);
-                }
-                else if(card1[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[12] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_13), angles[12]);
-                }
-                else if(card1[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
-                }
-                else if (card1[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[13] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_14),angles[13]);
-                }
-                else if(card1[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_14);
-                }
-                else if(card1[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[13] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_14), angles[13]);
-                }
-                else if(card1[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
-                }
-                else if (card1[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[14] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_15),angles[14]);
-                }
-                else if(card1[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_15);
-                }
-                else if(card1[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[14] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_15), angles[14]);
-                }
-                else if(card1[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
-                }
-                else if (card1[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[15] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_16),angles[15]);
-                }
-                else if(card1[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_16);
-                }
-                else if(card1[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[15] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_16), angles[15]);
-                }
-                else if(card1[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
-                }
-                else if (card1[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[16] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_17),angles[16]);
-                }
-                else if(card1[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_17);
-                }
-                else if(card1[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[16] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_17), angles[16]);
-                }
-                else if(card1[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
-                }
-                else if (card1[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[17] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_18),angles[17]);
-                }
-                else if(card1[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_18);
-                }
-                else if(card1[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[17] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_18), angles[17]);
-                }
-                else if(card1[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
-                }
-                else if (card1[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[18] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_19),angles[18]);
-                }
-                else if(card1[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_19);
-                }
-                else if(card1[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[18] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_19), angles[18]);
-                }
-                else if(card1[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
-                }
-                else if (card1[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[19] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_20),angles[19]);
-                }
-                else if(card1[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_20);
-                }
-                else if(card1[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[19] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_20), angles[19]);
-                }
-                else if(card1[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
-                }
-                else if (card1[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[20] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_21),angles[20]);
-                }
-                else if(card1[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_21);
-                }
-                else if(card1[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[20] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_21), angles[20]);
-                }
-                else if(card1[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
-                }
-                else if (card1[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[21] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_22),angles[21]);
-                }
-                else if(card1[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_22);
-                }
-                else if(card1[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[21] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_22), angles[21]);
-                }
-                else if(card1[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
-                }
-                else if (card1[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[22] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_23),angles[22]);
-                }
-                else if(card1[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_23);
-                }
-                else if(card1[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[22] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_23), angles[22]);
-                }
-                else if(card1[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
-                }
-                else if (card1[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[23] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_24),angles[23]);
-                }
-                else if(card1[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_24);
-                }
-                else if(card1[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[23] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_24), angles[23]);
-                }
-                else if(card1[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
-                }
-                else if (card1[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[24] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_25),angles[24]);
-                }
-                else if(card1[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_25);
-                }
-                else if(card1[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[24] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_25), angles[24]);
-                }
-                else if(card1[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
-                }
-                else if (card1[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[25] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_26),angles[25]);
-                }
-                else if(card1[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_26);
-                }
-                else if(card1[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[25] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_26), angles[25]);
-                }
-                else if(card1[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
-                }
-                else if (card1[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[26] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_27),angles[26]);
-                }
-                else if(card1[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_27);
-                }
-                else if(card1[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[26] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_27), angles[26]);
-                }
-                else if(card1[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
-                }
-                else if (card1[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[27] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_28),angles[27]);
-                }
-                else if(card1[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_28);
-                }
-                else if(card1[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[27] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_28), angles[27]);
-                }
-                else if(card1[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
-                }
-                else if (card1[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[28] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_29),angles[28]);
-                }
-                else if(card1[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_29);
-                }
-                else if(card1[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[28] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_29), angles[28]);
-                }
-                else if(card1[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
-                }
-                else if (card1[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[29] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_30),angles[29]);
-                }
-                else if(card1[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_30);
-                }
-                else if(card1[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[29] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_30), angles[29]);
-                }
-                else if(card1[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
-                }
-                else if (card1[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[30] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_31),angles[30]);
-                }
-                else if(card1[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_31);
-                }
-                else if(card1[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                    float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    angles[30] = toDegrees;
-                    pic[i] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_31), angles[30]);
-                }
-                else if(card1[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
-                }
-            }
-            for (int i = 0; i < card2.length; i++) {
-
-                {
-                    if (card2[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i))
-                    { pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_1),angles[0]);
-                    }
-                    else if(card2[i] == "pic1" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_1);
-                    }
-                    else if(card2[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i))
-                    { pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_1), angles[0]);
-                    }
-                    else if(card2[i] == "pic1" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_1);
-                    }
-                    else if (card2[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_2),angles[1]);
-                    }
-                    else if(card2[i] == "pic2" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_2);
-                    }
-                    else if(card2[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_2), angles[1]);
-                    }
-                    else if(card2[i] == "pic2" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_2);
-                    }
-                    else if (card2[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_3),angles[2]);
-                    }
-                    else if(card2[i] == "pic3" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_3);
-                    }
-                    else if(card2[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_3), angles[2]);
-                    }
-                    else if(card2[i] == "pic3" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_3);
-                    }
-                    else if (card2[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_4),angles[3]);
-                    }
-                    else if(card2[i] == "pic4" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_4);
-                    }
-                    else if(card2[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_4), angles[3]);
-                    }
-                    else if(card2[i] == "pic4" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_4);
-                    }
-                    else if (card2[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_5),angles[4]);
-                    }
-                    else if(card2[i] == "pic5" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_5);
-                    }
-                    else if(card2[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_5), angles[4]);
-                    }
-                    else if(card2[i] == "pic5" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_5);
-                    }
-                    else if (card2[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_6),angles[5]);
-                    }
-                    else if(card2[i] == "pic6" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_6);
-                    }
-                    else if(card2[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_6), angles[5]);
-                    }
-                    else if(card2[i] == "pic6" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_6);
-                    }
-                    else if (card2[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_7),angles[6]);
-                    }
-                    else if(card2[i] == "pic7" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_7);
-                    }
-                    else if(card2[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_7), angles[6]);
-                    }
-                    else if(card2[i] == "pic7" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_7);
-                    }
-                    else if (card2[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_8),angles[7]);
-                    }
-                    else if(card2[i] == "pic8" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_8);
-                    }
-                    else if(card2[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_8), angles[7]);
-                    }
-                    else if(card2[i] == "pic8" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_8);
-                    }
-                    else if (card2[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_9),angles[8]);
-                    }
-                    else if(card2[i] == "pic9" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_9);
-                    }
-                    else if(card2[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_9), angles[8]);
-                    }
-                    else if(card2[i] == "pic9" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_9);
-                    }
-                    else if (card2[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_10),angles[9]);
-                    }
-                    else if(card2[i] == "pic10" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_10);
-                    }
-                    else if(card2[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){ pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_10), angles[9]);
-                    }
-                    else if(card2[i] == "pic10" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_10);
-                    }
-                    else if (card2[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_11),angles[10]);
-                    }
-                    else if(card2[i] == "pic11" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_11);
-                    }
-                    else if(card2[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_11), angles[10]);
-                    }
-                    else if(card2[i] == "pic11" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_11);
-                    }
-                    else if (card2[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_12),angles[11]);
-                    }
-                    else if(card2[i] == "pic12" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_12);
-                    }
-                    else if(card2[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_12), angles[11]);
-                    }
-                    else if(card2[i] == "pic12" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_12);
-                    }
-                    else if (card2[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_13),angles[12]);
-                    }
-                    else if(card2[i] == "pic13" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_13);
-                    }
-                    else if(card2[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_13), angles[12]);
-                    }
-                    else if(card2[i] == "pic13" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_13);
-                    }
-                    else if (card2[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_14),angles[13]);
-                    }
-                    else if(card2[i] == "pic14" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_14);
-                    }
-                    else if(card2[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_14), angles[13]);
-                    }
-                    else if(card2[i] == "pic14" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_14);
-                    }
-                    else if (card2[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_15),angles[14]);
-                    }
-                    else if(card2[i] == "pic15" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_15);
-                    }
-                    else if(card2[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_15), angles[14]);
-                    }
-                    else if(card2[i] == "pic15" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_15);
-                    }
-                    else if (card2[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_16),angles[15]);
-                    }
-                    else if(card2[i] == "pic16" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_16);
-                    }
-                    else if(card2[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_16), angles[15]);
-                    }
-                    else if(card2[i] == "pic16" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_16);
-                    }
-                    else if (card2[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_17),angles[16]);
-                    }
-                    else if(card2[i] == "pic17" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_17);
-                    }
-                    else if(card2[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_17), angles[16]);
-                    }
-                    else if(card2[i] == "pic17" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_17);
-                    }
-                    else if (card2[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_18),angles[17]);
-                    }
-                    else if(card2[i] == "pic18" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_18);
-                    }
-                    else if(card2[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_18), angles[17]);
-                    }
-                    else if(card2[i] == "pic18" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_18);
-                    }
-                    else if (card2[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_19),angles[18]);
-                    }
-                    else if(card2[i] == "pic19" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_19);
-                    }
-                    else if(card2[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_19), angles[18]);
-                    }
-                    else if(card2[i] == "pic19" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_19);
-                    }
-                    else if (card2[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_20),angles[19]);
-                    }
-                    else if(card2[i] == "pic20" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_20);
-                    }
-                    else if(card2[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_20), angles[19]);
-                    }
-                    else if(card2[i] == "pic20" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_20);
-                    }
-                    else if (card2[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_21),angles[20]);
-                    }
-                    else if(card2[i] == "pic21" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_21);
-                    }
-                    else if(card2[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_21), angles[20]);
-                    }
-                    else if(card2[i] == "pic21" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_21);
-                    }
-                    else if (card2[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_22),angles[21]);
-                    }
-                    else if(card2[i] == "pic22" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_22);
-                    }
-                    else if(card2[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_22), angles[21]);
-                    }
-                    else if(card2[i] == "pic22" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_22);
-                    }
-                    else if (card2[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_23),angles[22]);
-                    }
-                    else if(card2[i] == "pic23" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_23);
-                    }
-                    else if(card2[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_23), angles[22]);
-                    }
-                    else if(card2[i] == "pic23" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_23);
-                    }
-                    else if (card2[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_24),angles[23]);
-                    }
-                    else if(card2[i] == "pic24" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_24);
-                    }
-                    else if(card2[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_24), angles[23]);
-                    }
-                    else if(card2[i] == "pic24" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_24);
-                    }
-                    else if (card2[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_25),angles[24]);
-                    }
-                    else if(card2[i] == "pic25" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_25);
-                    }
-                    else if(card2[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_25), angles[24]);
-                    }
-                    else if(card2[i] == "pic25" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_25);
-                    }
-                    else if (card2[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_26),angles[25]);
-                    }
-                    else if(card2[i] == "pic26" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_26);
-                    }
-                    else if(card2[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_26), angles[25]);
-                    }
-                    else if(card2[i] == "pic26" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_26);
-                    }
-                    else if (card2[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_27),angles[26]);
-                    }
-                    else if(card2[i] == "pic27" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_27);
-                    }
-                    else if(card2[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_27), angles[26]);
-                    }
-                    else if(card2[i] == "pic27" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_27);
-                    }
-                    else if (card2[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_28),angles[27]);
-                    }
-                    else if(card2[i] == "pic28" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_28);
-                    }
-                    else if(card2[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_28), angles[27]);
-                    }
-                    else if(card2[i] == "pic28" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_28);
-                    }
-                    else if (card2[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_29),angles[28]);
-                    }
-                    else if(card2[i] == "pic29" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_29);
-                    }
-                    else if(card2[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_29), angles[28]);
-                    }
-                    else if(card2[i] == "pic29" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_29);
-                    }
-                    else if (card2[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_30),angles[29]);
-                    }
-                    else if(card2[i] == "pic30" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_30);
-                    }
-                    else if(card2[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_30), angles[29]);
-                    }
-                    else if(card2[i] == "pic30" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_30);
-                    }
-                    else if (card2[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(), R.drawable.img2text_31),angles[30]);
-                    }
-                    else if(card2[i] == "pic31" && Arrays.asList(randArr).contains(i) && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2text_31);
-                    }
-                    else if(card2[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i)){
-                        pic[i+ card1.length] = rotateImage(BitmapFactory.decodeResource(getResources(),R.drawable.img2_31), angles[30]);
-                    }
-                    else if(card2[i] == "pic31" && Arrays.asList(randArr).contains(i) == false && Arrays.asList(randRotateArr).contains(i) == false){
-                        pic[i+ card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img2_31);
-                    }
-                }
-            }
-        }
-        for (int i = 0; i < card1.length; i++) {
+        /*for (int i = 0; i < card1.length; i++) {
             picScaled[i] = Bitmap.createScaledBitmap(pic[i], 300, 300, true);
             picScaled[i + card1.length] = Bitmap.createScaledBitmap(pic[i + card1.length], 300, 300, true);//https://stackoverflow.com/questions/27466099/how-to-resize-bitmap-when-drawing-in-canvas
             Log.d(TAG, "setRotatedImages: " + i);
-        }
+        }*/
+    }
+
+    public static Bitmap resize(Bitmap bitmap, int newWidth, int newHeight){
+        Bitmap resizedBitmap = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888);
+
+        float scaleX = newWidth / (float) bitmap.getWidth();
+        float scaleY = newHeight / (float) bitmap.getHeight();
+        float pivotX = 0;
+        float pivotY = 0;
+
+        Matrix scaleMatrix = new Matrix();
+        scaleMatrix.setScale(scaleX, scaleY, pivotX, pivotY);
+
+        Canvas canvas = new Canvas(resizedBitmap);
+        canvas.setMatrix(scaleMatrix);
+        canvas.drawBitmap(bitmap, 0, 0, new Paint(Paint.FILTER_BITMAP_FLAG));
+
+        return resizedBitmap;
     }
 
     public void setImages() {
@@ -2853,9 +2879,7 @@ public class Game_View extends SurfaceView {
         if (option == 1 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1"){
-                    //float toDegrees = new Random().nextFloat() * Integer.MAX_VALUE % 360;
-                    //angles[i] = toDegrees;
-                    pic[i] = (BitmapFactory.decodeResource(getResources(),R.drawable.img1_1)); }
+                    pic[i] = resize(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1), 50,50); }
                 else if (card1[i] == "pic2")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_2);
                 else if (card1[i] == "pic3")
@@ -3992,8 +4016,11 @@ public class Game_View extends SurfaceView {
         if(difficultmode == 1) {
             setImages();
         }
-        else if(difficultmode == 2){
-            setRotatedImages();
+        else if(difficultmode == 2 && option == 1){
+            setRotatedImagesTheme1();
+        }
+        else if(difficultmode == 2 && option == 2){
+            setRotatedImagesTheme2();
         }
         holder.lockCanvas();
         drawPic(c);

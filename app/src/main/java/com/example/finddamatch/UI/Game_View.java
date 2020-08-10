@@ -120,7 +120,7 @@ public class Game_View extends SurfaceView {
 
 
     public void setRotatedImagesTheme1(){
-        if(option!=1|| difficultmode!=2)
+        if(option!=1|| difficultmode==1)
             return;
         if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
             wonAction();
@@ -134,7 +134,7 @@ public class Game_View extends SurfaceView {
             randRotateArr[i] = rand1.nextInt(length) + 1;
             Log.d(TAG, "setRotatedImagesTheme1: rand" + randRotateArr[i]);
         }
-        if(option == 1 && mode == 1 && difficultmode == 2) {
+        if(option == 1 && mode == 1) {
             for (int i = 0; i < length; i++) {
                 randRotateArr[i] = rand1.nextInt(length)+1 ;
                 Log.d(TAG, "setRotatedImagesTheme1: randArr"+randRotateArr[i]);
@@ -590,7 +590,7 @@ public class Game_View extends SurfaceView {
                 }
             }
         }
-        else if (option == 1 && mode == 2 && difficultmode == 2) {
+        else if (option == 1 && mode == 2) {
             Random rand = new Random();
             Integer[] randArr = new Integer[length];
             for (int i = 0; i < length; i++) {
@@ -1465,7 +1465,7 @@ public class Game_View extends SurfaceView {
     }
 
     public void setRotatedImagesTheme2(){
-        if(option!=2|| difficultmode!=2)
+        if(option!=2|| difficultmode==1)
             return;
         if (top.getCards().equals(hand.getCards()) || drawPileSize == length - 1) {
             wonAction();
@@ -1479,7 +1479,7 @@ public class Game_View extends SurfaceView {
             randRotateArr[i] = rand1.nextInt(length) + 1;
             Log.d(TAG, "setRotatedImagesTheme1: rand" + randRotateArr[i]);
         }
-        if (option == 2 && mode == 1 && difficultmode == 2){
+        if (option == 2 && mode == 1){
             for (int i = 0; i < length; i++) {
                 randRotateArr[i] = rand1.nextInt(length)+1 ;
                 Log.d(TAG, "setRotatedImagesTheme2: rand"+randRotateArr[i]);
@@ -1933,7 +1933,7 @@ public class Game_View extends SurfaceView {
             }
 
         }
-        else if(option == 2 && mode == 2 && difficultmode == 2){
+        else if(option == 2 && mode == 2 ){
             Random rand = new Random();
             Integer[] randArr = new Integer[length];
             for (int i = 0; i < length; i++) {
@@ -5502,23 +5502,6 @@ public class Game_View extends SurfaceView {
     }
 */
 
-       public static Bitmap resize(Bitmap bitmap, int newWidth, int newHeight){
-        Bitmap scaledBitmap = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888);
-
-        float ratioX = newWidth / (float) bitmap.getWidth();
-        float ratioY = newHeight / (float) bitmap.getHeight();
-        float middleX = newWidth / 2.0f;
-        float middleY = newHeight / 2.0f;
-
-        Matrix scaleMatrix = new Matrix();
-        scaleMatrix.setScale(ratioX, ratioY, middleX, middleY);
-
-        Canvas canvas = new Canvas(scaledBitmap);
-        canvas.setMatrix(scaleMatrix);
-        canvas.drawBitmap(bitmap, middleX - bitmap.getWidth() / 2, middleY - bitmap.getHeight() / 2, new Paint(Paint.FILTER_BITMAP_FLAG));
-
-        return scaledBitmap;
-    }
 
     public void setImages() {
         if(difficultmode==2)
@@ -5529,7 +5512,7 @@ public class Game_View extends SurfaceView {
         card1 = hand.getCards();
         card2 = top.getCards();
         Log.d(TAG, "setImages: " + card1[0] + card2[0]);
-        if (option == 1 && mode == 1/* && difficultmode == 1*/) {
+        if (option == 1 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1"){
                     pic[i] = (BitmapFactory.decodeResource(getResources(),R.drawable.img1_1)); }
@@ -5660,392 +5643,10 @@ public class Game_View extends SurfaceView {
             }
         }
 
-      /*  else if(option == 1 && mode == 1 && difficultmode == 3){
-            Random rand1 = new Random();
-            Integer[] randResizeArray = new Integer[length];
-            for (int i = 0; i < length; i++) {
-                randResizeArray[i] = rand1.nextInt(length)+1 ;
-                Log.d(TAG, "setRotatedImagesTheme1: randArr"+randResizeArray[i]);
-            }
-            for (int i = 0; i < card1.length; i++) {
-                if (card1[i] == "pic1" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));
-                }
-                else if(card1[i] == "pic1" && Arrays.asList(randResizeArray).contains(i) == false)
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);
-                else if (card1[i] == "pic2" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2));
-                }
-                else if(card1[i] == "pic2" && Arrays.asList(randResizeArray).contains(i) == false ){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_2);
-                }
-                else if (card1[i] == "pic3" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3));
-                }
-                else if(card1[i] == "pic3" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_3);
-                } else if (card1[i] == "pic4" && Arrays.asList(randResizeArray).contains(i)){
-
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_4));
-                }
-                else if(card1[i] == "pic4" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_4);
-                }
-                else if (card1[i] == "pic5" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_5));
-                }
-                else if(card1[i] == "pic5" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_5);
-                }
-                else if (card1[i] == "pic6" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_6));
-                }
-                else if(card1[i] == "pic6" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_6);
-                }
-                else if (card1[i] == "pic7" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_7));
-                }
-                else if(card1[i] == "pic7" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_7);
-                }
-                else if (card1[i] == "pic8" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_8));
-                }
-                else if(card1[i] == "pic8" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_8);
-                }
-                else if (card1[i] == "pic9" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_9));
-                }
-                else if(card1[i] == "pic9" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_9);
-                }
-                else if (card1[i] == "pic10" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_10));
-                }
-                else if(card1[i] == "pic10" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_10);
-                }
-                else if (card1[i] == "pic11" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_11));
-                }
-                else if(card1[i] == "pic11" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_11);
-                }
-                else if (card1[i] == "pic12" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_12));
-                }
-                else if(card1[i] == "pic12" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_12);
-                }
-                else if (card1[i] == "pic13" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_13));
-                }
-                else if(card1[i] == "pic13" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_13);
-                } else if (card1[i] == "pic14" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_14));
-                }
-                else if(card1[i] == "pic14" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_14);
-                }
-                else if (card1[i] == "pic15" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_15));
-                }
-                else if(card1[i] == "pic15" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_15);
-                }
-                else if (card1[i] == "pic16" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_16));
-                }
-                else if(card1[i] == "pic16" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_16);
-                }
-                else if (card1[i] == "pic17" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_17));
-                }
-                else if(card1[i] == "pic17" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_17);
-                }
-                else if (card1[i] == "pic18" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_18));
-                }
-                else if(card1[i] == "pic18" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_18);
-                }
-                else if (card1[i] == "pic19" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_19));
-                }
-                else if(card1[i] == "pic19" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_19);
-                }
-                else if (card1[i] == "pic20" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_20));
-                }
-                else if(card1[i] == "pic20" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_20);
-                }
-                else if (card1[i] == "pic21" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_21));
-                }
-                else if(card1[i] == "pic21" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_21);
-                }
-                else if (card1[i] == "pic22" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_22));
-                }
-                else if(card1[i] == "pic22" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_22);
-                }
-                else if (card1[i] == "pic23" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_23));
-                }
-                else if(card1[i] == "pic23" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_23);
-                }
-                else if (card1[i] == "pic24" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_24));
-                }
-                else if(card1[i] == "pic24" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_24);
-                }
-                else if (card1[i] == "pic25" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_25));
-                }
-                else if(card1[i] == "pic25" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_25);
-                }
-                else if (card1[i] == "pic26" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_26));
-                }
-                else if(card1[i] == "pic26" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_26);
-                }
-                else if (card1[i] == "pic27" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_27));
-                }
-                else if(card1[i] == "pic27" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_27);
-                }
-                else if (card1[i] == "pic28" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_28));
-                }
-                else if(card1[i] == "pic28" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_28);
-                }
-                else if (card1[i] == "pic29" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_29));
-                }
-                else if(card1[i] == "pic29" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_29);
-                }
-                else if (card1[i] == "pic30" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_30));
-                }
-                else if(card1[i] == "pic30" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_30);
-                }
-                else if (card1[i] == "pic31" && Arrays.asList(randResizeArray).contains(i)){
-                    pic[i] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_31));
-                }
-                else if(card1[i] == "pic31" && Arrays.asList(randResizeArray).contains(i) == false){
-                    pic[i] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_31);
-                }
-            }
-            for (int j = 0; j < card2.length; j++) {
-                {
-                    if (card2[j] == "pic1" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(),R.drawable.img1_1));
-                    }
-                    else if(card2[j] == "pic1" && Arrays.asList(randResizeArray).contains(j) == false)
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_1);
-                    else if (card2[j] == "pic2" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_2));
-                    }
-                    else if(card2[j] == "pic2" && Arrays.asList(randResizeArray).contains(j) == false ){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_2);
-                    }
-                    else if (card2[j] == "pic3" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_3));
-                    }
-                    else if(card2[j] == "pic3" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_3);
-                    } else if (card2[j] == "pic4" && Arrays.asList(randResizeArray).contains(j)){
-
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_4));
-                    }
-                    else if(card2[j] == "pic4" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_4);
-                    }
-                    else if (card2[j] == "pic5" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_5));
-                    }
-                    else if(card2[j] == "pic5" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_5);
-                    }
-                    else if (card2[j] == "pic6" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_6));
-                    }
-                    else if(card2[j] == "pic6" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_6);
-                    }
-                    else if (card2[j] == "pic7" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_7));
-                    }
-                    else if(card2[j] == "pic7" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_7);
-                    }
-                    else if (card2[j] == "pic8" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_8));
-                    }
-                    else if(card2[j] == "pic8" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_8);
-                    }
-                    else if (card2[j] == "pic9" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_9));
-                    }
-                    else if(card2[j] == "pic9" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_9);
-                    }
-                    else if (card2[j] == "pic10" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_10));
-                    }
-                    else if(card2[j] == "pic10" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_10);
-                    }
-                    else if (card2[j] == "pic11" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_11));
-                    }
-                    else if(card2[j] == "pic11" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_11);
-                    }
-                    else if (card2[j] == "pic12" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_12));
-                    }
-                    else if(card2[j] == "pic12" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_12);
-                    }
-                    else if (card2[j] == "pic13" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_13));
-                    }
-                    else if(card2[j] == "pic13" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_13);
-                    } else if (card2[j] == "pic14" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_14));
-                    }
-                    else if(card2[j] == "pic14" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_14);
-                    }
-                    else if (card2[j] == "pic15" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_15));
-                    }
-                    else if(card2[j] == "pic15" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_15);
-                    }
-                    else if (card2[j] == "pic16" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_16));
-                    }
-                    else if(card2[j] == "pic16" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_16);
-                    }
-                    else if (card2[j] == "pic17" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_17));
-                    }
-                    else if(card2[j] == "pic17" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_17);
-                    }
-                    else if (card2[j] == "pic18" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_18));
-                    }
-                    else if(card2[j] == "pic18" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_18);
-                    }
-                    else if (card2[j] == "pic19" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_19));
-                    }
-                    else if(card2[j] == "pic19" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_19);
-                    }
-                    else if (card2[j] == "pic20" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_20));
-                    }
-                    else if(card2[j] == "pic20" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_20);
-                    }
-                    else if (card2[j] == "pic21" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_21));
-                    }
-                    else if(card2[j] == "pic21" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_21);
-                    }
-                    else if (card2[j] == "pic22" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_22));
-                    }
-                    else if(card2[j] == "pic22" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_22);
-                    }
-                    else if (card2[j] == "pic23" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_23));
-                    }
-                    else if(card2[j] == "pic23" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_23);
-                    }
-                    else if (card2[j] == "pic24" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_24));
-                    }
-                    else if(card2[j] == "pic24" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_24);
-                    }
-                    else if (card2[j] == "pic25" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_25));
-                    }
-                    else if(card2[j] == "pic25" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_25);
-                    }
-                    else if (card2[j] == "pic26" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_26));
-                    }
-                    else if(card2[j] == "pic26" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_26);
-                    }
-                    else if (card2[j] == "pic27" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_27));
-                    }
-                    else if(card2[j] == "pic27" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_27);
-                    }
-                    else if (card2[j] == "pic28" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_28));
-                    }
-                    else if(card2[j] == "pic28" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_28);
-                    }
-                    else if (card2[j] == "pic29" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_29));
-                    }
-                    else if(card2[j] == "pic29" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_29);
-                    }
-                    else if (card2[j] == "pic30" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_30));
-                    }
-                    else if(card2[j] == "pic30" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_30);
-                    }
-                    else if (card2[j] == "pic31" && Arrays.asList(randResizeArray).contains(j)){
-                        pic[j+card1.length] = resizefxn(BitmapFactory.decodeResource(getResources(), R.drawable.img1_31));
-                    }
-                    else if(card2[j] == "pic31" && Arrays.asList(randResizeArray).contains(j) == false){
-                        pic[j+card1.length] = BitmapFactory.decodeResource(getResources(),R.drawable.img1_31);
-                    }
-                }
-            }
-
-        }*/
-
-       // else if (option == 1 && mode == 2 && difficultmode == 3){ }
-        else if (option == 2 && mode == 1/* && difficultmode == 1*/) {
+       else if(option == 1 &&  difficultmode == 3) {
+            setRotatedImagesTheme1();
+        }
+        else if (option == 2 && mode == 1 && difficultmode == 1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1")
                     pic[i] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_1);
@@ -6176,7 +5777,7 @@ public class Game_View extends SurfaceView {
             }
         }
 
-        else if (option == 1 && mode == 2/* && difficultmode == 1*/) {
+        else if (option == 1 && mode == 2 && difficultmode == 1) {
             Random rand = new Random();
             int order = MainActivity.order;
             int randNo = rand.nextInt(order) + 1;
@@ -6438,8 +6039,10 @@ public class Game_View extends SurfaceView {
                     pic[i+card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img1_31);
             }
         }
-       // else if(option == 2 && mode == 1 && difficultmode == 3){}
-        else if(option==2 && mode==2 /*&& difficultmode == 1*/)
+        else if (option == 2&& difficultmode == 3){
+            setRotatedImagesTheme2();
+        }
+        else if(option==2 && mode==2 && difficultmode == 1)
         {
             Random rand = new Random();
             int order = MainActivity.order;
@@ -6703,7 +6306,6 @@ public class Game_View extends SurfaceView {
                 }
         }
 
-        else if(option == 2 && mode == 2 && difficultmode == 3){}
 
         else if (option == 3 && mode==1) {
             for (int i = 0; i < card1.length; i++) {

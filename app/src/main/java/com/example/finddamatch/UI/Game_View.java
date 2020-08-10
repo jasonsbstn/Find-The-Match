@@ -24,6 +24,7 @@ import android.view.SurfaceView;
 import com.example.finddamatch.MainActivity;
 import com.example.finddamatch.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -131,21 +132,22 @@ public class Game_View extends SurfaceView {
         //BitmapDrawable bmd = new BitmapDrawable(resizedBitmap);
     }
 
-    public Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
-        int width = bm.getWidth();
-        int height = bm.getHeight();
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-        // CREATE A MATRIX FOR THE MANIPULATION
-        Matrix matrix = new Matrix();
-        // RESIZE THE BIT MAP
-        matrix.postScale(scaleWidth, scaleHeight);
+    public Bitmap getResizedBitmap(Bitmap bitmap, int newWidth, int newHeight) {
+        Bitmap scaledBitmap = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888);
 
-        // "RECREATE" THE NEW BITMAP
-        Bitmap resizedBitmap = Bitmap.createBitmap(
-                bm, 0, 0, width, height, matrix, true);
-        bm.recycle();
-        return resizedBitmap;
+        float ratioX = newWidth / (float) bitmap.getWidth();
+        float ratioY = newHeight / (float) bitmap.getHeight();
+        float middleX = newWidth / 2.0f;
+        float middleY = newHeight / 2.0f;
+
+        Matrix scaleMatrix = new Matrix();
+        scaleMatrix.setScale(ratioX, ratioY, middleX, middleY);
+
+        Canvas canvas = new Canvas(scaledBitmap);
+        canvas.setMatrix(scaleMatrix);
+        canvas.drawBitmap(bitmap, middleX - bitmap.getWidth() / 2, middleY - bitmap.getHeight() / 2, new Paint(Paint.FILTER_BITMAP_FLAG));
+
+        return scaledBitmap;
     }
 
     public static Bitmap rotateImage(Bitmap originalBitmap, float angle)
@@ -159,7 +161,14 @@ public class Game_View extends SurfaceView {
         return scaledBitmap;
     }
 
-    public void randomRotate(){
+    public static Bitmap resizefxn(Bitmap bitmap){
+        Bitmap newBitmap = Bitmap.createBitmap(bitmap,0,0,200, 200);
+        Canvas canvas = new Canvas(newBitmap);
+        canvas.drawColor(Color.WHITE);
+        canvas.drawBitmap(newBitmap, 0, 0, null);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        newBitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+        return newBitmap;
 
     }
     public void setRotatedImagesTheme2(){

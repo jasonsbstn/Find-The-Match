@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<length;i++) {
             Bitmap temp;
             //retrive bitmap of picture one by one by decode the base64
+            //REFERENCE: https://stackoverflow.com/questions/17268519/how-to-store-bitmap-object-in-sharedpreferences-in-android
             SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
             String previouslyEncodedImage = shre.getString("image_data"+i, "");
 

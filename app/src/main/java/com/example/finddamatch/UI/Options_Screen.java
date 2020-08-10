@@ -111,6 +111,7 @@ public class Options_Screen extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
 
             //save many pictures at once
+            //REFERENCE: https://stackoverflow.com/questions/23426113/how-to-select-multiple-images-from-gallery-in-android
             ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
             if (data.getClipData() != null) {
                 ClipData mClipData = data.getClipData();
@@ -151,6 +152,7 @@ public class Options_Screen extends AppCompatActivity {
             byte[] b = baos.toByteArray();
 
             //encode bitmap to string using base64 and saved it to shared preferences
+            //REFERENCE: https://stackoverflow.com/questions/17268519/how-to-store-bitmap-object-in-sharedpreferences-in-android
             String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
 
             edit.putString("image_data"+i,encodedImage);

@@ -109,6 +109,8 @@ public class Options_Screen extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+
+            //save many pictures at once
             ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
             if (data.getClipData() != null) {
                 ClipData mClipData = data.getClipData();
@@ -119,6 +121,7 @@ public class Options_Screen extends AppCompatActivity {
                 }
             }
 
+            //scale and save those pictures
             for (int i = 0; i < mArrayUri.size(); i++) {
                 Bitmap bitmap = null;
                 try {
@@ -133,23 +136,29 @@ public class Options_Screen extends AppCompatActivity {
         }
         imageSelected++;
         option = 3;
+
         saveBitmap(bitmaps);
     }
 
     private void saveBitmap(List<Bitmap> bitmaps) {
         SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor edit=shre.edit();
+
+        //go through the list of pictures
         for(int i=0;i<bitmaps.size();i++) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmaps.get(i).compress(Bitmap.CompressFormat.PNG, 100, baos);
             byte[] b = baos.toByteArray();
 
+            //encode bitmap to string using base64 and saved it to shared preferences
             String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
 
             edit.putString("image_data"+i,encodedImage);
             edit.commit();
         }
 
+
+        //save number of bitmaps in the bitmap's list
         SharedPreferences prefs = this.getSharedPreferences("numberPics", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("numberPics", bitmaps.size());

@@ -71,17 +71,22 @@ public class MainActivity extends AppCompatActivity {
         setSkipButton();
     }
 
+    //get saved list of bitmaps
     private List<Bitmap> getBitmaps() {
         List<Bitmap> bitmaps = new ArrayList<Bitmap>();
         int length;
 
+        //get number of pictures saved
         SharedPreferences prefs = getSharedPreferences("numberPics", MODE_PRIVATE);
         length= prefs.getInt("numberPics", 0);
 
+        //get all images
         for(int i=0;i<length;i++) {
             Bitmap temp;
+            //retrive bitmap of picture one by one by decode the base64
             SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
             String previouslyEncodedImage = shre.getString("image_data"+i, "");
+
             if( !previouslyEncodedImage.equalsIgnoreCase("") ){
                 byte[] b = Base64.decode(previouslyEncodedImage, Base64.DEFAULT);
                 temp = BitmapFactory.decodeByteArray(b, 0, b.length);

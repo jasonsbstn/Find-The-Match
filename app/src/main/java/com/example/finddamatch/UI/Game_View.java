@@ -115,6 +115,7 @@ public class Game_View extends SurfaceView {
         // setup rotation degree
         matrix.postRotate(angle);
         Bitmap scaledBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.getWidth(), originalBitmap.getHeight(), matrix, true);
+        scaledBitmap.setHasAlpha(true);
         return scaledBitmap;
     }
 

@@ -892,7 +892,6 @@ public class Game_View extends SurfaceView {
                         pic[i+card1.length] = BitmapFactory.decodeResource(getResources(), R.drawable.img2_31);
                 }
         }
-
         else if (option == 3 && mode==1) {
             for (int i = 0; i < card1.length; i++) {
                 if (card1[i] == "pic1")
@@ -1189,27 +1188,6 @@ public class Game_View extends SurfaceView {
 
     }
 
-    private Bitmap getCircleBitmap(Bitmap bitmap) {//https://stackoverflow.com/questions/12944275/crop-image-as-circle-in-android
-        //crop bitmap into circle
-        int widthLight = bitmap.getWidth();
-        int heightLight = bitmap.getHeight();
-
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(output);
-        Paint paintColor = new Paint();
-        paintColor.setFlags(Paint.ANTI_ALIAS_FLAG);
-
-        RectF rectF = new RectF(new Rect(0, 0, widthLight, heightLight));
-
-        canvas.drawRoundRect(rectF, widthLight / 2, heightLight / 2, paintColor);
-
-        Paint paintImage = new Paint();
-        paintImage.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-        canvas.drawBitmap(bitmap, 0, 0, paintImage);
-
-        return output;
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {

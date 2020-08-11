@@ -51,6 +51,7 @@
     <string name="save">Save</string>
     <string name="delete">delete</string>
     <string name="game_modes">Game Modes</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save_cards">Save Cards</string>
 
 </resources>

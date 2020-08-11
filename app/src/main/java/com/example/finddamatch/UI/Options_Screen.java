@@ -42,7 +42,7 @@ Description : user chooses the theme
 
  */
 import com.example.finddamatch.R;
-import com.example.finddamatch.flickr.PhotoGalleryActivity;
+import com.example.finddamatch.Flickr_and_Import.PhotoGalleryActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Random;

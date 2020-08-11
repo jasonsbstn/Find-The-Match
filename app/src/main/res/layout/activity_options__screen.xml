@@ -155,6 +155,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/chooseImage"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="108dp"
+        android:background="@drawable/gradient_background"
+        android:text="@string/chooseImage"
+        android:textColor="#F6F6F6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/backButtonOptionsScreen"
         android:layout_width="wrap_content"

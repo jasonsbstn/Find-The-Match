@@ -1,7 +1,7 @@
 /*
 Description: taken from book source code to search images
  */
-package com.example.finddamatch.flickr;
+package com.example.finddamatch.Flickr_and_Import;
 
 import android.content.Context;
 import android.preference.PreferenceManager;

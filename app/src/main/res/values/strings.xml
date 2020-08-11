@@ -20,6 +20,7 @@
     <string name="reset">RESET</string>
     <string name="saveUsername">CONFIRM</string>
     <string name="DifficultyMode">Difficulty Mode</string>
+    <string name="chooseImage">Import</string>
     <string name="teamMembers">
         Created by:\n
         * Dang Xuan Anh Tran - 301354210\n
@@ -52,5 +53,7 @@
     <string name="save">Save</string>
     <string name="delete">delete</string>
     <string name="game_modes">Game Modes</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_cards">Save Cards</string>
 
 </resources>

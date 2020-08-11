@@ -7,6 +7,7 @@ package com.example.finddamatch;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.example.finddamatch.Classes.Cards;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.preference.PreferenceManager;
+import android.util.Base64;
 import android.view.View;
 
 import android.view.animation.Animation;
@@ -29,6 +32,8 @@ import java.util.List;
 import java.util.Random;
 
 import static android.content.ContentValues.TAG;
+
+import static com.example.finddamatch.Flickr_and_Import.Photo_Gallery_Fragment.imageSelected;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,10 +83,38 @@ public class MainActivity extends AppCompatActivity {
             Log.d (TAG, " rotateImages : rand "+imagesToRotate[i]);
         }
 
+        bitmaps=getBitmaps();
+
         setContentView(R.layout.activity_main);
 
         shakeAnimation();
         setSkipButton();
+    }
+
+    //get saved list of bitmaps
+    private List<Bitmap> getBitmaps() {
+        List<Bitmap> bitmaps = new ArrayList<Bitmap>();
+        int length;
+
+        //get number of pictures saved
+        SharedPreferences prefs = getSharedPreferences("numberPics", MODE_PRIVATE);
+        length= prefs.getInt("numberPics", 0);
+
+        //get all images
+        for(int i=0;i<length;i++) {
+            Bitmap temp;
+            //retrive bitmap of picture one by one by decode the base64
+            //REFERENCE: https://stackoverflow.com/questions/17268519/how-to-store-bitmap-object-in-sharedpreferences-in-android
+            SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
+            String previouslyEncodedImage = shre.getString("image_data"+i, "");
+
+            if( !previouslyEncodedImage.equalsIgnoreCase("") ){
+                byte[] b = Base64.decode(previouslyEncodedImage, Base64.DEFAULT);
+                temp = BitmapFactory.decodeByteArray(b, 0, b.length);
+                bitmaps.add(temp);
+            }
+        }
+        return bitmaps;
     }
 
     //set animation shake for title

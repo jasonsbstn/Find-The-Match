@@ -32,6 +32,8 @@ import static com.example.finddamatch.MainActivity.length;
 import static com.example.finddamatch.MainActivity.mode;
 import static com.example.finddamatch.MainActivity.option;
 import static com.example.finddamatch.MainActivity.order;
+import static com.example.finddamatch.MainActivity.length;
+import static com.example.finddamatch.MainActivity.difficultmode;
 import static com.example.finddamatch.Flickr_and_Import.Photo_Gallery_Fragment.imageSelected;
 
 /*
@@ -39,6 +41,11 @@ import static com.example.finddamatch.Flickr_and_Import.Photo_Gallery_Fragment.i
 Description : user chooses the theme
 
  */
+import com.example.finddamatch.R;
+import com.example.finddamatch.flickr.PhotoGalleryActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Random;
 
 public class Options_Screen extends AppCompatActivity {
     Button searchBtn;
@@ -61,6 +68,7 @@ public class Options_Screen extends AppCompatActivity {
         createGameOrders();
         createGameLength();
         createGameMode();
+        createDifficultyModes();
         createImportButton();
         searchBtn = findViewById(R.id.searchBtn);
         editFlickrPhoto = findViewById(R.id.editBtn);
@@ -201,6 +209,53 @@ public class Options_Screen extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("modes", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("modes", optionNum);
+        editor.apply();
+    }
+
+    private void createDifficultyModes(){
+        RadioGroup group = (RadioGroup) findViewById(R.id.DifficultyModes);
+        final String[] difficulty = getResources().getStringArray(R.array.diffmodes);
+        final RadioButton button1 = new RadioButton(this);
+        final RadioButton button2 = new RadioButton(this);
+        final RadioButton button3 = new RadioButton(this);
+        button1.setText(difficulty[0]);
+        button2.setText(difficulty[1]);
+        button3.setText(difficulty[2]);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                difficultmode = 1;
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                difficultmode = 2;
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                difficultmode = 3;
+            }
+        });
+        group.addView(button1);
+        group.addView(button2);
+        group.addView(button3);
+        if (difficultmode == 1) {
+            button1.setChecked(true);
+        }else if(difficultmode == 2){
+            button2.setChecked(true);
+        }else if(difficultmode == 3){
+            button3.setChecked(true);
+        }
+        saveDifficultyMode(difficultmode);
+
+    }
+    private void saveDifficultyMode(int optionNum){
+        SharedPreferences prefs = this.getSharedPreferences("DiffModes", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("DiffModes", optionNum);
         editor.apply();
     }
 

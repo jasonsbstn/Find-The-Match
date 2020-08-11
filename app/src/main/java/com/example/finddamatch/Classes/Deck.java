@@ -111,7 +111,7 @@ public class Deck implements Iterable<Cards> {
             cardsList.add(new Cards(pics23, 23));
             String pics24[] = {"pic4", "pic7", "pic15", "pic18", "pic21", "pic30"};
             cardsList.add(new Cards(pics24, 24));
-            String pics25[] = {"pic5", "pic8", "pic10", "pic19", "pic22", "pic30"};
+            String pics25[] = {"pic5", "pic8", "pic11", "pic19", "pic22", "pic30"};
             cardsList.add(new Cards(pics25, 25));
             String pics26[] = {"pic1", "pic10", "pic14", "pic18", "pic22", "pic31"};
             cardsList.add(new Cards(pics26, 26));

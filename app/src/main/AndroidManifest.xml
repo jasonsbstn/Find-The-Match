@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".flickr.PhotoGalleryActivity"
+            android:name=".Flickr_and_Import.PhotoGalleryActivity"
             android:theme="@style/AppTheme" />
 
         <meta-data

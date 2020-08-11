@@ -2,7 +2,7 @@
 Description:fragment activities where the onclick, and image are shown
 taken from book source code
  */
-package com.example.finddamatch.flickr;
+package com.example.finddamatch.Flickr_and_Import;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -41,7 +41,7 @@ public class Photo_Gallery_Fragment extends Fragment {
     private RecyclerView mPhotoRecyclerView;
     private List<Gallery_Item> mItems = new ArrayList<>();
     private Thumbnail_Downloader<PhotoHolder> mThumbnailDownloader;
-    int imageSelected =0;
+    public static int imageSelected = 0;
    // public static Bitmap[] flickImgSelected = new Bitmap[7];
 
     public static Photo_Gallery_Fragment newInstance() {

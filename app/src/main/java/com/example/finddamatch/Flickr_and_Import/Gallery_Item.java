@@ -1,7 +1,7 @@
 /*
 Description:taken from book source code to get image url
  */
-package com.example.finddamatch.flickr;
+package com.example.finddamatch.Flickr_and_Import;
 
 public class Gallery_Item {
     private String mCaption;
